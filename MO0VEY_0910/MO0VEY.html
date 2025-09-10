@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+    <style> 
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #6b94b0;
+      }
+       h1 {
+        color: #901a1a;
+        font-size: 2.8em;
+        text-align: center;
+        letter-spacing: 2px;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        background: linear-gradient(90deg, #f7b733 0%, #fc4a1a 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 800;
+        text-shadow: 2px 2px 8px rgba(44,62,80,0.18);
+        border-radius: 8px;
+        padding: 12px 0;
+      }
+      h4 {
+        position: relative;
+        color: #234567;
+        background: linear-gradient(90deg, #e0eafc 0%, #cfdef3 100%);
+        padding: 14px 22px;
+        border-left: 6px solid #fc4a1a;
+        border-radius: 8px;
+        margin-top: 36px;
+        margin-bottom: 20px;
+        font-size: 1.35em;
+        letter-spacing: 1.5px;
+        font-weight: 700;
+        box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+        text-transform: uppercase;
+      }
+      h4::after {
+        content: '';
+        display: block;
+        width: 48px;
+        height: 3px;
+        background: #fc4a1a;
+        margin-top: 10px;
+        border-radius: 2px;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        background: #afaf8e;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      li:hover {
+        background: #5eb571;
+      }
+      .command-title {
+        font-weight: bold;
+        color: #333;
+      }
+      .command-type {
+        font-size: 0.9em;
+        color: #555;
+        font-style: italic;
+      }
+      .example {
+        background: #e0e0e0;
+        padding: 4px 8px;
+        border-radius: 3px;
+        font-family: monospace;
+        display: inline-block;
+        margin-top: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1 id="title">Index</h1>  
+    </main>
+    
+    <h4 id="github-commands">Github Basic & Most Important Local & Remote Commands</h4>
+
+    <ul>
+      <li>
+        <span class="command-title">git init</span>
+        <span class="command-type">[Local]</span><br/>
+        Initializes a new Git repository in your current directory. This creates a hidden <code>.git</code> folder that tracks your project’s version history.<br/>
+        <span class="example">git init</span>
+      </li>
+      <li>
+        <span class="command-title">git status</span>
+        <span class="command-type">[Local]</span><br/>
+        Shows the current state of the working directory and staging area. It lets you see which changes have been staged, which haven’t, and which files aren’t being tracked by Git.<br/>
+        <span class="example">git status</span>
+      </li>
+      <li>
+        <span class="command-title">git add</span>
+        <span class="command-type">[Local]</span><br/>
+        Stages changes (new, modified, or deleted files) to be included in the next commit. You can add specific files or all changes.<br/>
+        <span class="example">git add filename.txt</span><br/>
+        <span class="example">git add .</span>
+      </li>
+      <li>
+        <span class="command-title">git commit</span>
+        <span class="command-type">[Local]</span><br/>
+        Saves the staged changes to the local repository with a descriptive message. Commits are snapshots of your project history.<br/>
+        <span class="example">git commit -m "Describe your changes"</span>
+      </li>
+      <li>
+        <span class="command-title">git remote add</span>
+        <span class="command-type">[Local/Remote]</span><br/>
+        Adds a remote repository (usually on GitHub) so you can push and pull changes. The remote is given a name (commonly <code>origin</code>).<br/>
+        <span class="example">git remote add origin https://github.com/username/repo.git</span>
+      </li>
+      <li>
+        <span class="command-title">git pull</span>
+        <span class="command-type">[Remote]</span><br/>
+        Fetches changes from a remote repository and merges them into your local branch. Keeps your local code up to date with others.<br/>
+        <span class="example">git pull origin main</span>
+      </li>
+      <li>
+        <span class="command-title">git push</span>
+        <span class="command-type">[Remote]</span><br/>
+        Uploads your local commits to a remote repository (like GitHub), making them available to others.<br/>
+        <span class="example">git push origin main</span>
+      </li>
+    </ul>
+
+    <h4 id="Extensions">Used up Extensions</h4>
+    <ul>
+      <li>
+        <span class="command-title">Prettier - Code formatter</span><br/>
+        Prettier is a reliable tool for maintaining clean and consistent code formatting. It automatically organizes your files on save, ensuring that indentation, spacing, and quotation marks follow best practices across different languages.
+      </li>
+      <li>
+        <span class="command-title">Live Server</span><br/>
+        Live Server provides a straightforward way to preview your web projects. By launching a local server, it refreshes your browser instantly whenever you update your HTML, CSS, or JavaScript, streamlining the development workflow.
+      </li>
+      <li>
+        <span class="command-title">ESLint</span><br/>
+        ESLint is an essential extension for JavaScript development. It scans your code for errors and enforces coding standards, helping you catch issues early and maintain a high level of code quality throughout your project.
+      </li>
+      <li>
+        <span class="command-title">HTML CSS Support</span><br/>
+        This extension enhances productivity by providing intelligent autocomplete and validation for CSS classes and IDs within HTML files. It helps reduce mistakes and speeds up the process of styling web pages.
+      </li>
+      <li>
+        <span class="command-title">GitLens — Git supercharged</span><br/>
+        GitLens extends the built-in Git capabilities of VS Code. It offers detailed insights into code changes, including author information and revision history, making it easier to track progress and collaborate effectively.
+      </li>
+    </ul>
+  </body>
+</html>
