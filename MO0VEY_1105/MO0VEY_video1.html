@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Controls</title>
+  <style>
+    /* fallback */
+    @font-face {
+      font-family: 'Material Symbols Outlined';
+      font-style: normal;
+      font-weight: 400;
+      src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v292/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHOej.woff2) format('woff2');
+    }
+
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+    body { font-family: Arial, Helvetica, sans-serif; }
+    .controls { margin-top: 12px; display: flex; gap: 40px; align-items: flex-start; }
+    .col { display: flex; flex-direction: column; gap: 14px; }
+    .row { display: flex; gap: 10px; }
+
+    .btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      border: 2px solid #6d7a88;
+      background: #cbe0ff;
+      box-shadow: 0 0 0 1px #8896a5 inset, 0 0 0 1px #6d7a8822;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .btn:focus { outline: none; }
+    .btn:hover { background: #bed7ff; }
+    .btn .ms { font-size: 26px; }
+
+    
+    .stack { position: relative; width: 24px; height: 24px; }
+    .stack .ms { position: absolute; left: 0; top: 0; font-size: 22px; }
+  </style>
+</head>
+<body>
+ <header>
+  <h1>Videó lejátszása_MO0VEY</h1>
+</header>
+
+<section>
+    <video src="MO0VEY_video1.mp4" id="video" controls width="600"></video>
+</section>
+
+  <div class="controls">
+    
+    <div class="col">
+      <div class="row">
+        <button class="btn" id="start" title="indítás"><span class="material-symbols-outlined ms">play_arrow</span></button>
+        <button class="btn" id="stop" title="leállítás"><span class="material-symbols-outlined ms">stop</span></button>
+      </div>
+
+      <div class="row">
+        <button class="btn" id="mute" title="néma"><span class="material-symbols-outlined ms">volume_off</span></button>
+        <button class="btn" id="volLow" title="halk"><span class="material-symbols-outlined ms">volume_down</span></button>
+        <button class="btn" id="volHigh" title="hangos"><span class="material-symbols-outlined ms">volume_up</span></button>
+      </div>
+
+      <div class="row">
+        <button class="btn" id="sizeSmall" title="kicsi">
+          <span class="stack">
+            <span class="material-symbols-outlined ms" style="opacity:.7">crop_din</span>
+            <span class="material-symbols-outlined ms" style="left:2px;top:2px;">image</span>
+          </span>
+        </button>
+        <button class="btn" id="sizeNormal" title="normál">
+          <span class="stack">
+            <span class="material-symbols-outlined ms" style="opacity:.7">crop_square</span>
+            <span class="material-symbols-outlined ms" style="left:2px;top:2px;">image</span>
+          </span>
+        </button>
+        <button class="btn" id="sizeLarge" title="nagy"><span class="material-symbols-outlined ms">image</span></button>
+      </div>
+    </div>
+
+    
+    <div class="col">
+      <div class="row">
+        <button class="btn" id="startstop" title="indítás / leállítás"><span class="material-symbols-outlined ms">play_pause</span></button>
+      </div>
+
+      <div class="row">
+        <button class="btn" id="restart" title="elejére"><span class="material-symbols-outlined ms">restart_alt</span></button>
+        <button class="btn" id="rewind" title="vissza"><span class="material-symbols-outlined ms">fast_rewind</span></button>
+        <button class="btn" id="play2" title="indítás"><span class="material-symbols-outlined ms">play_arrow</span></button>
+        <button class="btn" id="forward" title="előre"><span class="material-symbols-outlined ms">fast_forward</span></button>
+        <button class="btn" id="jump" title="ugrás"><span class="material-symbols-outlined ms">keyboard_double_arrow_right</span></button>
+      </div>
+
+      <div class="row">
+        <button class="btn" id="isEnded" title="befejeződött-e"><span class="material-symbols-outlined ms">done</span></button>
+        <button class="btn" id="getDuration" title="video hossza (mp)"><span class="material-symbols-outlined ms">timer</span></button>
+        <button class="btn" id="getCurrent" title="jelenlegi pozíció"><span class="material-symbols-outlined ms">schedule</span></button>
+      </div>
+    </div>
+  </div>
+
+ 
+  <script>
+  const btnClick = (id, onclick) => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener("click", onclick);
+  };
+
+  const video = document.getElementById("video");
+
+  btnClick("start", () => video.play());
+  btnClick("stop", () => {
+    video.pause();
+    try { video.currentTime = 0; } catch {}
+  });
+  btnClick("startstop", () => (video.paused ? video.play() : video.pause()));
+
+  
+  btnClick("restart", () => { try { video.currentTime = 0; } catch {} });
+  btnClick("rewind", () => { try { video.currentTime = Math.max(0, video.currentTime - 5); } catch {} });
+  btnClick("play2", () => video.play());
+  btnClick("forward", () => { try { video.currentTime = Math.min((video.duration||Infinity), video.currentTime + 5); } catch {} });
+  btnClick("jump", () => { try { video.currentTime = Math.min((video.duration||Infinity), video.currentTime + 10); } catch {} });
+
+  btnClick("mute", () => { video.muted = true; });
+  btnClick("volLow", () => { video.muted = false; video.volume = 0.2; });
+  btnClick("volHigh", () => { video.muted = false; video.volume = 1.0; });
+
+  btnClick("rateVerySlow", () => video.playbackRate = 0.25);
+  btnClick("rateSlow", () => video.playbackRate = 0.5);
+  btnClick("rateNormal", () => video.playbackRate = 1.0);
+  btnClick("rateFast", () => video.playbackRate = 1.5);
+  btnClick("rateVeryFast", () => video.playbackRate = 2.0);
+
+  btnClick("sizeSmall", () => { video.width = 360; });
+  btnClick("sizeNormal", () => { video.width = 600; });
+  btnClick("sizeLarge", () => { video.width = 900; });
+
+  const seconds = (n) => (Number.isFinite(n) ? n.toFixed(2) : "ismeretlen");
+  let metadataLoaded = false;
+  video.addEventListener("loadedmetadata", () => { metadataLoaded = true; });
+
+  btnClick("isEnded", () => {
+    alert(`A videó befejeződött: ${video.ended ? "igen" : "nem"}`);
+  });
+  btnClick("getDuration", () => {
+    const d = metadataLoaded ? video.duration : NaN;
+    alert(`Video hossza: ${seconds(d)} mp`);
+  });
+  btnClick("getCurrent", () => {
+    alert(`Jelenlegi pozíció: ${seconds(video.currentTime)} mp`);
+  });
+</script>
+
+<footer>
+  <hr style="border: none; border-top: 1px solid #bbb; margin: 14px 0 4px;">
+  <hr style="border: none; border-top: 1px solid #bbb; margin: 0 0 12px;">
+  <p style="font-size: 12px; color: #555; text-align: left; margin: 0 0 8px;">
+    Forrás:
+    <a href="https://pixabay.com/videos/counter-10-second-timer-124294/" target="_blank" rel="noopener noreferrer">https://pixabay.com/videos/counter-10-second-timer-124294/</a>
+  </p>
+</footer>
+</body>
+</html>
