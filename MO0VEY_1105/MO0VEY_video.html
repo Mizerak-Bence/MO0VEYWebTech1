@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Controls</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body { font-family: Arial, Helvetica, sans-serif; }
+    .controls { margin-top: 12px; }
+    .row { margin-bottom: 8px; }
+    .row button { margin-right: 6px; }
+  </style>
+</head>
+<body>
+ <header>
+  <h1>Videó lejátszása_MO0VEY</h1>
+</header>
+
+<section>
+  <!-- Helyi fájl esetén tedd a videót a mappába és állítsd a src-et. -->
+  <video src="MO0VEY_video.mp4" id="video" controls width="600"></video>
+</section>
+
+  <div class="controls">
+    <div class="row">
+      <button id="start">indítás</button>
+      <button id="stop">leállítás</button>
+      <button id="startstop">indítás / leállítás</button>
+    </div>
+    <div class="row">
+      <button id="mute">néma</button>
+      <button id="volLow">halk</button>
+      <button id="volHigh">hangos</button>
+      <button id="rateVerySlow">nagyon lassú</button>
+      <button id="rateSlow">lassú</button>
+      <button id="rateNormal">normál</button>
+      <button id="rateFast">gyorsabb</button>
+      <button id="rateVeryFast">nagyon gyors</button>
+    </div>
+    <div class="row">
+      <button id="sizeSmall">kicsi</button>
+      <button id="sizeNormal">normál</button>
+      <button id="sizeLarge">nagy</button>
+      <button id="isEnded">befejeződött-e</button>
+      <button id="getDuration">video hossza (mp)</button>
+      <button id="getCurrent">jelenlegi pozíció</button>
+    </div>
+  </div>
+
+ 
+  <script>
+  const btnClick = (id, onclick) => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener("click", onclick);
+  };
+
+  const video = document.getElementById("video");
+
+  btnClick("start", () => video.play());
+  btnClick("stop", () => {
+    video.pause();
+    try { video.currentTime = 0; } catch {}
+  });
+  btnClick("startstop", () => (video.paused ? video.play() : video.pause()));
+
+  btnClick("mute", () => { video.muted = true; });
+  btnClick("volLow", () => { video.muted = false; video.volume = 0.2; });
+  btnClick("volHigh", () => { video.muted = false; video.volume = 1.0; });
+
+  btnClick("rateVerySlow", () => video.playbackRate = 0.25);
+  btnClick("rateSlow", () => video.playbackRate = 0.5);
+  btnClick("rateNormal", () => video.playbackRate = 1.0);
+  btnClick("rateFast", () => video.playbackRate = 1.5);
+  btnClick("rateVeryFast", () => video.playbackRate = 2.0);
+
+  btnClick("sizeSmall", () => { video.width = 360; });
+  btnClick("sizeNormal", () => { video.width = 600; });
+  btnClick("sizeLarge", () => { video.width = 900; });
+
+  const seconds = (n) => (Number.isFinite(n) ? n.toFixed(2) : "ismeretlen");
+  let metadataLoaded = false;
+  video.addEventListener("loadedmetadata", () => { metadataLoaded = true; });
+
+  btnClick("isEnded", () => {
+    alert(`A videó befejeződött: ${video.ended ? "igen" : "nem"}`);
+  });
+  btnClick("getDuration", () => {
+    const d = metadataLoaded ? video.duration : NaN;
+    alert(`Video hossza: ${seconds(d)} mp`);
+  });
+  btnClick("getCurrent", () => {
+    alert(`Jelenlegi pozíció: ${seconds(video.currentTime)} mp`);
+  });
+</script>
+</body>
+</html>
