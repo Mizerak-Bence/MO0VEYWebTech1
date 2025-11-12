@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JSON megvalósítása – JavaScript</title>
+	<style>
+		body { font-family: Times New Roman, Times, serif; }
+		h1 { font-size: 34px; margin: 8px 0 10px; }
+		h2 { font-size: 20px; margin: 12px 0; }
+		ul { margin: 0 0 0 24px; }
+	</style>
+</head>
+<body>
+	<h1>JSON megvalósítása – JavaScript</h1>
+	<h2>Könyvek listája</h2>
+	<ul id="lista"></ul>
+
+	<script>
+		const lista = document.getElementById('lista');
+		function sor(b){
+			const li = document.createElement('li');
+			const alcim = b.alcim ? ` - ${b.alcim}` : '';
+			li.innerHTML = `<strong>Szerző:</strong> ${b.szerzo} <strong>cim:</strong> ${b.cim}${alcim} <strong>Kiadás éve:</strong> ${b.ev}`;
+			return li;
+		}
+		fetch('./MO0VEY_konyv.json')
+			.then(r => r.json())
+			.then(d => {
+				const tomb = Array.isArray(d) ? d : (d.konyvek || []);
+				tomb.forEach(k => lista.appendChild(sor(k)));
+			})
+			.catch(() => {
+				const hib = document.createElement('li');
+				hib.textContent = 'Nem sikerült betölteni a JSON fájlt.';
+				lista.appendChild(hib);
+			});
+	</script>
+</body>
+</html>

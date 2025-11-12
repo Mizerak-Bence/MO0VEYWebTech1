@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JSON Text konvertálása JavaScript objektummá!</title>
+		<style>
+			body { font-family: Arial, Helvetica, sans-serif; line-height: 1.45; }
+			h1 { font-size: 22px; margin: 12px 0; }
+			.wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+			.panel { border: 1px solid #ddd; padding: 12px; border-radius: 6px; }
+			label { display: block; font-weight: 600; margin-bottom: 6px; }
+			.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; margin-bottom: 8px; }
+			.grid label { margin: 0; align-self: center; }
+			.grid input { width: 100%; padding: 6px 8px; }
+			pre { background: #fafafa; border: 1px solid #eee; padding: 8px; border-radius: 4px; overflow-x: auto; min-height: 110px; }
+			.result { white-space: pre-wrap; background: #fafafa; border: 1px solid #eee; padding: 8px; border-radius: 4px; min-height: 110px; }
+			.error { color: #a40000; }
+			.btn { margin-top: 8px; padding: 6px 10px; }
+		</style>
+</head>
+<body>
+	<h1>JSON Text konvertálása JavaScript objektummá!</h1>
+
+		<div class="wrap">
+			<div class="panel">
+				<label>Adatok megadása</label>
+				<div class="grid">
+					<label for="nev">Név</label>
+					<input id="nev" placeholder="pl. Kiss Anna">
+					<label for="irsz">Irányítószám</label>
+					<input id="irsz" placeholder="pl. 4026">
+					<label for="varos">Város</label>
+					<input id="varos" placeholder="pl. Debrecen">
+					<label for="egyetem">Egyetem</label>
+					<input id="egyetem" placeholder="pl. Debreceni Egyetem">
+				</div>
+				<button id="genBtn" class="btn">JSON generálás</button>
+			</div>
+			<div class="panel">
+				<label>JSON Text</label>
+				<pre id="jsonText"></pre>
+				<button id="convertBtn" class="btn">Konvertálás</button>
+				<label style="margin-top:12px">Eredmény</label>
+				<div id="result" class="result"></div>
+			</div>
+		</div>
+
+		<script>
+			const by = (id) => document.getElementById(id);
+			const nev = by("nev");
+			const irsz = by("irsz");
+			const varos = by("varos");
+			const egyetem = by("egyetem");
+			const jsonEl = by("jsonText");
+			const result = by("result");
+			const genBtn = by("genBtn");
+			const convertBtn = by("convertBtn");
+			function buildJSONText(){
+				const iz = irsz.value.trim();
+				const num = iz && /^\d+$/.test(iz) ? Number(iz) : iz;
+				const obj = { nev: nev.value.trim(), iranyitoszam: num, varos: varos.value.trim(), egyetem: egyetem.value.trim() };
+				return JSON.stringify(obj, null, 2);
+			}
+			function render(obj){
+				result.textContent = `Név: ${obj.nev}\nIrányítószám: ${obj.iranyitoszam}\nVáros: ${obj.varos}\nEgyetem: ${obj.egyetem}`;
+				result.classList.remove("error");
+			}
+			genBtn.addEventListener("click", () => {
+				jsonEl.textContent = buildJSONText();
+			});
+			convertBtn.addEventListener("click", () => {
+				try {
+					const text = jsonEl.textContent.trim();
+					const obj = JSON.parse(text);
+					render(obj);
+				} catch(e) {
+					result.textContent = "Hibás JSON";
+					result.classList.add("error");
+				}
+			});
+		</script>
+</body>
+</html>

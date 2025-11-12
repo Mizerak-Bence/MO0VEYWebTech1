@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>0.Task a) JSON string → JS objektum</title>
+	<style>
+		body { font-family: Arial, Helvetica, sans-serif; line-height: 1.45; }
+		h1 { font-size: 22px; margin: 12px 0; }
+		h2 { font-size: 18px; margin: 6px 0 12px; }
+		.wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+		.panel { border: 1px solid #ddd; padding: 12px; border-radius: 6px; }
+		label { display: block; font-weight: 600; margin-bottom: 6px; }
+		textarea { width: 100%; min-height: 130px; font-family: Consolas, monospace; font-size: 13px; }
+		.btn { margin-top: 8px; padding: 6px 10px; }
+		.result { white-space: pre-wrap; font-family: Consolas, monospace; background: #fafafa; border: 1px solid #eee; padding: 8px; border-radius: 4px; min-height: 110px; }
+		.error { color: #a40000; }
+		.hint { font-size: 12px; color: #666; margin-top: 6px; }
+	</style>
+	</head>
+	<body>
+
+		<div class="wrap">
+			<div class="panel">
+				<label for="jsonInput">JSON:</label>
+				<textarea id="jsonInput">[
+	{ "Név": "HTML5", "kiterjesztés": ".html" },
+	{ "Név": "CSS3",  "kiterjesztés": ".css"  },
+	{ "Név": "JavaScript", "kiterjesztés": ".js" }
+]</textarea>
+				<button class="btn" id="parseBtn">JSON beolvasás</button>
+				<div class="hint">Tippek: szerkeszthető. Hibás JSON esetén hibaüzenet jelenik meg.</div>
+			</div>
+
+			<div class="panel">
+				<label>Eredmény:</label>
+				<div id="output" class="result"></div>
+			</div>
+		</div>
+
+		<script>
+			const byId = (id) => document.getElementById(id);
+			const input = byId('jsonInput');
+			const output = byId('output');
+			const parseBtn = byId('parseBtn');
+
+			function renderParsed(value){
+				try {
+					if (Array.isArray(value)) {
+						const lines = value.map((o, i) => `#${i+1} Név: ${o.Név}, kiterjesztés: ${o.kiterjesztés}`);
+						output.textContent = lines.join('\n');
+					} else if (typeof value === 'object' && value) {
+						const lines = Object.entries(value).map(([k, v]) => `${k}: ${v}`);
+						output.textContent = lines.join('\n');
+					} else {
+						output.textContent = String(value);
+					}
+					output.classList.remove('error');
+				} catch (e) {
+					output.textContent = 'Megjelenítési hiba.';
+					output.classList.add('error');
+				}
+			}
+
+			parseBtn.addEventListener('click', () => {
+				try {
+					const text = input.value.trim();
+					const data = JSON.parse(text);
+					renderParsed(data);
+				} catch (err) {
+					output.textContent = 'Hibás JSON: ' + err.message;
+					output.classList.add('error');
+				}
+			});
+
+			(function init(){
+				try { renderParsed(JSON.parse(input.value)); } catch {}
+			})();
+		</script>
+	</body>
+	</html>

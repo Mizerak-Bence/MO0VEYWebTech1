@@ -1,0 +1,15 @@
+{
+  "konyvek": [
+    {
+      "szerzo": "Nyékyné Dr. Gaizler Judit",
+      "cim": "Java 2 I-II.",
+      "alcim": "Útikalauz programozóknak 5.0",
+      "ev": 2009
+    },
+    {
+      "szerzo": "Reiter István",
+      "cim": "C# programozás lépésről lépésre",
+      "ev": 2018
+    }
+  ]
+}
