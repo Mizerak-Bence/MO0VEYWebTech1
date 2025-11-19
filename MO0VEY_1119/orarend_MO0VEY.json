@@ -1,0 +1,102 @@
+{
+  "MO0VEY_orarend": {
+    "ora": [
+      {
+        "_attributes": {"id": "ora_001", "tipus": "előadás"},
+        "targy": "Számítógép hálózatok",
+        "idopont": {"nap": "hétfő", "tol": "08:00", "ig": "10:00"},
+        "helyszin": "I. e.a",
+        "oktato": "Dr. Kovács Szilveszter Dezső",
+        "szak": "Programtervező Informatika BSC"
+      },
+      {
+        "_attributes": {"id": "ora_002", "tipus": "előadás"},
+        "targy": "Web technológiák 1.",
+        "idopont": {"nap": "hétfő", "tol": "10:00", "ig": "12:00"},
+        "helyszin": "V. e.a",
+        "oktato": "Dr. Agárdi Anita",
+        "szak": "Programtervező Informatika BSC"
+      },
+      {
+        "_attributes": {"id": "ora_003", "tipus": "előadás"},
+        "targy": "Adatbázisrendszerek I.",
+        "idopont": {"nap": "kedd", "tol": "08:00", "ig": "10:00"},
+        "helyszin": "I. e.a",
+        "oktato": "Dr. Kovács László József",
+        "szak": "Programtervező Informatika BSC"
+      },
+      {
+        "_attributes": {"id": "ora_009", "tipus": "előadás"},
+        "targy": "Mesterséges intelligencia alapok",
+        "idopont": {"nap": "kedd", "tol": "10:00", "ig": "12:00"},
+        "helyszin": "XXXII e.a",
+        "oktato": "Dr._Farkas",
+        "szak": "Programtervező Informatika BSC"
+      },
+      {
+        "_attributes": {"id": "ora_010", "tipus": "gyakorlat"},
+        "targy": "Mesterséges intelligencia alapok",
+        "idopont": {"nap": "kedd", "tol": "12:00", "ig": "14:00"},
+        "helyszin": "XXXII e.a",
+        "oktato": "Dr._Farkas",
+        "szak": "Programtervező Informatika BSC"
+      },
+      {
+        "_attributes": {"id": "ora_011", "tipus": "előadás"},
+        "targy": "Algoritmusok és vizsgálatuk",
+        "idopont": {"nap": "kedd", "tol": "14:00", "ig": "16:00"},
+        "helyszin": "XXX. e.a",
+        "oktato": "Dr.Házy Attila",
+        "szak": "Programtervező Informatika BSC"
+      },
+      {
+        "_attributes": {"id": "ora_012", "tipus": "gyakorlat"},
+        "targy": "Algoritmusok és vizsgálatuk",
+        "idopont": {"nap": "kedd", "tol": "16:00", "ig": "18:00"},
+        "helyszin": "XXX. e.a",
+        "oktato": "Dr.Házy Attila",
+        "szak": "Programtervező Informatika BSC"
+      },
+      {
+        "_attributes": {"id": "ora_004", "tipus": "gyakorlat"},
+        "targy": "Webes adatok",
+        "idopont": {"nap": "szerda", "tol": "08:00", "ig": "09:30"},
+        "helyszin": "310. T",
+        "oktato": "Dr. Kovács László József",
+        "szak": "Programtervező Informatika BSC"
+      },
+      {
+        "_attributes": {"id": "ora_005", "tipus": "előadás"},
+        "targy": "Szoftverfejlesztés",
+        "idopont": {"nap": "csütörtök", "tol": "11:00", "ig": "12:30"},
+        "helyszin": "204",
+        "oktato": "Dr._Varga",
+        "szak": "Programtervező Informatika BSC"
+      },
+      {
+        "_attributes": {"id": "ora_006", "tipus": "gyakorlat"},
+        "targy": "Adatmodellezés",
+        "idopont": {"nap": "péntek", "tol": "13:00", "ig": "14:30"},
+        "helyszin": "105",
+        "oktato": "Kiss_Mária",
+        "szak": "Programtervező Informatika BSC"
+      },
+      {
+        "_attributes": {"id": "ora_007", "tipus": "konzultáció"},
+        "targy": "Projekt munka",
+        "idopont": {"nap": "szombat", "tol": "10:00", "ig": "12:00"},
+        "helyszin": "110",
+        "oktato": "Dr._Nagy",
+        "szak": "Programtervező Informatika BSC"
+      },
+      {
+        "_attributes": {"id": "ora_008", "tipus": "ismétlés"},
+        "targy": "Adatbázisok",
+        "idopont": {"nap": "vasárnap", "tol": "09:00", "ig": "10:30"},
+        "helyszin": "202",
+        "oktato": "Prof._Kovács",
+        "szak": "Programtervező Informatika BSC"
+      }
+    ]
+  }
+}

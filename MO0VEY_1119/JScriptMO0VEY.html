@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Órarend</title>
+    <style>
+        body{font-family: "Times New Roman", serif; margin:32px; line-height:1.3}
+        h1{margin:0 0 16px 0; font-size:28px}
+        #lista p{margin:10px 0 0 0; font-size:20px}
+        #lista p:first-child{margin-top:0}
+        .placeholder{color:#888}
+        #load,#reset{margin-top:24px; font-size:16px; padding:6px 14px; cursor:pointer; margin-right:8px}
+        a{text-decoration:none; color:#0000EE}
+    </style>
+    <script>
+        const kezdeti = {
+            cim: "MO0VEY Órarend 2025",
+            "Tárgy": "",
+            "Helyszín": "",
+            "Oktató": "",
+            "Szak": [""]
+        };
+
+        function megjelenitAdat(adat) {
+            const kontener = document.getElementById("lista");
+            const cimElem = document.getElementById("cim");
+            kontener.innerHTML = "";
+
+            cimElem.textContent = "MO0VEY Órarend 2025";
+
+            const orak = adat && adat.MO0VEY_orarend && Array.isArray(adat.MO0VEY_orarend.ora)
+                ? adat.MO0VEY_orarend.ora
+                : [];
+
+            orak.forEach(ora => {
+                const pTargy = document.createElement("p");
+                pTargy.textContent = "Tárgy: " + ora.targy;
+                kontener.appendChild(pTargy);
+
+                const pHely = document.createElement("p");
+                pHely.textContent = "Helyszín: " + ora.helyszin;
+                kontener.appendChild(pHely);
+
+                const pOkt = document.createElement("p");
+                pOkt.textContent = "Oktató: " + ora.oktato;
+                kontener.appendChild(pOkt);
+
+                const pSzak = document.createElement("p");
+                pSzak.textContent = "Szak: " + ora.szak;
+                kontener.appendChild(pSzak);
+
+                kontener.appendChild(document.createElement("br"));
+            });
+        }
+
+        function betolt(){
+            const fileInput = document.getElementById("fileInput");
+            if (fileInput) {
+                fileInput.click();
+            }
+        }
+
+        function kirajzolKezdeti(){
+            const kontener = document.getElementById("lista");
+            kontener.innerHTML = "";
+            document.getElementById("cim").textContent = kezdeti.cim;
+            Object.keys(kezdeti).filter(k=>k!=="cim").forEach(k=>{
+                let v = kezdeti[k];
+                if (Array.isArray(v)) v = v.join(", ");
+                const p = document.createElement("p");
+                p.textContent = k + ": " + (v || "");
+                p.classList.add("placeholder");
+                kontener.appendChild(p);
+            });
+        }
+
+        function torol(){
+            kirajzolKezdeti();
+        }
+
+        window.addEventListener("DOMContentLoaded", ()=>{
+            kirajzolKezdeti();
+
+            const fileInput = document.getElementById("fileInput");
+            if (fileInput) {
+                fileInput.addEventListener("change", () => {
+                    const file = fileInput.files[0];
+                    if (!file) return;
+
+                    const reader = new FileReader();
+                    reader.onload = e => {
+                        try {
+                            const data = JSON.parse(e.target.result);
+                            megjelenitAdat(data);
+                        } catch {
+                            alert("Hibás JSON fájl");
+                        }
+                    };
+                    reader.readAsText(file, "utf-8");
+                });
+            }
+
+            document.getElementById("load").addEventListener("click", betolt);
+            document.getElementById("reset").addEventListener("click", torol);
+        });
+    </script>
+</head>
+<body>
+    <h1 id="cim"></h1>
+    <div id="lista"></div>
+    <button id="load">JSON betöltése</button>
+    <button id="reset">Reset</button>
+    <input type="file" id="fileInput" accept=".json,application/json" style="display:none">
+</body>
+</html>

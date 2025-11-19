@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tömbökön belüli tömbök ciklusa</title>
+	<style>
+		body { font-family: "Times New Roman", Times, serif; }
+		h1 { font-size: 36px; margin: 8px 0 10px; }
+		h2 { font-size: 24px; margin: 12px 0 18px; }
+		.marka { font-weight: 700; margin: 16px 0 6px; }
+		ul { margin: 0 0 16px 36px; }
+	</style>
+</head>
+<body>
+	<h1>Tömbökön belüli tömbök ciklusa</h1>
+	<h2 id="student"></h2>
+	<div id="content"></div>
+
+	<script>
+			const MO0VEYObj = {
+				name: "MO0VEY",
+				age: 22,
+				cars: [
+					{ name: "Toyota", models: ["CHR", "Corolla", "Proace"] },
+					{ name: "Ford", models: ["Kuga", "Mondeo", "Mustang"] },
+					{ name: "BMW", models: ["320", "X3", "X5"] },
+					{ name: "Fiat", models: ["500", "Panda", "Tipo"] }
+				]
+			};
+
+			document.getElementById("student").textContent = `${MO0VEYObj.name} (${MO0VEYObj.age})`;
+		const root = document.getElementById("content");
+			for (let i = 0; i < MO0VEYObj.cars.length; i++) {
+				const m = MO0VEYObj.cars[i];
+			const p = document.createElement("p");
+			p.className = "marka";
+				p.textContent = `${m.name}:`;
+			root.appendChild(p);
+			const ul = document.createElement("ul");
+				for (let j = 0; j < m.models.length; j++) {
+				const li = document.createElement("li");
+					li.textContent = m.models[j];
+				ul.appendChild(li);
+			}
+			root.appendChild(ul);
+		}
+	</script>
+</body>
+</html>
