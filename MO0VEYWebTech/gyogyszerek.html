@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gyógyszerek - Egészséges Élet Gyógyszertár</title>
+	<meta name="author" content="MO0VEY - Mizerák Bence">
+
+	<link rel="stylesheet" href="Hatterszin.css">
+	<link rel="stylesheet" href="menu.css">
+	<link rel="stylesheet" href="backToTop.css">
+	<script src="gyogyszerek.js" defer></script>
+	<script src="backToTop.js" defer></script>
+
+	<style>
+		body {
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			margin: 0;
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+			color: #0f172a;
+			background-color: #020617;
+			background-image: url("hatter_gyogyszerek.jpg");
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: cover;
+		}
+
+		header {
+			background: linear-gradient(90deg, #0f172a, #1f2937);
+			color: #ffffff;
+			padding: 14px 24px 10px 24px;
+			box-shadow: 0 2px 6px rgba(15, 23, 42, 0.5);
+		}
+
+		header h1 {
+			margin: 0;
+			letter-spacing: 0.04em;
+		}
+
+		header p {
+			margin: 4px 0 0 0;
+			color: #9ca3af;
+		}
+
+		main {
+			max-width: 1100px;
+			margin: 0 auto;
+			padding: 28px 32px 32px 32px;
+			box-sizing: border-box;
+			background: linear-gradient(to bottom, rgba(15, 23, 42, 0) 0, rgba(15, 23, 42, 0.9) 220px);
+			border-radius: 0 0 16px 16px;
+		}
+
+		section {
+			background-color: rgba(15, 23, 42, 0.78);
+			padding: 18px 18px 16px 18px;
+			border-radius: 14px;
+			box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+			border: 1px solid rgba(148, 163, 184, 0.7);
+			margin-top: 18px;
+			color: #e5e7eb;
+			opacity: 0;
+			transform: translateY(18px) scale(0.98);
+			animation: cardIn 0.85s ease-out forwards;
+		}
+
+		.table-wrapper {
+			max-height: 1220px;
+			overflow-y: auto;
+			margin-top: 12px;
+			border-radius: 10px;
+			border: 1px solid rgba(148, 163, 184, 0.5);
+		}
+
+		#filterPanel {
+			background-color: rgba(15, 23, 42, 0.68);
+			padding: 16px 18px;
+			border-radius: 14px;
+			box-shadow: 0 14px 30px rgba(15, 23, 42, 0.65);
+			border: 1px solid rgba(148, 163, 184, 0.7);
+			color: #e5e7eb;
+			margin-bottom: 10px;
+			backdrop-filter: blur(10px);
+		}
+
+		#filterContent {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 12px 24px;
+			margin-top: 8px;
+			align-items: flex-end;
+		}
+
+		.filter-field {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+		}
+
+		.filter-field label {
+			font-size: 0.9rem;
+			font-weight: bold;
+		}
+
+		.filter-field input,
+		.filter-field select {
+			padding: 6px 8px;
+			border-radius: 999px;
+			border: 1px solid rgba(148, 163, 184, 0.7);
+			min-width: 180px;
+			background-color: rgba(15, 23, 42, 0.85);
+			color: #e5e7eb;
+		}
+
+		#filterToggle {
+			background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+			color: #0f172a;
+			border: none;
+			padding: 8px 16px;
+			border-radius: 999px;
+			font-weight: 600;
+			cursor: pointer;
+			margin-bottom: 8px;
+			box-shadow: 0 10px 25px rgba(8, 47, 73, 0.7);
+			transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, filter 0.15s ease-out;
+		}
+
+		#filterToggle:hover {
+			transform: translateY(-1px);
+			box-shadow: 0 14px 32px rgba(8, 47, 73, 0.8);
+			filter: brightness(1.05);
+		}
+
+		footer {
+			background-color: #020617;
+			color: #9ca3af;
+			text-align: center;
+			padding: 11px 16px 10px 16px;
+			font-size: 0.9rem;
+			margin-top: auto;
+			box-shadow: 0 -2px 5px rgba(15, 23, 42, 0.5);
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+
+		th, td {
+			border: 1px solid rgba(148, 163, 184, 0.7);
+			padding: 8px;
+			text-align: left;
+			vertical-align: top;
+		}
+
+		th {
+			background-color: rgba(15, 23, 42, 0.95);
+			color: #e5e7eb;
+		}
+
+		tbody tr:nth-child(even) {
+			background-color: rgba(15, 23, 42, 0.9);
+			color: #e5e7eb;
+		}
+
+		.veny-jel sup {
+			cursor: help;
+			border-bottom: 1px dotted #555555;
+		}
+
+
+		@keyframes cardIn {
+			from {
+				opacity: 0;
+				transform: translateY(18px) scale(0.98);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0) scale(1);
+			}
+		}
+
+		@keyframes bgShift {
+			from {
+				background-position: center top;
+			}
+			to {
+				background-position: center 18px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Egészséges Élet Gyógyszertár</h1>
+		<p>A leggyakrabban használt készítmények adatai egy helyen.</p>
+	</header>
+
+	<nav>
+		<ul>
+			<li><a href="Gyogyszertar.html">Főoldal</a></li>
+			<li><a href="gyogyszerek.html" class="active">Gyógyszerek</a></li>
+			<li><a href="betegsegek.html">Betegségek</a></li>
+			<li><a href="tanacsok.html">Tanácsok gyógyszer nélkül</a></li>
+			<li><a href="kapcsolat.html">Kapcsolat</a></li>
+		</ul>
+	</nav>
+
+	<main>
+		<div id="filterPanel">
+			<button id="filterToggle" type="button">Szűrők megjelenítése/elrejtése</button>
+			<div id="filterContent">
+				<div class="filter-field">
+					<label for="filterName">Név tartalmazza:</label>
+					<input type="text" id="filterName" name="filterName">
+				</div>
+				<div class="filter-field">
+					<label for="filterDisease">Betegség:</label>
+					<select id="filterDisease" name="filterDisease">
+						<option value="">Mindegy</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<section>
+			<h2>Gyógyszerlista</h2>
+			<!--
+            <p>
+				Az alábbi táblázatban áttekintheti a legfontosabb információkat: mire
+				ajánlják a gyógyszert, milyen lehetséges mellékhatásai vannak, milyen
+				méretben és kiszerelésekben kapható, mennyibe kerül, és hogyan javasolt
+				szedni (adagolás).
+			</p>
+            -->
+
+			<div class="table-wrapper">
+				<table id="gyogyszerTabla">
+					<thead>
+						<tr>
+							<th>Név</th>
+							<th>Betegség</th>
+							<th>Méret / hatóanyag</th>
+							<th>Kiszerelések / ár (Ft)</th>
+							<th>Adagolás</th>
+							<th>Mellékhatások</th>
+							<th class="veny-jel">Vényköteles<sup title="Csak orvos által felírt receptre adható ki.">1</sup></th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Ide kerülnek majd a JSON-ból betöltött sorok -->
+					</tbody>
+				</table>
+			</div>
+
+			<p class="veny-jel">
+				<sup>1</sup> Vényköteles: olyan gyógyszer, amelyet csak orvos által felírt
+				recept alapján adhat ki a gyógyszertár.
+			</p>
+		</section>
+	</main>
+
+	<footer>
+		&copy; 2025 Egészséges Élet Gyógyszertár - MO0VEY (Mizerák Bence)
+	</footer>
+
+	<script>
+		const filterToggle = document.getElementById('filterToggle');
+		const filterContent = document.getElementById('filterContent');
+
+		filterContent.style.display = 'none';
+
+		filterToggle.addEventListener('click', function () {
+			if (filterContent.style.display === 'none') {
+				filterContent.style.display = 'block';
+			} else {
+				filterContent.style.display = 'none';
+			}
+		});
+	</script>
+</body>
+</html>

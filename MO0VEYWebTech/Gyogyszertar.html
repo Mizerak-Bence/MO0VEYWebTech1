@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egészséges Élet - Gyógyszertár</title>
+    <meta name="author" content="MO0VEY - Mizerák Bence">
+
+    <link rel="stylesheet" href="Hatterszin.css">
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="backToTop.css">
+    <script src="backToTop.js" defer></script>
+
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: #0f172a;
+            background: #020617 url("hatter_gyogyszertar.jpg") center/cover fixed no-repeat;
+            animation: bgShift 18s ease-in-out infinite alternate;
+        }
+
+        header {
+            background: linear-gradient(90deg, #0f172a, #1f2937);
+            color: #ffffff;
+            padding: 14px 24px 10px 24px;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.5);
+        }
+
+        header h1 {
+            margin: 0;
+            letter-spacing: 0.04em;
+        }
+
+        header p {
+            margin: 4px 0 0 0;
+            color: #9ca3af;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.1fr);
+            gap: 32px;
+            padding: 32px 40px;
+            max-width: 1280px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        section {
+            background-color: rgba(15, 23, 42, 0.68);
+            padding: 18px 18px 16px 18px;
+            border-radius: 14px;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            backdrop-filter: blur(10px);
+            color: #e5e7eb;
+            opacity: 0;
+            transform: translateY(18px) scale(0.98);
+            animation: cardIn 0.8s ease-out forwards;
+        }
+
+        .veny-jegyzet {
+            font-size: 0.8rem;
+            margin-top: 8px;
+            color: #555555;
+        }
+
+        .veny-jegyzet sup {
+            cursor: help;
+            border-bottom: 1px dotted #555555;
+        }
+
+        aside {
+            background-color: rgba(15, 23, 42, 0.72);
+            padding: 18px;
+            border-radius: 14px;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            color: #e5e7eb;
+            opacity: 0;
+            transform: translateY(18px) scale(0.98);
+            animation: cardIn 0.95s ease-out forwards;
+        }
+
+        main h2 {
+            color: #e5e7eb;
+            font-size: 1.6rem;
+            letter-spacing: 0.03em;
+        }
+
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes bgShift {
+            from {
+                background-position: center top;
+            }
+            to {
+                background-position: center 18px;
+            }
+        }
+
+        footer {
+            background-color: #020617;
+            color: #9ca3af;
+            text-align: center;
+            padding: 11px 16px 10px 16px;
+            font-size: 0.9rem;
+            margin-top: auto;
+            box-shadow: 0 -2px 5px rgba(15, 23, 42, 0.5);
+        }
+
+        .veny-jegyzet {
+            position: fixed;
+            left: 4px;
+            bottom: 45px;
+            background-color: #ffffff;
+            color: #333333;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            padding: 6px 8px;
+            font-size: 0.8rem;
+            max-width: 260px;
+            box-shadow: 0 0 4px rgba(0,0,0,0.1);
+        }
+
+        .veny-jegyzet sup {
+            cursor: help;
+            border-bottom: 1px dotted #555555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Egészséges Élet Gyógyszertár</h1>
+        <p>Tájékoztató jellegű információk gyógyszerekről, betegségekről és életmódról.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="Gyogyszertar.html" class="active">Főoldal</a></li>
+            <li><a href="gyogyszerek.html">Gyógyszerek</a></li>
+            <li><a href="betegsegek.html">Betegségek</a></li>
+            <li><a href="tanacsok.html">Tanácsok gyógyszer nélkül</a></li>
+            <li><a href="kapcsolat.html">Kapcsolat</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <article>
+                <h2>Üdvözöljük az egészséginformációs oldalon!</h2>
+                <p>
+                    Ezen a weboldalon áttekintheti a leggyakrabban használt
+                    <span>vény nélküli</span><sup title="Recept nélkül is megvásárolható.">1</sup>
+                    és <span>vényköteles</span><sup title="Csak orvos által felírt receptre adható ki.">1</sup>
+                    gyógyszereket, elolvashatja, hogy melyik készítményt mire ajánlják,
+                    milyen lehetséges mellékhatásai vannak, és milyen kiszerelésekben,
+                    árakon érhetők el.
+                </p>
+                <p>
+                    Külön oldalon gyűjtjük össze a gyakori <strong>betegségeket</strong>
+                    (fejfájás, nátha, láz, gyomorpanaszok stb.), és az ezekre
+                    javasolt készítményeket, valamint olyan tippeket is adunk,
+                    hogy mit tehet, ha <em>nem szeretne azonnal gyógyszert bevenni</em>.
+                </p>
+            </article>
+        </section>
+
+        <aside>
+            <h3>Fontos tudnivaló</h3>
+            <p>
+                Az oldalon szereplő leírások <strong>nem helyettesítik</strong> az orvosi
+                vizsgálatot vagy a gyógyszerész szakmai tanácsát. Egészségügyi panaszaival
+                mindig forduljon szakemberhez.
+            </p>
+
+            <h3>Gyors tipp</h3>
+            <p>
+                Enyhébb panaszok esetén érdemes odafigyelni a folyadékbevitelre,
+                rövid pihenőt tartani, és kerülni a túlzott képernyőhasználatot, mielőtt
+                gyógyszert venne be.
+            </p>
+        </aside>
+    </main>
+
+    <button id="backToTop" aria-label="Vissza az oldal tetejére"></button>
+
+    <footer>
+        &copy; 2025 Egészséges Élet Gyógyszertár - MO0VEY (Mizerák Bence)
+    </footer>
+
+    <div class="veny-jegyzet">
+        <sup>1</sup> Vény / vényköteles: olyan gyógyszer, amelyet csak orvos által
+        felírt recept alapján adhat ki a gyógyszertár.
+    </div>
+</body>
+</html>

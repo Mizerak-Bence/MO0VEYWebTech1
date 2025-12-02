@@ -1,0 +1,432 @@
+{
+  "gyogyszerek": [
+    {
+      "nev": "Fájdalomcsillapító A",
+      "betegseg": "Fejfájás, izomfájdalom",
+      "meret": "400 mg tabletta",
+      "kiszerelesek": [
+        { "darab": 10, "ar": 1790 },
+        { "darab": 20, "ar": 3290 }
+      ],
+      "adagolas": "2x1",
+      "adagolasMagyarazat": "Naponta kétszer 1 tabletta (reggel és este).",
+      "mellekhatas": "Gyomorpanaszok, hányinger jelentkezhet.",
+      "venykoteles": false
+    },
+    {
+      "nev": "Lázcsökkentő B",
+      "betegseg": "Láz, megfázás",
+      "meret": "500 mg pezsgőtabletta",
+      "kiszerelesek": [
+        { "darab": 12, "ar": 1990 },
+        { "darab": 24, "ar": 3590 }
+      ],
+      "adagolas": "3x1",
+      "adagolasMagyarazat": "Naponta háromszor 1 tabletta (reggel, délben, este).",
+      "mellekhatas": "Allergiás reakciók, ritkán bőrkiütés.",
+      "venykoteles": false
+    },
+    {
+      "nev": "Gyomorvédő C",
+      "betegseg": "Gyomorégés, savtúltengés",
+      "meret": "20 mg kapszula",
+      "kiszerelesek": [
+        { "darab": 14, "ar": 2490 },
+        { "darab": 28, "ar": 4290 }
+      ],
+      "adagolas": "1x1",
+      "adagolasMagyarazat": "Naponta egyszer 1 kapszula, lehetőleg reggel éhgyomorra.",
+      "mellekhatas": "Fejfájás, hasi diszkomfortérzés előfordulhat.",
+      "venykoteles": true
+    },
+    {
+    "nev": "Immunerősítő D",
+    "betegseg": "Immunrendszer gyengeség, gyakori fertőzések",
+    "meret": "1000 mg kapszula",
+    "kiszerelesek": [
+    { "darab": 30, "ar": 3990 },
+    { "darab": 60, "ar": 6990 }
+    ],
+    "adagolas": "1x1",
+    "adagolasMagyarazat": "(Naponként egyszer 1 kapszula, étkezés után.)",
+    "mellekhatas": "Ritka esetekben gyomorrontás, álmatlanság.",
+    "venykoteles": false
+    },
+    {
+    "nev": "Vérnyomáscsökkentő E",
+    "betegseg": "Magas vérnyomás, szívproblémák",
+    "meret": "5 mg tabletta",
+    "kiszerelesek": [
+    { "darab": 28, "ar": 4590 },
+    { "darab": 56, "ar": 7990 }
+    ],
+    "adagolas": "1x1",
+    "adagolasMagyarazat": "(Naponként egyszer 1 tabletta, lehetőleg reggel.)",
+    "mellekhatas": "Szédülés, fáradtság, szájszárazság.",
+    "venykoteles": true
+    },
+    {
+    "nev": "Allergiaellenes F",
+    "betegseg": "Szénanátha, allergiás tünetek",
+    "meret": "10 mg tabletta",
+    "kiszerelesek": [
+    { "darab": 10, "ar": 1890 },
+    { "darab": 20, "ar": 3490 }
+    ],
+    "adagolas": "1x1",
+    "adagolasMagyarazat": "(Naponként egyszer 1 tabletta, tünetek esetén.)",
+    "mellekhatas": "Álmosító hatás, ritkán fejfájás.",
+    "venykoteles": false
+    },
+    {
+    "nev": "Vitamin komplex G",
+    "betegseg": "Vitaminhiány, fáradtság",
+    "meret": "500 mg tabletta",
+    "kiszerelesek": [
+    { "darab": 60, "ar": 2590 },
+    { "darab": 120, "ar": 4590 }
+    ],
+    "adagolas": "1x1",
+    "adagolasMagyarazat": "(Naponként egyszer 1 tabletta, étkezés közben.)",
+    "mellekhatas": "Ritkán emésztési zavarok.",
+    "venykoteles": false
+    },
+    {
+    "nev": "Csontvédő H",
+    "betegseg": "Csontritkulás, ízületi problémák",
+    "meret": "600 mg tabletta",
+    "kiszerelesek": [
+    { "darab": 30, "ar": 3490 },
+    { "darab": 60, "ar": 5990 }
+    ],
+    "adagolas": "2x1",
+    "adagolasMagyarazat": "(Naponként kétszer 1 tabletta, kalciummal együtt.)",
+    "mellekhatas": "Hasi puffadás, ritkán hányinger.",
+    "venykoteles": true
+    },
+    {
+    "nev": "Energiafokozó I",
+    "betegseg": "Fáradtság, alacsony energiaszint",
+    "meret": "200 mg kapszula",
+    "kiszerelesek": [
+    { "darab": 20, "ar": 2290 },
+    { "darab": 40, "ar": 3990 }
+    ],
+    "adagolas": "1x1",
+    "adagolasMagyarazat": "(Naponként egyszer 1 kapszula, reggel.)",
+    "mellekhatas": "Álmatlanság, szívdobogás érzés.",
+    "venykoteles": false
+    },
+    {
+    "nev": "Bőrgyógyító J",
+    "betegseg": "Bőrkiütések, ekcéma",
+    "meret": "50 mg krém",
+    "kiszerelesek": [
+    { "darab": 30, "ar": 1790 },
+    { "darab": 60, "ar": 2990 }
+    ],
+    "adagolas": "Napi 2-3x",
+    "adagolasMagyarazat": "(Vékony rétegben kenje az érintett területre.)",
+    "mellekhatas": "Ritkán irritáció, szárazság.",
+    "venykoteles": false
+    },
+    {
+    "nev": "Emésztéssegítő K",
+    "betegseg": "Emésztési zavarok, puffadás",
+    "meret": "400 mg tabletta",
+    "kiszerelesek": [
+    { "darab": 15, "ar": 1990 },
+    { "darab": 30, "ar": 3590 }
+    ],
+    "adagolas": "2x1",
+    "adagolasMagyarazat": "(Naponként kétszer 1 tabletta, étkezés után.)",
+    "mellekhatas": "Ritka hasmenés, gyomorfájás.",
+    "venykoteles": false
+    },
+    {
+    "nev": "Alvássegítő L",
+    "betegseg": "Álmatlanság, alvászavarok",
+    "meret": "5 mg tabletta",
+    "kiszerelesek": [
+    { "darab": 10, "ar": 2490 },
+    { "darab": 20, "ar": 4290 }
+    ],
+    "adagolas": "1x1",
+    "adagolasMagyarazat": "(Este lefekvés előtt 1 tabletta.)",
+    "mellekhatas": "Reggeli álmosság, ritkán fejfájás.",
+    "venykoteles": true
+    },
+    {
+    "nev": "Fájdalomcsillapító M",
+    "betegseg": "Krónikus fájdalom, ízületi gyulladás",
+    "meret": "600 mg tabletta",
+    "kiszerelesek": [
+    { "darab": 20, "ar": 2890 },
+    { "darab": 40, "ar": 4990 }
+    ],
+    "adagolas": "3x1",
+    "adagolasMagyarazat": "(Naponként háromszor 1 tabletta, szükség szerint.)",
+    "mellekhatas": "Gyomorfekély kockázata, hányinger.",
+    "venykoteles": true
+    },{
+    "nev": "Antibiotikum N",
+    "betegseg": "Bakteriális fertőzések, torokgyulladás",
+    "meret": "500 mg tabletta",
+    "kiszerelesek": [
+    { "darab": 10, "ar": 3590 },
+    { "darab": 20, "ar": 6290 }
+    ],
+    "adagolas": "2x1",
+    "adagolasMagyarazat": "(Naponként kétszer 1 tabletta, étkezés közben.)",
+    "mellekhatas": "Hasmenés, hányinger, allergiás reakciók.",
+    "venykoteles": true
+    },
+    {
+    "nev": "Szorongásoldó O",
+    "betegseg": "Szorongás, pánikrohamok",
+    "meret": "10 mg tabletta",
+    "kiszerelesek": [
+    { "darab": 30, "ar": 4890 },
+    { "darab": 60, "ar": 8490 }
+    ],
+    "adagolas": "1x1",
+    "adagolasMagyarazat": "(Naponként egyszer 1 tabletta, este.)",
+    "mellekhatas": "Álmosság, szédülés, függőség kockázata.",
+    "venykoteles": true
+    },
+    {
+    "nev": "Vércukorszint-szabályozó P",
+    "betegseg": "Cukorbetegség, inzulinrezisztencia",
+    "meret": "850 mg tabletta",
+    "kiszerelesek": [
+    { "darab": 60, "ar": 3990 },
+    { "darab": 120, "ar": 6990 }
+    ],
+    "adagolas": "2x1",
+    "adagolasMagyarazat": "(Naponként kétszer 1 tabletta, étkezés után.)",
+    "mellekhatas": "Gyomorfájás, hasmenés, hipoglikémia.",
+    "venykoteles": true
+    },
+    {
+    "nev": "Vízhajtó Q",
+    "betegseg": "Magas vérnyomás, ödéma",
+    "meret": "25 mg tabletta",
+    "kiszerelesek": [
+    { "darab": 30, "ar": 2290 },
+    { "darab": 60, "ar": 3990 }
+    ],
+    "adagolas": "1x1",
+    "adagolasMagyarazat": "(Naponként egyszer 1 tabletta, reggel.)",
+    "mellekhatas": "Gyakori vizelés, káliumhiány, szédülés.",
+    "venykoteles": true
+    },
+    {
+    "nev": "Gyulladáscsökkentő R",
+    "betegseg": "Ízületi gyulladás, reuma",
+    "meret": "400 mg tabletta",
+    "kiszerelesek": [
+    { "darab": 20, "ar": 1990 },
+    { "darab": 40, "ar": 3490 }
+    ],
+    "adagolas": "3x1",
+    "adagolasMagyarazat": "(Naponként háromszor 1 tabletta, étkezés után.)",
+    "mellekhatas": "Gyomorfekély, vérnyomás-emelkedés, ödéma.",
+    "venykoteles": false
+    },
+    {
+    "nev": "Köhögéscsillapító S",
+    "betegseg": "Száraz köhögés, megfázás",
+    "meret": "15 mg szirup",
+    "kiszerelesek": [
+    { "darab": 100, "ar": 1890 },
+    { "darab": 200, "ar": 3290 }
+    ],
+    "adagolas": "3x5 ml",
+    "adagolasMagyarazat": "(Naponként háromszor 5 ml, szükség szerint.)",
+    "mellekhatas": "Álmosság, szájszárazság, székrekedés.",
+    "venykoteles": false
+    },
+    {
+    "nev": "Emésztőrendszeri T",
+    "betegseg": "Gyomorégés, reflux",
+    "meret": "20 mg kapszula",
+    "kiszerelesek": [
+    { "darab": 14, "ar": 2590 },
+    { "darab": 28, "ar": 4490 }
+    ],
+    "adagolas": "1x1",
+    "adagolasMagyarazat": "(Naponként egyszer 1 kapszula, reggel éhgyomorra.)",
+    "mellekhatas": "Fejfájás, hasmenés, ritkán bőrkiütés.",
+    "venykoteles": false
+    },
+    {
+    "nev": "Immunmodulátor U",
+    "betegseg": "Autoimmun betegségek, allergia",
+    "meret": "5 mg tabletta",
+    "kiszerelesek": [
+    { "darab": 28, "ar": 5990 },
+    { "darab": 56, "ar": 10490 }
+    ],
+    "adagolas": "1x1",
+    "adagolasMagyarazat": "(Naponként egyszer 1 tabletta, orvosi utasítás szerint.)",
+    "mellekhatas": "Fáradtság, fertőzés kockázata, hányinger.",
+    "venykoteles": true
+    },
+    {
+    "nev": "Szemcsepp V",
+    "betegseg": "Száraz szem, irritáció",
+    "meret": "10 ml oldat",
+    "kiszerelesek": [
+    { "darab": 1, "ar": 1490 },
+    { "darab": 2, "ar": 2590 }
+    ],
+    "adagolas": "Napi 2-4x",
+    "adagolasMagyarazat": "(Naponként 2-4 alkalommal 1-2 csepp mindkét szembe.)",
+    "mellekhatas": "Ritka égő érzés, homályos látás.",
+    "venykoteles": false
+    },
+    {
+    "nev": "Hormonpótló W",
+    "betegseg": "Pajzsmirigy-alulműködés",
+    "meret": "50 mcg tabletta",
+    "kiszerelesek": [
+    { "darab": 100, "ar": 2990 },
+    { "darab": 200, "ar": 5190 }
+    ],
+    "adagolas": "1x1",
+    "adagolasMagyarazat": "(Naponként egyszer 1 tabletta, reggel éhgyomorra.)",
+    "mellekhatas": "Szívdobogás, idegesség, súlyvesztés.",
+    "venykoteles": true
+    },
+    {
+    "nev": "Vérhígító X",
+    "betegseg": "Véralvadási zavarok, trombózis",
+    "meret": "75 mg tabletta",
+    "kiszerelesek": [
+    { "darab": 28, "ar": 4590 },
+    { "darab": 56, "ar": 7990 }
+    ],
+    "adagolas": "1x1",
+    "adagolasMagyarazat": "(Naponként egyszer 1 tabletta, étkezés után.)",
+    "mellekhatas": "Vérzés kockázata, gyomorfájás, szédülés.",
+    "venykoteles": true
+    },
+    {
+    "nev": "Immunszuppresszáns Y",
+    "betegseg": "Szervátültetés utáni kilökődés, autoimmun betegségek",
+    "meret": "1 mg tabletta",
+    "kiszerelesek": [
+    { "darab": 50, "ar": 6990 },
+    { "darab": 100, "ar": 11990 }
+    ],
+    "adagolas": "2x1",
+    "adagolasMagyarazat": "(Naponként kétszer 1 tabletta, orvosi ellenőrzés mellett.)",
+    "mellekhatas": "Fertőzés kockázata, hányinger, magas vérnyomás.",
+    "venykoteles": true
+    },
+    {
+    "nev": "Légzéskönnyítő Z",
+    "betegseg": "Asztma, COPD",
+    "meret": "100 mcg inhalátor",
+    "kiszerelesek": [
+    { "darab": 200, "ar": 3990 },
+    { "darab": 400, "ar": 6990 }
+    ],
+    "adagolas": "2x2",
+    "adagolasMagyarazat": "(Naponként kétszer 2 befújás, szükség szerint.)",
+    "mellekhatas": "Szívdobogás, remegés, torokirritáció.",
+    "venykoteles": true
+    },
+    {
+    "nev": "Fájdalomcsillapító AA",
+    "betegseg": "Migrén, erős fejfájás",
+    "meret": "50 mg tabletta",
+    "kiszerelesek": [
+    { "darab": 10, "ar": 2490 },
+    { "darab": 20, "ar": 4290 }
+    ],
+    "adagolas": "1x1",
+    "adagolasMagyarazat": "(Tünetek esetén 1 tabletta, maximum napi 3.)",
+    "mellekhatas": "Álmosság, gyomorfájás, szédülés.",
+    "venykoteles": false
+    },
+    {
+    "nev": "Emésztésjavító BB",
+    "betegseg": "Emésztési lassúság, székrekedés",
+    "meret": "5 mg tabletta",
+    "kiszerelesek": [
+    { "darab": 20, "ar": 1790 },
+    { "darab": 40, "ar": 2990 }
+    ],
+    "adagolas": "1x1",
+    "adagolasMagyarazat": "(Este 1 tabletta, vízzel.)",
+    "mellekhatas": "Hasmenés, görcsök, függőség kockázata.",
+    "venykoteles": false
+    },
+    {
+    "nev": "Hangulatjavító CC",
+    "betegseg": "Depresszió, hangulatzavarok",
+    "meret": "20 mg kapszula",
+    "kiszerelesek": [
+    { "darab": 30, "ar": 4590 },
+    { "darab": 60, "ar": 7990 }
+    ],
+    "adagolas": "1x1",
+    "adagolasMagyarazat": "(Naponként egyszer 1 kapszula, reggel.)",
+    "mellekhatas": "Álmatlanság, szexuális zavarok, súlygyarapodás.",
+    "venykoteles": true
+    },
+    {
+    "nev": "Vírusellenes DD",
+    "betegseg": "Vírusos fertőzések, influenza",
+    "meret": "75 mg kapszula",
+    "kiszerelesek": [
+    { "darab": 10, "ar": 5990 },
+    { "darab": 20, "ar": 10490 }
+    ],
+    "adagolas": "2x1",
+    "adagolasMagyarazat": "(Naponként kétszer 1 kapszula, tünetek kezdetén.)",
+    "mellekhatas": "Hányinger, fejfájás, szédülés.",
+    "venykoteles": true
+    },
+    {
+    "nev": "Csontnövesztő EE",
+    "betegseg": "Csontritkulás, törések gyógyulása",
+    "meret": "70 mg tabletta",
+    "kiszerelesek": [
+    { "darab": 4, "ar": 3990 },
+    { "darab": 8, "ar": 6990 }
+    ],
+    "adagolas": "1x1/hét",
+    "adagolasMagyarazat": "(Hetente egyszer 1 tabletta, éhgyomorra.)",
+    "mellekhatas": "Gyomorfájás, ízületi fájdalom, ritkán állkapocscsont-problémák.",
+    "venykoteles": true
+    },
+    {
+    "nev": "Allergiaellenes FF",
+    "betegseg": "Szezonális allergia, orrdugulás",
+    "meret": "120 mg tabletta",
+    "kiszerelesek": [
+    { "darab": 10, "ar": 1890 },
+    { "darab": 20, "ar": 3290 }
+    ],
+    "adagolas": "1x1",
+    "adagolasMagyarazat": "(Naponként egyszer 1 tabletta, reggel.)",
+    "mellekhatas": "Szájszárazság, álmosság, ritkán szívdobogás.",
+    "venykoteles": false
+    },
+    {
+    "nev": "Energiafokozó GG",
+    "betegseg": "Krónikus fáradtság, alacsony vitalitás",
+    "meret": "300 mg kapszula",
+    "kiszerelesek": [
+    { "darab": 30, "ar": 2590 },
+    { "darab": 60, "ar": 4490 }
+    ],
+    "adagolas": "1x1",
+    "adagolasMagyarazat": "(Naponként egyszer 1 kapszula, reggel étkezés után.)",
+    "mellekhatas": "Álmatlanság, idegesség, emésztési zavarok.",
+    "venykoteles": false
+    }
+  ]
+}

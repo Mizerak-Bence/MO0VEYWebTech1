@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanácsok gyógyszer nélkül - Egészséges Élet Gyógyszertár</title>
+    <meta name="author" content="MO0VEY - Mizerák Bence">
+
+    <link rel="stylesheet" href="Hatterszin.css">
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="backToTop.css">
+    <link rel="stylesheet" href="badges.css">
+    <script src="backToTop.js" defer></script>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: #e5e7eb;
+            background-color: #020617;
+            background-image: url("hatter_gyogyszertar.jpg");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            animation: bgShift 20s ease-in-out infinite alternate;
+        }
+
+        header {
+            background: linear-gradient(90deg, #0f172a, #1f2937);
+            color: white;
+            padding: 14px 24px 10px 24px;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.5);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.7rem;
+            letter-spacing: 0.04em;
+        }
+
+        .header-subtitle {
+            margin: 4px 0 0 0;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        main {
+            flex: 1;
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 24px 20px 32px 20px;
+            box-sizing: border-box;
+        }
+
+        .bevezeto-blokk {
+            background-color: rgba(15, 23, 42, 0.9);
+            padding: 18px 20px 18px 20px;
+            border-radius: 16px;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            backdrop-filter: blur(14px);
+            opacity: 0;
+            transform: translateY(16px) scale(0.98);
+            animation: cardIn 0.7s ease-out forwards;
+        }
+
+        .bevezeto-blokk h2 {
+            margin-top: 0;
+            font-size: 1.35rem;
+            letter-spacing: 0.03em;
+            color: #f9fafb;
+        }
+
+        .tippek-kartyak {
+            margin-top: 22px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+        }
+
+        .tipp-kartya {
+            background-color: rgba(15, 23, 42, 0.94);
+            border-radius: 14px;
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            padding: 14px 16px 13px 16px;
+            box-shadow: 0 14px 30px rgba(15, 23, 42, 0.82);
+            transition: transform 0.16s ease-out, box-shadow 0.16s ease-out, border-color 0.16s ease-out, background-color 0.16s ease-out;
+            opacity: 0;
+            transform: translateY(18px) scale(0.985);
+            animation: cardIn 0.8s ease-out forwards;
+        }
+
+        .tipp-kartya:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 22px 45px rgba(15, 23, 42, 0.9);
+            border-color: #38bdf8;
+            background-color: rgba(15, 23, 42, 1);
+        }
+
+        .tipp-kartya h3 {
+            margin: 0 0 4px 0;
+            font-size: 1rem;
+            color: #e5e7eb;
+        }
+
+        .tipp-kartya p {
+            margin: 3px 0;
+            font-size: 0.9rem;
+            color: #cbd5f5;
+        }
+
+        footer {
+            background-color: #020617;
+            color: #9ca3af;
+            text-align: center;
+            padding: 11px 16px 10px 16px;
+            font-size: 0.85rem;
+            margin-top: auto;
+            box-shadow: 0 -2px 5px rgba(15, 23, 42, 0.5);
+        }
+
+        @media (max-width: 640px) {
+            main {
+                padding-inline: 12px;
+            }
+        }
+
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes bgShift {
+            from {
+                background-position: center top;
+            }
+            to {
+                background-position: center 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Egészséges Élet Gyógyszertár</h1>
+        <p class="header-subtitle">Tanácsok gyógyszer nélküli enyhítéshez.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="Gyogyszertar.html">Főoldal</a></li>
+            <li><a href="gyogyszerek.html">Gyógyszerek</a></li>
+            <li><a href="betegsegek.html">Betegségek</a></li>
+            <li><a href="tanacsok.html" class="active">Tanácsok gyógyszer nélkül</a></li>
+            <li><a href="kapcsolat.html">Kapcsolat</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="bevezeto-blokk">
+            <h2>Mikor segíthetnek az életmódbeli tanácsok?</h2>
+            <p>
+                Enyhébb panaszok esetén gyakran elegendő néhány tudatos lépés, például több
+                pihenés, megfelelő folyadékbevitel vagy a képernyőhasználat csökkentése.
+                Az alábbi tippek nem helyettesítik az orvosi vizsgálatot, de segíthetnek
+                abban, hogy <strong>kevesebbszer legyen szükség gyógyszerre</strong>, vagy
+                kiegészítsék annak hatását.
+            </p>
+        </section>
+
+        <div class="tippek-kartyak">
+            <div class="tipp-kartya">
+                <h3>💧 Fejfájás, fáradtság - folyadék és szünet</h3>
+                <p>
+                    Igyon lassan, kortyonként 1-2 pohár vizet, és tartson 10-15 perc
+                    pihenőt sötétebb, csendes környezetben. Sokszor már az is segít,
+                    ha fél órára leteszi a telefont vagy a monitort.
+                </p>
+                <span class="betegseg-badge">Első lépés gyógyszer előtt</span>
+            </div>
+
+            <div class="tipp-kartya">
+                <h3>😴 Alvászavar - esti rutin kialakítása</h3>
+                <p>
+                    Próbáljon minden este hasonló időben lefeküdni, és kerülje a
+                    koffeint, energiaitalt, nehéz ételeket a lefekvés előtti 4-6 órában.
+                    Elalvás előtt 1 órával kapcsolja le a képernyőket, és válasszon
+                    nyugtató tevékenységet (olvasás, zenehallgatás).
+                </p>
+                <span class="betegseg-badge">Életmód-tipp</span>
+            </div>
+
+            <div class="tipp-kartya">
+                <h3>🌡️ Enyhe láz, megfázás - pihenés és folyadék</h3>
+                <p>
+                    Enyhébb láz esetén biztosítson bőséges folyadékbevitelt (víz, tea),
+                    és pihenjen meleg, de jól szellőző szobában. Kerülje a túl meleg
+                    fürdőt és a túlöltözést, hogy a szervezet könnyebben szabályozza
+                    a testhőmérsékletet.
+                </p>
+                <span class="betegseg-badge">Kiegészítő támogatás</span>
+            </div>
+
+            <div class="tipp-kartya">
+                <h3>🍽️ Gyomorégés - könnyebb ételek, kisebb adagok</h3>
+                <p>
+                    Kerülje a nagyon fűszeres, zsíros, rántott ételeket, a késő esti
+                    lakomákat és a nagy mennyiségű kávét. Egyen inkább kisebb adagokat
+                    gyakrabban, és lefekvés előtt legalább 2-3 órával fejezze be az
+                    utolsó étkezést.
+                </p>
+                <span class="betegseg-badge">Kímélő étrend</span>
+            </div>
+
+            <div class="tipp-kartya">
+                <h3>🧘‍♀️ Szorongás, feszültség - légzőgyakorlatok</h3>
+                <p>
+                    Próbálja ki a lassú, mély légzést: 4 másodperc belégzés, 4
+                    másodperc benntartás, 6-8 másodperc kilégzés. Ezt ismételje meg 5-10
+                    alkalommal. A lassú légzés üzenetet küld a szervezetnek, hogy
+                    csökkentse a feszültséget.
+                </p>
+                <span class="betegseg-badge">Kiegészítő módszer</span>
+            </div>
+
+            <div class="tipp-kartya">
+                <h3>🚶 Mozgáshiány - rövid séták beiktatása</h3>
+                <p>
+                    Ha sokat ül, óránként álljon fel pár percre, nyújtózzon, tegyen
+                    pár lépést. Napi 20-30 perc könnyű séta is javíthatja a közérzetet,
+                    alvást és az energiaszintet.
+                </p>
+                <span class="betegseg-badge">Mindennapi szokás</span>
+            </div>
+        </div>
+    </main>
+
+    <button id="backToTop" aria-label="Vissza az oldal tetejére">
+        ↑
+    </button>
+
+    <footer>
+        &copy; 2025 Egészséges Élet Gyógyszertár - MO0VEY (Mizerák Bence)
+    </footer>
+</body>
+</html>

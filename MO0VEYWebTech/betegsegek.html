@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Betegségek - Egészséges Élet Gyógyszertár</title>
+	<meta name="author" content="MO0VEY - Mizerák Bence">
+
+	<link rel="stylesheet" href="Hatterszin.css">
+	<link rel="stylesheet" href="menu.css">
+	<link rel="stylesheet" href="backToTop.css">
+	<link rel="stylesheet" href="badges.css">
+	<script src="backToTop.js" defer></script>
+
+	<style>
+		body {
+			margin: 0;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+			color: #e5e7eb;
+			background-color: #020617;
+			background-image: url("hatter_betegsegek.jpg");
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: cover;
+			animation: bgShift 22s ease-in-out infinite alternate;
+		}
+
+		header {
+			background: linear-gradient(90deg, #0f172a, #1f2937);
+			color: white;
+			padding: 14px 24px 10px 24px;
+			box-shadow: 0 2px 6px rgba(15, 23, 42, 0.5);
+		}
+
+		header h1 {
+			margin: 0;
+			font-size: 1.7rem;
+			letter-spacing: 0.04em;
+		}
+
+		.header-subtitle {
+			margin: 4px 0 0 0;
+			font-size: 0.9rem;
+			color: #9ca3af;
+		}
+
+		main {
+			flex: 1;
+			max-width: 1080px;
+			margin: 0 auto;
+			padding: 24px 20px 32px 20px;
+			box-sizing: border-box;
+		}
+
+		.betegseg-blokk {
+			margin-bottom: 20px;
+		}
+
+		section {
+			background-color: rgba(15, 23, 42, 0.9);
+			padding: 18px 20px 18px 20px;
+			border-radius: 16px;
+			box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
+			border: 1px solid rgba(148, 163, 184, 0.7);
+			backdrop-filter: blur(14px);
+			opacity: 0;
+			transform: translateY(16px) scale(0.98);
+			animation: cardIn 0.75s ease-out forwards;
+		}
+
+		section + section {
+			margin-top: 18px;
+		}
+
+		.betegseg-blokk h2 {
+			margin-top: 0;
+			font-size: 1.25rem;
+			letter-spacing: 0.03em;
+			color: #f9fafb;
+		}
+
+		.betegseg-lista {
+			margin: 0;
+			padding-left: 20px;
+		}
+
+		.betegseg-lista li {
+			margin-bottom: 6px;
+		}
+
+		.betegseg-kartyak {
+			margin-top: 20px;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+			gap: 18px;
+		}
+
+		.betegseg-kartya {
+			background-color: rgba(15, 23, 42, 0.96);
+			border-radius: 14px;
+			border: 1px solid rgba(148, 163, 184, 0.7);
+			padding: 12px 16px 12px 16px;
+			box-shadow: 0 14px 30px rgba(15, 23, 42, 0.8);
+			transition: transform 0.16s ease-out, box-shadow 0.16s ease-out, border-color 0.16s ease-out, background-color 0.16s ease-out;
+		}
+
+		.betegseg-kartya:hover {
+			transform: translateY(-3px) scale(1.01);
+			box-shadow: 0 22px 45px rgba(15, 23, 42, 0.9);
+			border-color: #38bdf8;
+			background-color: rgba(15, 23, 42, 1);
+		}
+
+		.betegseg-kartya h3 {
+			margin: 0 0 4px 0;
+			font-size: 1rem;
+			color: #e5e7eb;
+		}
+
+		.betegseg-kartya p {
+			margin: 3px 0;
+			font-size: 0.9rem;
+			color: #cbd5f5;
+		}
+
+		footer {
+			background-color: #030712;
+			color: #9ca3af;
+			text-align: center;
+			padding: 11px 16px 10px 16px;
+			font-size: 0.85rem;
+			margin-top: auto;
+			box-shadow: 0 -2px 5px rgba(15, 23, 42, 0.5);
+		}
+
+		#backToTop {
+			position: fixed;
+			right: 24px;
+			bottom: 72px;
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			border: none;
+			background-color: #0077aa;
+			color: #ffffff;
+			font-size: 20px;
+			cursor: pointer;
+			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+			display: none;
+		}
+
+		#backToTop:hover {
+			background-color: #005f82;
+		}
+
+		.disclaimer {
+			max-width: 1080px;
+			margin: 0 auto 6px auto;
+			padding: 8px 16px 6px 16px;
+			box-sizing: border-box;
+			font-size: 0.8rem;
+			color: #e5e7eb;
+			background-color: rgba(15, 23, 42, 0.9);
+			border-radius: 999px;
+			border: 1px solid rgba(148, 163, 184, 0.45);
+			box-shadow: 0 6px 18px rgba(15, 23, 42, 0.8);
+		}
+
+		@media (max-width: 640px) {
+			main {
+				padding-inline: 12px;
+			}
+
+			section {
+				padding-inline: 14px;
+			}
+
+			.betegseg-kartyak {
+				gap: 12px;
+			}
+		}
+
+		@keyframes cardIn {
+			from {
+				opacity: 0;
+				transform: translateY(16px) scale(0.98);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0) scale(1);
+			}
+		}
+
+		@keyframes bgShift {
+			from {
+				background-position: center top;
+			}
+			to {
+				background-position: center 24px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Egészséges Élet Gyógyszertár</h1>
+		<p class="header-subtitle">Betegségek, tünetek, eligazodás - röviden.</p>
+	</header>
+
+	<nav>
+		<ul>
+			<li><a href="Gyogyszertar.html">Főoldal</a></li>
+			<li><a href="gyogyszerek.html">Gyógyszerek</a></li>
+			<li><a href="betegsegek.html" class="active">Betegségek</a></li>
+			<li><a href="tanacsok.html">Tanácsok gyógyszer nélkül</a></li>
+			<li><a href="kapcsolat.html">Kapcsolat</a></li>
+		</ul>
+	</nav>
+
+	<main>
+	<section class="betegseg-blokk">
+			<h2>Gyakori panaszok áttekintése</h2>
+			<p>
+				Az alábbi felsorolásban néhány mindennapi panasz és betegség típusát gyűjtjük össze
+				röviden, hogy könnyebb legyen eligazodni, mikor érdemes orvoshoz fordulni,
+				és mikor elég lehet egy egyszerű életmódbeli változtatás vagy recept nélküli készítmény.
+			</p>
+			<ul class="betegseg-lista">
+				<li>Fejfájással, lázzal, náthával kapcsolatos panaszok.</li>
+				<li>Emésztési kellemetlenségek, gyomorégés, puffadás.</li>
+				<li>Allergiás tünetek, szezonális panaszok.</li>
+				<li>Hosszabb ideje fennálló, visszatérő fájdalmak.</li>
+			</ul>
+		</section>
+
+		<section class="betegseg-blokk">
+			<h2>Mikortól fontos az orvosi vizsgálat?</h2>
+			<p>
+				Ha egy panasz hirtelen, nagyon erősen jelentkezik, ha új, szokatlan tünetet tapasztal,
+				vagy ha a korábbi, enyhébb tünetei tartósan rosszabbodnak, minden esetben érdemes
+				orvossal egyeztetni. Vannak helyzetek, amikor a gyógyszertárban kapható készítmény
+				már nem elegendő, és a biztonság az első.
+			</p>
+		</section>
+
+		<div class="betegseg-kartyak">
+			<div class="betegseg-kartya">
+				<h3>💨 Asztma, COPD</h3>
+				<p><strong>Tünetek:</strong> Nehéz légzés, sípolás, krónikus köhögés.</p>
+				<span class="betegseg-badge">Krónikus panasz</span>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>🧬 Autoimmun betegségek, allergia</h3>
+				<p><strong>Tünetek:</strong> Test saját szövetei elleni támadás, allergiás reakciók.</p>
+				<span class="betegseg-badge">Szakorvosi kontroll javasolt</span>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>🦠 Bakteriális fertőzések, torokgyulladás</h3>
+				<p><strong>Tünetek:</strong> Torokfájás, láz, nyirokcsomó duzzanat.</p>
+				<span class="betegseg-badge">Orvosi vizsgálat gyakran szükséges</span>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>🌿 Bőrkiütések, ekcéma</h3>
+				<p><strong>Tünetek:</strong> Viszkető piros foltok, száraz bőr, gyulladás.</p>
+				<span class="betegseg-badge">Gyakori panasz</span>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Csontritkulás, ízületi problémák</h3>
+				<p><strong>Tünetek:</strong> Csontfájdalom, könnyű törések, ízületi merevség.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Csontritkulás, törések gyógyulása</h3>
+				<p><strong>Tünetek:</strong> Gyenge csontok, lassú gyógyulás törés után.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>🩸 Cukorbetegség, inzulinrezisztencia</h3>
+				<p><strong>Tünetek:</strong> Gyakori vizelés, szomjúság, fáradtság.</p>
+				<span class="betegseg-badge">Krónikus állapot</span>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>🧠 Depresszió, hangulatzavarok</h3>
+				<p><strong>Tünetek:</strong> Tartós szomorúság, érdeklődésvesztés, alvászavar.</p>
+				<span class="betegseg-badge">Szakemberrel megbeszélendő</span>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Emésztési lassúság, székrekedés</h3>
+				<p><strong>Tünetek:</strong> Ritka széklet, hasi discomfort, puffadás.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Emésztési zavarok, puffadás</h3>
+				<p><strong>Tünetek:</strong> Hasi fájdalom, gázosodás, irreguláris széklet.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>💥 Fejfájás, izomfájdalom</h3>
+				<p><strong>Tünetek:</strong> Erős, lüktető fájdalom a fej területén, merev és fájó izmok, esetleg fény- vagy hangérzékenység.</p>
+				<span class="betegseg-badge">Gyakori panasz</span>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Fáradtság, alacsony energiaszint</h3>
+				<p><strong>Tünetek:</strong> Krónikus kimerültség, motivációhiány, alvászavarok.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>🔥 Gyomorégés, reflux</h3>
+				<p><strong>Tünetek:</strong> Savas visszaáramlás, égő érzés a nyelőcsőben.</p>
+				<span class="betegseg-badge">Gyakori panasz</span>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Gyomorégés, savtúltengés</h3>
+				<p><strong>Tünetek:</strong> Égő érzés a mellkasban, savas felböfögés, hasi discomfort.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Immunrendszer gyengeség, gyakori fertőzések</h3>
+				<p><strong>Tünetek:</strong> Gyakori megfázások, hosszabb gyógyulás, fáradtság.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Krónikus fájdalom, ízületi gyulladás</h3>
+				<p><strong>Tünetek:</strong> Állandó fájdalom az ízületekben, duzzanat, mozgáskorlátozottság.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Krónikus fáradtság, alacsony vitalitás</h3>
+				<p><strong>Tünetek:</strong> Állandó kimerültség, gyengeség, koncentrációs problémák.</p>
+			</div>
+			<div class="betegseg-kartya">
+					<h3>🤒 Láz, megfázás</h3>
+				<p><strong>Tünetek:</strong> Emelkedett testhőmérséklet, orrfolyás, köhögés, torokfájás és általános gyengeség.</p>
+					<span class="betegseg-badge">Gyakori, többnyire enyhe</span>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Magas vérnyomás, ödéma</h3>
+				<p><strong>Tünetek:</strong> Duzzadt végtagok, fejfájás, látászavar.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Magas vérnyomás, szívproblémák</h3>
+				<p><strong>Tünetek:</strong> Szédülés, fejfájás, mellkasi fájdalom, fáradtság.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>⚡ Migrén, erős fejfájás</h3>
+				<p><strong>Tünetek:</strong> Egyoldali fájdalom, hányinger, fényérzékenység.</p>
+				<span class="betegseg-badge">Visszatérő panasz lehet</span>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Pajzsmirigy-alulműködés</h3>
+				<p><strong>Tünetek:</strong> Fáradtság, súlygyarapodás, hidegérzékenység.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Száraz köhögés, megfázás</h3>
+				<p><strong>Tünetek:</strong> Tartós köhögés nélkül váladék, torokirritáció.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Száraz szem, irritáció</h3>
+				<p><strong>Tünetek:</strong> Szemszárazság, égő érzés, homályos látás.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Szénanátha, allergiás tünetek</h3>
+				<p><strong>Tünetek:</strong> Tüsszögés, viszkető szem, orrfolyás.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Szervátültetés utáni kilökődés, autoimmun betegségek</h3>
+				<p><strong>Tünetek:</strong> Láz, fájdalom az érintett területen, fáradtság.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Szezonális allergia, orrdugulás</h3>
+				<p><strong>Tünetek:</strong> Orrdugulás, tüsszögés, viszketés.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Szorongás, pánikrohamok</h3>
+				<p><strong>Tünetek:</strong> Állandó aggodalom, gyors szívverés, izzadás pánik idején.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Vitaminhiány, fáradtság</h3>
+				<p><strong>Tünetek:</strong> Állandó fáradtság, gyengeség, koncentrációs nehézségek.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Véralvadási zavarok, trombózis</h3>
+				<p><strong>Tünetek:</strong> Duzzadt láb, fájdalom, vérrögképződés.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Vírusos fertőzések, influenza</h3>
+				<p><strong>Tünetek:</strong> Láz, izomfájdalom, köhögés, fáradtság.</p>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>😴 Álmatlanság, alvászavarok</h3>
+				<p><strong>Tünetek:</strong> Nehéz elalvás, gyakori ébredés, nappali álmosság.</p>
+				<span class="betegseg-badge">Gyakran életmóddal is javítható</span>
+			</div>
+			<div class="betegseg-kartya">
+				<h3>Ízületi gyulladás, reuma</h3>
+				<p><strong>Tünetek:</strong> Ízületi fájdalom, merevség, duzzanat.</p>
+			</div>
+		</div>
+	</main>
+
+	<button id="backToTop" aria-label="Vissza az oldal tetejére">
+		↑
+	</button>
+
+	<div class="disclaimer">
+		Az oldalon szereplő információk tájékoztató jellegűek, nem
+		helyettesítik az orvosi vizsgálatot vagy a személyre szabott
+		gyógykezelési javaslatot. Tartós, súlyosbodó vagy szokatlan panaszok
+		esetén minden esetben forduljon orvoshoz. Hirtelen fellépő, erős vagy
+		életveszélyesnek tűnő tüneteknél haladéktalanul hívja a 112-t, vagy
+		keresse fel a sürgősségi osztályt.
+	</div>
+
+	<footer>
+		&copy; 2025 Egészséges Élet Gyógyszertár - MO0VEY (Mizerák Bence)
+	</footer>
+</body>
+</html>
+
