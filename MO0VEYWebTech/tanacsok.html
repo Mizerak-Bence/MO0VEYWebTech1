@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="backToTop.css">
     <link rel="stylesheet" href="badges.css">
     <script src="backToTop.js" defer></script>
+    <script src="videoControls.js" defer></script>
 
     <style>
         body {
@@ -112,6 +113,65 @@
             color: #cbd5f5;
         }
 
+        .video-kontener {
+            margin-top: 24px;
+            background-color: rgba(15, 23, 42, 0.9);
+            border-radius: 16px;
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
+            padding: 18px 20px 18px 20px;
+            backdrop-filter: blur(14px);
+            opacity: 0;
+            transform: translateY(16px) scale(0.98);
+            animation: cardIn 0.7s ease-out forwards;
+        }
+
+        .video-kontener h2 {
+            margin-top: 0;
+            font-size: 1.3rem;
+            color: #f9fafb;
+        }
+
+        .video-frame-wrapper {
+            margin-top: 12px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            box-shadow: 0 16px 30px rgba(15, 23, 42, 0.9);
+            max-width: 420px;
+            margin-inline: auto;
+        }
+
+        #tornaVideo {
+            width: 100%;
+        }
+
+        .video-vezerlok {
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .video-vezerlok button {
+            background-color: #0ea5e9;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 999px;
+            padding: 6px 14px;
+            font-size: 0.85rem; 
+            cursor: pointer;
+            transition: background-color 0.15s ease-out, transform 0.1s ease-out,
+                box-shadow 0.15s ease-out;
+            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.7);
+        }
+
+        .video-vezerlok button:hover {
+            background-color: #0284c7;
+            transform: translateY(-1px);
+            box-shadow: 0 7px 18px rgba(15, 23, 42, 0.9);
+        }
+
         footer {
             background-color: #020617;
             color: #9ca3af;
@@ -161,7 +221,7 @@
             <li><a href="gyogyszerek.html">Gyógyszerek</a></li>
             <li><a href="betegsegek.html">Betegségek</a></li>
             <li><a href="tanacsok.html" class="active">Tanácsok gyógyszer nélkül</a></li>
-            <li><a href="kapcsolat.html">Kapcsolat</a></li>
+            <li><a href="Rendeles.html">Rendelés</a></li>
         </ul>
     </nav>
 
@@ -242,6 +302,64 @@
                 <span class="betegseg-badge">Mindennapi szokás</span>
             </div>
         </div>
+
+        <section class="bevezeto-blokk" style="margin-top: 24px;">
+            <h2>Mikor kell inkább orvoshoz fordulni?</h2>
+            <p>
+                Ha a panaszok <strong>több napja nem javulnak</strong>, hirtelen romlanak,
+                magas láz, nehézlégzés, mellkasi fájdalom, erős hasi fájdalom,
+                vagy szokatlan tünetek jelentkeznek, <strong>ne várjon házi módszerekkel</strong>,
+                hanem keresse fel háziorvosát vagy a sürgősségi ellátást.
+            </p>
+            <p>
+                Gyógyszer nélküli tanácsaink <em>csak enyhe panaszokra</em> és
+                <em>átmeneti állapotokra</em> vonatkoznak. Krónikus betegségek esetén
+                mindig egyeztesse kezelőorvosával a változtatásokat.
+            </p>
+        </section>
+
+        <section class="bevezeto-blokk" style="margin-top: 24px;">
+            <h2>Napi mini-checklist az egészségesebb napokért</h2>
+            <ol>
+                <li>Megittam legalább 6-8 pohár vizet ma.</li>
+                <li>Tartottam rövid szünetet minden 1 óra képernyő után.</li>
+                <li>Legalább 20 percet mozogtam (séta, lépcsőzés, torna).</li>
+                <li>Figyeltem az étkezésekre (kisebb adagok, kevésbé zsíros ételek).</li>
+                <li>Este lefekvés előtt 1 órával letettem a telefont / monitort.</li>
+            </ol>
+        </section>
+
+        <section class="video-kontener">
+            <h2>Rövid videó: megelőző medicina és prehabilitáció</h2>
+            <p>
+                A videó bemutatja, hogyan segíthet a <strong>megelőző szemlélet</strong>
+                abban, hogy hosszabb távon egészségesek maradjunk. A hangsúly a
+                <strong>rendszeres mozgáson, tudatos táplálkozáson, életmódbeli
+                változtatásokon</strong>, valamint a test működésének megértésén van,
+                hogy ne csak a sérülések utólagos kezelésére (rehabilitációra),
+                hanem azok <strong>megelőzésére, prehabilitációjára</strong> törekedjünk.
+            </p>
+
+            <div class="video-frame-wrapper">
+                <video id="tornaVideo" width="100%">
+                    <source src="Preventative Medicine.mp4" type="video/mp4">
+                    A böngészője nem támogatja a videó lejátszását.
+                </video>
+            </div>
+
+            <div class="video-vezerlok">
+                <button type="button" id="playVideo">Lejátszás</button>
+                <button type="button" id="pauseVideo">Szünet</button>
+                <button type="button" id="muteVideo">Némítás be/ki</button>
+                <button type="button" id="restartVideo">Elejéről</button>
+                <button type="button" id="volDown">Halkítás</button>
+                <button type="button" id="volUp">Hangosítás</button>
+                <button type="button" id="speedDown">Lassabban</button>
+                <button type="button" id="speedUp">Gyorsabban</button>
+                <button type="button" id="sizeDown">Kisebb videó</button>
+                <button type="button" id="sizeUp">Nagyobb videó</button>
+            </div>
+        </section>
     </main>
 
     <button id="backToTop" aria-label="Vissza az oldal tetejére">
@@ -251,5 +369,82 @@
     <footer>
         &copy; 2025 Egészséges Élet Gyógyszertár - MO0VEY (Mizerák Bence)
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const video = document.getElementById("tornaVideo");
+            const playBtn = document.getElementById("playVideo");
+            const pauseBtn = document.getElementById("pauseVideo");
+            const muteBtn = document.getElementById("muteVideo");
+            const restartBtn = document.getElementById("restartVideo");
+            const volDownBtn = document.getElementById("volDown");
+            const volUpBtn = document.getElementById("volUp");
+            const speedDownBtn = document.getElementById("speedDown");
+            const speedUpBtn = document.getElementById("speedUp");
+            const sizeDownBtn = document.getElementById("sizeDown");
+            const sizeUpBtn = document.getElementById("sizeUp");
+            const videoWrapper = document.querySelector(".video-frame-wrapper");
+
+            let currentWidth = 420;
+            const minWidth = 260;
+            const maxWidth = 640;
+            if (videoWrapper) {
+                videoWrapper.style.maxWidth = currentWidth + "px";
+            }
+
+            if (!video) {
+                return;
+            }
+
+            playBtn.addEventListener("click", function () {
+                video.play();
+            });
+
+            pauseBtn.addEventListener("click", function () {
+                video.pause();
+            });
+
+            muteBtn.addEventListener("click", function () {
+                video.muted = !video.muted;
+            });
+
+            restartBtn.addEventListener("click", function () {
+                video.currentTime = 0;
+                video.play();
+            });
+
+            volDownBtn.addEventListener("click", function () {
+                const newVol = Math.max(0, video.volume - 0.1);
+                video.volume = newVol;
+            });
+
+            volUpBtn.addEventListener("click", function () {
+                const newVol = Math.min(1, video.volume + 0.1);
+                video.volume = newVol;
+            });
+
+            speedDownBtn.addEventListener("click", function () {
+                const newRate = Math.max(0.25, video.playbackRate - 0.25);
+                video.playbackRate = newRate;
+            });
+
+            speedUpBtn.addEventListener("click", function () {
+                const newRate = Math.min(3, video.playbackRate + 0.25);
+                video.playbackRate = newRate;
+            });
+
+            sizeDownBtn.addEventListener("click", function () {
+                if (!videoWrapper) return;
+                currentWidth = Math.max(minWidth, currentWidth - 40);
+                videoWrapper.style.maxWidth = currentWidth + "px";
+            });
+
+            sizeUpBtn.addEventListener("click", function () {
+                if (!videoWrapper) return;
+                currentWidth = Math.min(maxWidth, currentWidth + 40);
+                videoWrapper.style.maxWidth = currentWidth + "px";
+            });
+        });
+    </script>
 </body>
 </html>

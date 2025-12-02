@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="menu.css">
     <link rel="stylesheet" href="backToTop.css">
     <script src="backToTop.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <style>
         body {
@@ -154,7 +155,7 @@
             <li><a href="gyogyszerek.html">Gyógyszerek</a></li>
             <li><a href="betegsegek.html">Betegségek</a></li>
             <li><a href="tanacsok.html">Tanácsok gyógyszer nélkül</a></li>
-            <li><a href="kapcsolat.html">Kapcsolat</a></li>
+            <li><a href="Rendeles.html">Rendelés</a></li>
         </ul>
     </nav>
 
@@ -201,6 +202,12 @@
     <footer>
         &copy; 2025 Egészséges Élet Gyógyszertár - MO0VEY (Mizerák Bence)
     </footer>
+
+    <script>
+        $(function () {
+            $("main").hide().fadeIn(2000);
+        });
+    </script>
 
     <div class="veny-jegyzet">
         <sup>1</sup> Vény / vényköteles: olyan gyógyszer, amelyet csak orvos által

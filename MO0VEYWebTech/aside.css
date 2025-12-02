@@ -1,0 +1,58 @@
+.oldal-aside {
+	position: sticky;
+	top: 88px;
+	align-self: flex-start;
+	background-color: rgba(15, 23, 42, 0.9);
+	border-radius: 14px;
+	border: 1px solid rgba(148, 163, 184, 0.7);
+	padding: 14px 16px 12px 16px;
+	box-shadow: 0 16px 34px rgba(15, 23, 42, 0.85);
+	backdrop-filter: blur(12px);
+	color: #e5e7eb;
+	font-size: 0.9rem;
+	min-width: 230px;
+}
+
+.oldal-aside h2 {
+	margin: 0 0 8px 0;
+	font-size: 1rem;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	color: #e5e7eb;
+}
+
+.oldal-aside p {
+	margin: 0 0 10px 0;
+	color: #cbd5f5;
+	font-size: 0.85rem;
+}
+
+.oldal-aside-nav {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.oldal-aside-nav button,
+.oldal-aside-nav a {
+	border: none;
+	border-radius: 999px;
+	padding: 6px 10px;
+	background-color: rgba(15, 23, 42, 0.96);
+	color: #e5e7eb;
+	font-size: 0.85rem;
+	text-align: left;
+	cursor: pointer;
+	text-decoration: none;
+	box-shadow: 0 8px 18px rgba(15, 23, 42, 0.9);
+	border: 1px solid rgba(148, 163, 184, 0.7);
+	transition: background-color 0.16s ease-out, transform 0.16s ease-out, box-shadow 0.16s ease-out, border-color 0.16s ease-out;
+}
+
+.oldal-aside-nav button:hover,
+.oldal-aside-nav a:hover {
+	background-color: rgba(15, 23, 42, 1);
+	transform: translateY(-1px);
+	box-shadow: 0 14px 30px rgba(15, 23, 42, 0.95);
+	border-color: #38bdf8;
+}
