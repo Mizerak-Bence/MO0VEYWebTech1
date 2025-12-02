@@ -1,0 +1,311 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[magyar]{babel}
+\usepackage{lmodern}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{graphicx}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE JEGYZŐKÖNYV}\\[2.5cm]
+
+    {\large Web technológiák 1}\\[1cm]
+
+    {\large \textbf{Egészséges Élet Gyógyszertár}}\\[6cm]
+\end{center}
+
+\hfill
+\begin{minipage}{0.45\textwidth}
+    Készítette: \textbf{Mizerák Bence}\\[0.2cm]
+    Neptunkód: \textbf{MO0VEY}\\[0.2cm]
+    Dátum: 2025. december
+\end{minipage}
+
+\vfill
+
+\begin{center}
+    Miskolc, 2025
+\end{center}
+
+\clearpage
+
+\tableofcontents
+\newpage
+
+\section{Bevezetés}
+
+A beadandó feladat keretében egy többoldalas, gyógyszertár témájú weboldalt készítettem.
+A projekt célja az volt, hogy egy \emph{„Egészséges Élet Gyógyszertár”} nevű, fiktív
+tájékoztató oldal készüljön, amely a látogató számára:
+\begin{itemize}
+    \item bemutatja a gyakori gyógyszereket,
+    \item felsorolja a gyakori betegségeket és lehetséges kezelési módjaikat,
+    \item gyógyszer nélküli életmódtanácsokat ad,
+    \item egy nem valós, demonstrációs online rendelési űrlapot biztosít.
+\end{itemize}
+
+A projekt során külön hangsúlyt kapott:
+\begin{itemize}
+    \item az esztétikus, következetes megjelenés
+    \item a használhatóság és áttekinthetőség,
+\end{itemize}
+
+\section{Projekt felépítése, főbb HTML oldalak}
+
+A projekt könyvtárstruktúrájában a következő fő HTML oldalak találhatók:
+
+\begin{itemize}
+    \item \texttt{Gyogyszertar.html} -- főoldal,
+    \item \texttt{gyogyszerek.html} -- gyógyszerlista JSON-ból,
+    \item \texttt{betegsegek.html} -- betegségek ismertetése,
+    \item \texttt{tanacsok.html} -- tanácsok gyógyszer nélkül + videó,
+    \item \texttt{Rendeles.html} -- online rendelési űrlap (nem valós rendelés)
+    
+\end{itemize}
+
+\subsection{Főoldal: \texttt{Gyogyszertar.html}}
+
+A főoldal bevezető szerepet tölt be:
+\begin{itemize}
+    \item sötét, üvegszerű háttéren jelennek meg a tartalmi kártyák,
+    \item a fejlécben szerepel a projekt címe: „Egészséges Élet Gyógyszertár”,
+    \item rövid leírás arról, milyen információkat talál a látogató az oldalon.
+\end{itemize}
+
+A navigációs menü minden oldalon egységes:
+\begin{itemize}
+    \item Főoldal,
+    \item Gyógyszerek,
+    \item Betegségek,
+    \item Tanácsok gyógyszer nélkül,
+    \item Rendelés.
+\end{itemize}
+
+A főoldalon egy rövid \emph{jogi jellegű diszklémer} is található:
+az itt megjelenő információk nem helyettesítik az orvosi vizsgálatot
+és a gyógyszerész tanácsát.
+
+\subsection{Gyógyszerek oldal: \texttt{gyogyszerek.html}}
+
+Ez az oldal a gyógyszerek listáját jeleníti meg.
+A tartalom nem statikusan, hanem egy külön \texttt{gyogyszertar.json} állományból töltődik be.
+A JavaScript kód:
+
+\begin{itemize}
+    \item betölti a JSON-t (\texttt{fetch}),
+    \item dinamikusan táblázatot hoz létre (sorok, cellák),
+    \item megjeleníti a gyógyszer nevét, hatóanyagát, indikációját, kiszereléseit, árát stb.
+\end{itemize}
+
+Az oldalon lehetőség van szűrésre is (például név vagy kategória alapján),
+így a látogató könnyebben megtalálhatja a számára releváns készítményeket.
+
+\subsection{Betegségek oldal: \texttt{betegsegek.html}}
+
+A \texttt{betegsegek.html} oldalon kártyákra bontva jelennek meg a gyakori panaszok,
+például:
+\begin{itemize}
+    \item fejfájás,
+    \item meghűlés,
+    \item láz,
+    \item gyomorproblémák stb.
+\end{itemize}
+
+Minden kártya tartalmaz:
+\begin{itemize}
+    \item rövid leírást a betegségről,
+    \item lehetséges tüneteket,
+    \item általános javaslatokat,
+    \item súlyos tünetek esetén figyelmeztetést, hogy orvoshoz kell fordulni.
+\end{itemize}
+
+A kártyákon \emph{badge}-ek és kiemelések is vannak (pl. „enyhe tünetek”, „figyelmeztetés”),
+amelyek CSS osztályokkal vannak megoldva.
+
+\subsection{Tanácsok gyógyszer nélkül: \texttt{tanacsok.html}}
+
+Ez az oldal kifejezetten az életmódbeli, nem gyógyszeres tanácsokra koncentrál.
+Tartalmaz több, kártyaszerű blokkot, például:
+
+\begin{itemize}
+    \item alvásminőség javítása,
+    \item folyadékbevitel növelése,
+    \item rendszeres mozgás,
+    \item stresszkezelés,
+    \item digitális detox (képernyőhasználat csökkentése).
+\end{itemize}
+
+A lap külön érdekessége egy beágyazott videó:
+\begin{itemize}
+    \item a videó fájl: egy saját \texttt{Preventative Medicine.mp4} állomány,
+    \item a videóhoz egyedi vezérlőgombokat készítettem (play, pause, némítás, hangerő és sebesség állítása),
+    \item a vezérlőlogika külön \texttt{videoControls.js} fájlban található.
+\end{itemize}
+
+Ezzel a feladat azon része is teljesült, hogy legyen saját JavaScript kód, amely
+egy beágyazott videót irányít, nem csak a beépített böngésző-lejátszót használjuk.
+
+\subsection{Rendelési űrlap: \texttt{Rendeles.html}}
+
+A \texttt{Rendeles.html} egy nem valós, demonstrációs „online rendelés” oldal.
+Célja, hogy bemutassa a különféle űrlapmezők használatát és a JavaScript-alapú
+validációt. Az oldal fő elemei:
+
+\begin{itemize}
+    \item Név (\texttt{text}).
+    \item E-mail cím (\texttt{email}).
+    \item Rendelés dátuma (\texttt{date}).
+    \item Gyógyszer kiválasztása \texttt{datalist} elemmel.
+    \item Kiszerelés választása rádiógombokkal.
+    \item Extra opciók jelölőnégyzetekkel (pl. utánvét, e-mail visszaigazolás).
+    \item Csomagolás színe (\texttt{color} input).
+    \item Megjegyzés mező (\texttt{textarea}).
+    \item Küldés és törlés gombok.
+\end{itemize}
+
+A gyógyszerek listája itt sem kézzel van beírva, hanem \texttt{JSON}-ból töltődik be:
+a \texttt{gyogyszertar.json} fájl neveit a JavaScript húzza be a \texttt{datalist} opcióiba.
+
+\section{Stílus és dizájn (CSS)}
+
+A projektben több külső stíluslap is szerepel, például:
+
+\begin{itemize}
+    \item \texttt{Hatterszin.css} -- alap háttér és színek,
+    \item \texttt{menu.css} -- navigációs menü stílusai,
+    \item \texttt{backToTop.css} -- „vissza a tetejére” gomb megjelenése,
+    \item \texttt{badges.css}, \texttt{aside.css} -- speciális kártyák és jelvények.
+\end{itemize}
+
+Az egyes oldalakon emellett belső \texttt{<style>} blokkok is találhatók,
+amelyek az adott oldalra jellemző:
+\begin{itemize}
+    \item elrendezést (grid, flex),
+    \item kártya-stílusokat (sötét üvegszerű doboz, lekerekített sarkok, árnyék),
+    \item animációkat (belépő animációk, háttér finom elmozdulása),
+    \item űrlap-mezők és hibaszövegek kinézetét
+\end{itemize}
+szabályozzák.
+
+A teljes dizájn egységes:
+sötét háttér, halvány szürke/bézs szövegszín, kékes árnyalatú kiemelések,
+kártya-szerű blokkok és modern betűtípus (pl. Segoe UI / rendszer betűk).
+
+\section{JavaScript, JSON és AJAX használata}
+
+\subsection{Gyógyszerek JSON-ból: \texttt{gyogyszerek.js} és \texttt{gyogyszertar.json}}
+
+A \texttt{gyogyszertar.json} állomány tartalmazza a gyógyszerek listáját.
+Minden gyógyszerhez olyan adatok tartoznak, mint:
+\begin{itemize}
+    \item név,
+    \item hatóanyag,
+    \item betegségkategória,
+    \item kiszerelések és árak,
+    \item receptkötelesség.
+\end{itemize}
+
+A \texttt{gyogyszerek.js} feladata:
+\begin{itemize}
+    \item a JSON betöltése \texttt{fetch} segítségével,
+    \item a JSON tömb bejárása,
+    \item táblázatsorok (\texttt{<tr>}, \texttt{<td>}) dinamikus létrehozása,
+    \item az adatok beírása a táblázatba,
+    \item szűrési feltételek kezelése (pl. név vagy kategória alapján).
+\end{itemize}
+
+Ezzel teljesülnek a JSON+AJAX és a DOM-manipulációs követelmények is.
+
+\subsection{Videó vezérlés: \texttt{videoControls.js}}
+
+A \texttt{tanacsok.html} oldalba ágyazott videót egy külön
+\texttt{videoControls.js} állományból irányítom. A szkript:
+
+\begin{itemize}
+    \item a \texttt{DOMContentLoaded} esemény után kiválasztja a videó elemet és a gombokat,
+    \item eseménykezelőt köt a gombokra (play, pause, mute/unmute, újrakezdés),
+    \item a hangerőt 0 és 1 között lépteti (kis plusz/mínusz lépésekben),
+    \item a lejátszási sebességet is állíthatóvá teszi (például 0.75x, 1x, 1.25x, 1.5x).
+\end{itemize}
+
+A videó nem teljes képernyős, hanem egy elegáns \emph{„kártyában”} jelenik meg,
+szöveges magyarázattal körülvéve, amely a \emph{„preventív medicina”}
+(prehabilitáció, megelőzés) témáját hangsúlyozza.
+
+\subsection{Rendelési űrlap és validáció: \texttt{rendeles.js}}
+
+A \texttt{rendeles.js} két fő funkciót lát el:
+
+\paragraph{1. Datalist feltöltése JSON-ból.}
+\begin{itemize}
+    \item A szkript betölti a \texttt{gyogyszertar.json} fájlt.
+    \item Kinyeri belőle az egyedi gyógyszer-neveket.
+    \item Ezekből \texttt{<option>} elemeket hoz létre, és beszúrja a
+          \texttt{<datalist>} (\texttt{gyogyszer-opciok}) elemek közé.
+\end{itemize}
+
+\paragraph{2. Űrlap-validáció és hibakezelés.}
+\begin{itemize}
+    \item Bekéri az űrlapmezőket: név, e-mail, dátum, gyógyszer, kiszerelés.
+    \item A \texttt{submit} eseményre:
+          \begin{itemize}
+              \item törli az előző hibajelzéseket,
+              \item ellenőrzi, hogy a mezők nincsenek-e üresen,
+              \item ellenőrzi az e-mail formátumát (regex),
+              \item ellenőrzi, hogy van-e kiválasztott rádiógomb.
+          \end{itemize}
+    \item Hibák esetén:
+          \begin{itemize}
+              \item az érintett mező kap egy piros keretet (CSS \texttt{.hiba} osztály),
+              \item alatta megjelenik egy rövid hibaüzenet (\texttt{.hiba-uzenet}).
+          \end{itemize}
+    \item Sikeres ellenőrzés után:
+          \begin{itemize}
+              \item egy felugró \texttt{alert} köszöni meg a „rendelést”,
+              \item az űrlap tartalma törlődik (\texttt{form.reset()}).
+          \end{itemize}
+\end{itemize}
+
+Fontos, hogy az űrlap nem küld valódi adatot a szerver felé, teljesen kliensoldali demonstráció.
+
+\section{jQuery használata és animáció}
+
+A jQuery-t a főoldalon, a \texttt{Gyogyszertar.html}-ben használom.
+A jQuery CDN a \texttt{<head>} részben töltődik be, majd az oldal alján egy rövid
+szkript gondoskodik az egyszerű, látványos animációról:
+
+\begin{verbatim}
+$(function () {
+    $("main").hide().fadeIn(2000);
+});
+\end{verbatim}
+
+Ebben:
+
+\begin{itemize}
+    \item \texttt{\$("main")} -- jQuery-s \emph{elemkiválasztás}, a \texttt{<main>} tartalmi részt választja ki,
+    \item \texttt{hide().fadeIn(2000)} -- jQuery-s \emph{animáció}:
+          a \texttt{main} elemet elrejti, majd 2000 ms (2 másodperc) alatt finoman megjeleníti.
+\end{itemize}
+
+Ez jól demonstrálja a jQuery legalapvetőbb funkcióit:
+\begin{itemize}
+    \item elem kiválasztása CSS-szelektorral,
+    \item láncolt metódusok használata,
+    \item egyszerű animációk készítése.
+\end{itemize}
+
+
+
+\end{document}
