@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+	<meta charset="UTF-8">
+	<title>MO0VEY - gap flexbox elrendezés</title>
+	<style>
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+		h1 {
+			font-size: 28px;
+		}
+
+		.flex-container {
+			display: flex;
+			flex-wrap: wrap;
+			row-gap: 20px;
+			column-gap: 70px;
+			background-color: #d66ac5;
+			border: 2px solid #000;
+			padding: 10px;
+		}
+
+		.flex-item {
+			background-color: #ffff66;
+			border: 1px solid #000;
+			width: 120px;
+			height: 80px;
+			padding: 4px;
+		}
+	</style>
+</head>
+<body>
+	<h1>A gap tulajdonság flexbox segítségével</h1>
+	<p>A gap tulajdonsággal adható meg a sorok és oszlopok közötti távolság egy flexbox elrendezésben.</p>
+	<p>A flexbox elrendezésnél a sorok között 20 px, az oszlopok között pedig 70 px a távolság.</p>
+
+	<div class="flex-container">
+		<div class="flex-item">1</div>
+		<div class="flex-item">2</div>
+		<div class="flex-item">3</div>
+		<div class="flex-item">4</div>
+		<div class="flex-item">5</div>
+		<div class="flex-item">6</div>
+		<div class="flex-item">7</div>
+		<div class="flex-item">8</div>
+		<div class="flex-item">9</div>
+		<div class="flex-item">10</div>
+		<div class="flex-item">11</div>
+		<div class="flex-item">12</div>
+		<div class="flex-item">13</div>
+	</div>
+</body>
+</html>
+
