@@ -1,17 +1,65 @@
 $(document).ready(function () {
-	$("#removeBoxBtn").on("click", function () {
-		$("#box").hide("explode", { pieces: 16 }, 600, function () {
-			$(this).remove();
-		});
+	var $box = $("#animBox");
+	var animSpeed = 800;
+
+	$box.draggable();
+
+	$("#startAnim").on("click", function () {
+		$box
+			.stop(true, true)
+			.css({
+				left: "300px",
+				top: "0px",
+				width: "300px",
+				height: "80px",
+				fontSize: "12pt",
+				opacity: 1
+			})
+			.animate({
+				left: "600px",
+				width: "400px",
+				fontSize: "30pt"
+			}, animSpeed)
+			.animate({
+				top: "120px",
+				width: "260px",
+				height: "90px"
+			}, animSpeed)
+			.animate({
+				left: "0px",
+				opacity: 0.4
+			}, animSpeed)
+			.animate({
+				left: "300px",
+				top: "0px",
+				width: "300px",
+				height: "80px",
+				fontSize: "12pt",
+				opacity: 1
+			}, animSpeed, function () {
+				$box.effect("bounce", { times: 3 }, 500);
+			});
 	});
 
-	$("#clearDivBtn").on("click", function () {
-		$("#box").children().fadeOut(400, function () {
-			$("#box").empty();
-		});
+	$("#hideP").on("click", function () {
+		$("#calc").prevAll("p").slideUp(600);
 	});
 
-	$("#box").draggable();
+	var collapsed = false;
+	$("#toggleBox").on("click", function () {
+		$box.stop(true, true);
+		if (!collapsed) {
+			$box
+				.animate({ height: "20px", width: "150px" }, 500)
+				.animate({ left: "500px" }, 700);
+			collapsed = true;
+		} else {
+			$box
+				.animate({ left: "300px" }, 700)
+				.animate({ height: "80px", width: "300px" }, 500);
+			collapsed = false;
+		}
+	});
 
 	$("#errorDialog").dialog({
 		autoOpen: false,

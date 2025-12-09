@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+	<meta charset="UTF-8">
+	<title>MO0VEY - display tulajdonság</title>
+	<style>
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+		h1 {
+			font-size: 32px;
+		}
+
+		.XY1,
+		.XY2,
+		.XY3,
+		.XY4,
+		.XY5 {
+			background-color: #663399;
+			color: #ffffff;
+			padding: 10px 20px;
+			margin: 5px;
+		}
+
+		.XY1 {
+			display: none;
+		}
+
+		.XY2 {
+			display: inline;
+		}
+
+		.XY3 {
+			display: block;
+			width: 100%;
+			background-color: #0ac65b;
+		}
+
+		.XY4 {
+			display: inline-block;
+		}
+
+		.flex-container {
+			display: flex;
+			background-color: #0ac65b;
+			padding: 5px 0;
+		}
+
+		.XY5 {
+			display: inline-block;
+			margin: 0 10px;
+			background-color: #663399;
+		}
+	</style>
+</head>
+<body>
+	<h1>Megjelenítési tulajdonság</h1>
+
+	<p>display: none:</p>
+	<div class="XY1">PTI BSc 1</div>
+
+	<p>display: inline:</p>
+	<span class="XY2">PTI BSc 1</span>
+	<span class="XY2">PTI BSc 2</span>
+	<span class="XY2">PTI BSc 3</span>
+
+	<p>display: block:</p>
+	<div class="XY3">PTI BSc 1&nbsp;&nbsp;&nbsp; PTI BSc 2&nbsp;&nbsp;&nbsp; PTI BSc 3</div>
+
+	<p>display: inline-block:</p>
+	<div class="XY4">PTI BSc 1</div>
+	<div class="XY4">PTI BSc 2</div>
+	<div class="XY4">PTI BSc 3</div>
+
+	<p>display: flex:</p>
+	<div class="flex-container">
+		<div class="XY5">PTI BSc 1</div>
+		<div class="XY5">PTI BSc 2</div>
+		<div class="XY5">PTI BSc 3</div>
+	</div>
+</body>
+</html>
+

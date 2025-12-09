@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jQuery UI feladatok</title>
+    <title>jQuery feladatok - Animáció és számológép</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="jquery-ui.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -30,36 +30,19 @@
             margin-right: 5px;
         }
 
-        #box {
-            width: 150px;
-            height: 140px;
-            background-color: #9aa7ff;
-            margin-top: 10px;
-            padding: 10px;
+        #animBox {
+            position: relative;
+            left: 300px;
+            top: 0;
+            width: 300px;
+            height: 80px;
+            background-color: #00b359;
+            color: #000;
+            font-size: 12pt;
+            line-height: 80px;
+            text-align: center;
             font-weight: bold;
             cursor: move;
-        }
-
-        #box p {
-            margin: 0;
-        }
-
-        #form-area {
-            margin-top: 20px;
-        }
-
-        #form-area label {
-            display: inline-block;
-            width: 60px;
-        }
-
-        #form-area input[type="text"],
-        #form-area input[type="password"] {
-            width: 180px;
-        }
-
-        #source-link {
-            margin-top: 20px;
         }
 
         #calc fieldset {
@@ -71,7 +54,7 @@
 
         #calc label {
             display: inline-block;
-            width: 25px;
+            width: 30px;
         }
 
         #calc input[type="text"] {
@@ -86,18 +69,20 @@
     </style>
 </head>
 <body>
-    <h1>jQuery UI feladatok</h1>
+    <h1>jQuery feladatok - Animáció</h1>
 
     <div class="section">
         <div id="controls">
-            <button id="removeBoxBtn">Doboz eltávolítása</button>
-            <button id="clearDivBtn">A DIV elemek kiürítése</button>
+            <button id="startAnim">Animáció indítása</button>
+            <button id="hideP">Bekezdések elrejtése</button>
+            <button id="toggleBox">Összecsuk / Kinyit</button>
         </div>
 
-        <div id="box">
-            THE - PTI<br><br>
-            • • • • •
-        </div>
+        <p>A jQuery egy JavaScript programozói könyvtár, amelyet John Resig kezdett fejleszteni.</p>
+        <p>Elterjedtnek tekinthető, segítségével könnyen bejárható egy HTML oldal DOM-ja.</p>
+        <p>Effekteket és animációt adhatunk HTML elemeinkhez. Számtalan plugint írtak hozzá.</p>
+
+        <div id="animBox">ME GEIK - PTI</div>
     </div>
 
     <div class="section" id="calc">
@@ -130,10 +115,6 @@
         <div id="errorDialog" title="Hiba" style="display:none;">
             <p id="errorText"></p>
         </div>
-    </div>
-
-    <div id="source-link">
-        <p><strong>Forrás:</strong> <a href="https://www.w3schools.com/jquery/jquery_dom_get.asp" target="_blank">http://www.w3schools.com/jquery/jquery_dom_get.asp</a></p>
     </div>
 
     <script src="MO0VEY_7.js"></script>
