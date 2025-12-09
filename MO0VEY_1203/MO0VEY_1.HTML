@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery - AJAX feladat</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            font-size: 32px;
+        }
+
+        #container {
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #c7cfee;
+            width: 400px;
+        }
+
+        #load-btn {
+            margin-top: 10px;
+        }
+
+        .title {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery - AJAX feladat</h1>
+    <p>Kattintson az Adatok betöltése gombra!</p>
+
+    <div id="container">
+        TERÜLET
+    </div>
+
+    <button id="load-btn">Adatok betöltése</button>
+
+    <script>
+        $(document).ready(function () {
+            $("#load-btn").on("click", function () {
+                $.getJSON("MO0VEY_orarend.json", function (data) {
+                    var html = "";
+
+                    html += "<h2>MISKOLCI EGYETEM</h2>";
+                    html += "<p><span class='title'>Cím:</span> 3515 Miskolc Egyetemváros</p>";
+
+                    html += "<p><span class='title'>Telefonszám:</span></p>";
+                    html += "<p>Vezetékes: 0646 555-125<br>Mobil: 0670 555-4567</p>";
+
+                    html += "<h3>MI, PTI Órarend " + data.felev + "</h3>";
+                    html += "<p><span class='title'>Tárgy:</span> " + data.kurzus + "</p>";
+
+                    if (data.orarend && data.orarend.length > 0) {
+                        var ora = data.orarend[0];
+                        html += "<p><span class='title'>Időpont:</span><br>" +
+                            "Nap: " + ora.nap + "<br>" +
+                            "Tól: " + ora.kezdes + "<br>" +
+                            "Ig: " + ora.befejezes + "</p>";
+
+                        html += "<p><span class='title'>Helyszín:</span> " + ora.terem.szoba + "</p>";
+                        html += "<p><span class='title'>Oktató:</span> " + data.oktató + "</p>";
+                        html += "<p><span class='title'>Szak:</span> MI, PTI</p>";
+                        html += "<p><span class='title'>Típus:</span> " + ora.tipus + "</p>";
+                    }
+
+                    $("#container").html(html);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

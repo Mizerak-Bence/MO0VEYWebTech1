@@ -1,0 +1,35 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+	font-size: 32px;
+}
+
+#container,
+#container-full {
+	margin-top: 10px;
+	padding: 15px;
+	background-color: #c7cfee;
+	width: 400px;
+}
+
+#load-btn,
+#load-btn-full {
+	margin-top: 10px;
+}
+
+.title {
+	font-weight: bold;
+}
+
+.orarend-list {
+	margin-top: 10px;
+}
+
+.ora-item {
+	margin-bottom: 10px;
+	border-bottom: 1px solid #555;
+	padding-bottom: 5px;
+}
+

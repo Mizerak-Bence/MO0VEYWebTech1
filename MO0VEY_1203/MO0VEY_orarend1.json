@@ -1,0 +1,88 @@
+{
+	"felev": "2025 ősz",
+	"kurzus": "Webtechnológiák 1",
+	"oktató": "Dr. Bednarik László",
+	"orarend": [
+		{
+			"nap": "Hétfő",
+			"kezdes": "10:00",
+			"befejezes": "11:30",
+			"tipus": "gyakorlat",
+			"terem": {
+				"epulet": "Informatikai épület",
+				"szoba": "IB204",
+				"cim": {
+					"iranyitoszam": "3525",
+					"varos": "Miskolc",
+					"utca": "Egyetemváros 1."
+				},
+				"telefonszam": "+36 46 123 456"
+			}
+		},
+		{
+			"nap": "Kedd",
+			"kezdes": "08:00",
+			"befejezes": "09:30",
+			"tipus": "előadás",
+			"terem": {
+				"epulet": "Informatikai épület",
+				"szoba": "Inf/101",
+				"cim": {
+					"iranyitoszam": "3525",
+					"varos": "Miskolc",
+					"utca": "Egyetemváros 1."
+				},
+				"telefonszam": "+36 46 234 567"
+			}
+		},
+		{
+			"nap": "Szerda",
+			"kezdes": "12:00",
+			"befejezes": "13:30",
+			"tipus": "gyakorlat",
+			"terem": {
+				"epulet": "Informatikai épület",
+				"szoba": "Inf/101",
+				"cim": {
+					"iranyitoszam": "3525",
+					"varos": "Miskolc",
+					"utca": "Egyetemváros 1."
+				},
+				"telefonszam": "+36 46 555 125"
+			}
+		},
+		{
+			"nap": "Csütörtök",
+			"kezdes": "14:00",
+			"befejezes": "15:30",
+			"tipus": "konzultáció",
+			"terem": {
+				"epulet": "Informatikai épület",
+				"szoba": "IB304",
+				"cim": {
+					"iranyitoszam": "3525",
+					"varos": "Miskolc",
+					"utca": "Egyetemváros 1."
+				},
+				"telefonszam": "+36 46 345 678"
+			}
+		},
+		{
+			"nap": "Péntek",
+			"kezdes": "08:00",
+			"befejezes": "09:30",
+			"tipus": "gyakorlat",
+			"terem": {
+				"epulet": "Informatikai épület",
+				"szoba": "IB204",
+				"cim": {
+					"iranyitoszam": "3525",
+					"varos": "Miskolc",
+					"utca": "Egyetemváros 1."
+				},
+				"telefonszam": "+36 46 456 789"
+			}
+		}
+	]
+}
+

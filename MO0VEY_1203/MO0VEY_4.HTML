@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery feladat - Négy alapművelet</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        fieldset {
+            width: 260px;
+            padding: 10px;
+            background-color: #f5f5ff;
+        }
+
+        label {
+            display: inline-block;
+            width: 28px;
+        }
+
+        input[type="text"] {
+            width: 150px;
+            background-color: #c7d8ff;
+            border: 1px solid #999;
+        }
+
+        .ops {
+            margin-top: 10px;
+        }
+
+        #result {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery feladat</h1>
+    <p><strong>Adjon meg két egész számot!</strong></p>
+
+    <form id="calcForm">
+        <fieldset>
+            <div>
+                <label for="a">A=</label>
+                <input type="text" id="a" name="a">
+            </div>
+            <div style="margin-top:5px;">
+                <label for="b">B=</label>
+                <input type="text" id="b" name="b">
+            </div>
+
+            <div class="ops">
+                <div><input type="radio" name="op" value="mul" id="opMul"> <label for="opMul">A*B</label></div>
+                <div><input type="radio" name="op" value="div" id="opDiv"> <label for="opDiv">A/B</label></div>
+                <div><input type="radio" name="op" value="add" id="opAdd"> <label for="opAdd">A+B</label></div>
+                <div><input type="radio" name="op" value="sub" id="opSub"> <label for="opSub">A-B</label></div>
+            </div>
+
+            <div style="margin-top:10px;">
+                <button type="button" id="calcBtn">Számol</button>
+                &nbsp; <span>Eredmény:</span> <span id="result"></span>
+            </div>
+        </fieldset>
+    </form>
+
+    <script src="MO0VEY_4.js"></script>
+</body>
+</html>

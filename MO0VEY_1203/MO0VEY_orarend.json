@@ -1,0 +1,24 @@
+{
+	"felev": "2025 ősz",
+	"kurzus": "Webtechnológiák 1",
+	"oktató": "Dr. Bednarik László",
+	"orarend": [
+		{
+			"nap": "Hétfő",
+			"kezdes": "10:00",
+			"befejezes": "11:30",
+			"tipus": "gyakorlat",
+			"terem": {
+				"epulet": "Informatikai épület",
+				"szoba": "IB204",
+				"cim": {
+					"iranyitoszam": "3525",
+					"varos": "Miskolc",
+					"utca": "Egyetemváros 1."
+				},
+				"telefonszam": "+36 46 123 456"
+			}
+		}
+	]
+}
+
