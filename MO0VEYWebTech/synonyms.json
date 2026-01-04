@@ -1,0 +1,54 @@
+[
+	{
+		"id": "asthma-copd",
+		"aliases": ["asztma", "copd", "nehézlégzés", "nehezlegzes", "hörgő", "horgo"]
+	},
+	{
+		"id": "common-cold",
+		"aliases": ["nátha", "natha", "megfázás", "megfazas", "orrfolyás", "orrfolyas", "tüsszögés", "tusszoges"]
+	},
+	{
+		"id": "influenza",
+		"aliases": ["influ", "influenza", "magas láz", "magas laz", "izomfájdalom", "izomfajdalom"]
+	},
+	{
+		"id": "bacterial-throat",
+		"aliases": ["torokfájás", "torokfajas", "torokgyulladás", "torokgyulladas", "nyelési nehézség", "nyelesi nehezseg"]
+	},
+	{
+		"id": "migraine",
+		"aliases": ["migrén", "migren", "fejfájás", "fejfajas", "fényérzékenység", "fenyerzekenyseg"]
+	},
+	{
+		"id": "reflux",
+		"aliases": ["gyomorégés", "gyomoreges", "savas", "sav", "reflux"]
+	},
+	{
+		"id": "constipation",
+		"aliases": ["székrekedés", "szekrekedes", "puffadás", "puffadas"]
+	},
+	{
+		"id": "allergy-hayfever",
+		"aliases": ["allergia", "szénanátha", "szenanatha", "pollen", "viszkető szem", "viszketo szem"]
+	},
+	{
+		"id": "eczema",
+		"aliases": ["ekcéma", "ekcema", "bőrkiütés", "borkiutes", "viszketés", "viszketes"]
+	},
+	{
+		"id": "diabetes",
+		"aliases": ["cukorbetegség", "cukorbetegseg", "inzulinrezisztencia", "vércukor", "vercukor"]
+	},
+	{
+		"id": "hypertension",
+		"aliases": ["magas vérnyomás", "magas vernyomas", "vérnyomás", "vernyomas"]
+	},
+	{
+		"id": "insomnia",
+		"aliases": ["álmatlanság", "almatlansag", "alvászavar", "alvaszavar", "nehéz elalvás", "nehez elalvas"]
+	},
+	{
+		"id": "anxiety",
+		"aliases": ["szorongás", "szorongas", "pánik", "panik", "stressz"]
+	}
+]

@@ -1,0 +1,145 @@
+[
+	{
+		"id": "asthma-copd",
+		"name": "Asztma, COPD",
+		"category": "Légzőszervi",
+		"symptoms": ["Nehézlégzés", "Sípoló légzés", "Krónikus köhögés"],
+		"redFlags": ["Fulladásérzés nyugalomban", "Kékes ajkak", "Mellkasi fájdalom"],
+		"homeTips": ["Kerülje az irritáló anyagokat (füst, por)", "Szellőztessen rendszeresen", "Figyelje a tünetek változását"],
+		"recommendedOTC": ["Sós vizes orrspray", "Párásítás"],
+		"whenToSeeDoctor": "Ha a nehézlégzés hirtelen romlik, vagy beszéd közben is fullad, mindenképp kérjen orvosi segítséget.",
+		"tags": ["krónikus", "légzés", "köhögés"]
+	},
+	{
+		"id": "common-cold",
+		"name": "Megfázás, nátha",
+		"category": "Fertőzés",
+		"symptoms": ["Orrfolyás", "Torokkaparás", "Tüsszögés", "Enyhe hőemelkedés"],
+		"redFlags": ["Magas láz 3 napnál tovább", "Erős mellkasi fájdalom", "Nehézlégzés"],
+		"homeTips": ["Pihenjen", "Igyon több folyadékot", "Használjon sós vizes öblítést"],
+		"recommendedOTC": ["Paracetamol", "Ibuprofen", "C-vitamin"],
+		"whenToSeeDoctor": "Ha a tünetek egy hét után sem javulnak, vagy magas láz és erős gyengeség jelentkezik, érdemes orvossal konzultálni.",
+		"tags": ["gyakori", "nátha", "torok"]
+	},
+	{
+		"id": "influenza",
+		"name": "Influenza",
+		"category": "Fertőzés",
+		"symptoms": ["Hirtelen magas láz", "Izomfájdalom", "Erős fáradtság", "Száraz köhögés"],
+		"redFlags": ["Tartós nehézlégzés", "Zavartság", "Kiszáradás jelei"],
+		"homeTips": ["Maradjon otthon és pihenjen", "Lázcsillapítás szükség szerint", "Folyadékpótlás"],
+		"recommendedOTC": ["Paracetamol", "Ibuprofen"],
+		"whenToSeeDoctor": "Krónikus betegség, várandósság vagy súlyosbodó tünetek esetén kérjen orvosi tanácsot.",
+		"tags": ["láz", "fertőzés", "izomfájdalom"]
+	},
+	{
+		"id": "bacterial-throat",
+		"name": "Torokgyulladás (gyanús bakteriális fertőzés)",
+		"category": "Fertőzés",
+		"symptoms": ["Erős torokfájás", "Láz", "Nyirokcsomó-duzzanat"],
+		"redFlags": ["Nyelési nehézség", "Nyakduzzanat", "Fulladás"],
+		"homeTips": ["Langyos sós vizes gargalizálás", "Pihenés", "Megfelelő folyadékbevitel"],
+		"recommendedOTC": ["Torokfertőtlenítő", "Paracetamol"],
+		"whenToSeeDoctor": "Ha a torokfájás gyorsan rosszabbodik, magas láz kíséri, vagy fehér lepedék jelenik meg, orvosi vizsgálat javasolt.",
+		"tags": ["torok", "láz", "orvos"]
+	},
+	{
+		"id": "migraine",
+		"name": "Migrén",
+		"category": "Neurológiai",
+		"symptoms": ["Lüktető fejfájás", "Fényérzékenység", "Hányinger"],
+		"redFlags": ["Élete legerősebb fejfájása", "Neurológiai tünetek (zsibbadás, beszédzavar)", "Láz és tarkókötöttség"],
+		"homeTips": ["Sötét, csendes helyen pihenjen", "Igyon vizet", "Kerülje a trigger ételeket/italokat"],
+		"recommendedOTC": ["Ibuprofen", "Paracetamol", "Magnézium"],
+		"whenToSeeDoctor": "Új típusú, szokatlan vagy hirtelen nagyon erős fejfájás esetén sürgős kivizsgálás szükséges.",
+		"tags": ["fejfájás", "fényérzékenység", "visszatérő"]
+	},
+	{
+		"id": "reflux",
+		"name": "Gyomorégés, reflux",
+		"category": "Emésztőrendszeri",
+		"symptoms": ["Égő érzés a mellkasban", "Savas felböfögés", "Torokkaparás"],
+		"redFlags": ["Nyelési nehézség", "Vérhányás", "Fogyás ismeretlen okból"],
+		"homeTips": ["Kisebb adagok", "Kerülje a késő esti evést", "Fejvég megemelése alváskor"],
+		"recommendedOTC": ["Savlekötő", "Alginsav tartalmú készítmény"],
+		"whenToSeeDoctor": "Ha gyakori, visszatérő, vagy éjszakai panaszai vannak, illetve red flag tünetek jelentkeznek, kérjen orvosi tanácsot.",
+		"tags": ["gyomor", "égés", "gyakori"]
+	},
+	{
+		"id": "constipation",
+		"name": "Székrekedés",
+		"category": "Emésztőrendszeri",
+		"symptoms": ["Ritka széklet", "Hasi kellemetlenség", "Puffadás"],
+		"redFlags": ["Véres széklet", "Erős hasi fájdalom", "Tartós panasz 2 hétnél tovább"],
+		"homeTips": ["Több folyadék", "Rostbevitel növelése", "Rendszeres mozgás"],
+		"recommendedOTC": ["Rostkiegészítő", "Ozmótikus hashajtó"],
+		"whenToSeeDoctor": "Tartós, visszatérő panasz vagy véres széklet esetén orvosi kivizsgálás javasolt.",
+		"tags": ["puffadás", "emésztés", "gyakori"]
+	},
+	{
+		"id": "allergy-hayfever",
+		"name": "Allergia, szénanátha",
+		"category": "Allergia",
+		"symptoms": ["Tüsszögés", "Orrfolyás", "Viszkető szem"],
+		"redFlags": ["Légszomj", "Duzzanat az arcon/torokban", "Kiütés és nehézlégzés együtt"],
+		"homeTips": ["Pollenjelentés figyelése", "Zuhanyzás hazatérés után", "Gyakori ágyneműcsere"],
+		"recommendedOTC": ["Antihisztamin", "Sós vizes orrspray"],
+		"whenToSeeDoctor": "Ha a tünetek súlyosak, tartósak vagy asztmás panaszokkal társulnak, érdemes allergológust felkeresni.",
+		"tags": ["szezonális", "tüsszögés", "szem"]
+	},
+	{
+		"id": "eczema",
+		"name": "Ekcéma, bőrkiütések",
+		"category": "Bőr",
+		"symptoms": ["Viszketés", "Piros foltok", "Száraz bőr"],
+		"redFlags": ["Gyorsan terjedő kiütés", "Láz és kiütés", "Fertőzés jelei (genny, erős fájdalom)"],
+		"homeTips": ["Illatmentes hidratálás", "Kímélő tisztálkodás", "Irritáló anyagok kerülése"],
+		"recommendedOTC": ["Bőrpuhító krém", "Cink-oxid"],
+		"whenToSeeDoctor": "Ha a kiütés gyorsan romlik, fertőzés jelei látszanak, vagy a viszketés alvást zavar, kérjen orvosi tanácsot.",
+		"tags": ["bőr", "viszketés", "gyakori"]
+	},
+	{
+		"id": "diabetes",
+		"name": "Cukorbetegség, inzulinrezisztencia",
+		"category": "Anyagcsere",
+		"symptoms": ["Fokozott szomjúság", "Gyakori vizelés", "Fáradtság"],
+		"redFlags": ["Hirtelen látásromlás", "Sebgyógyulási zavar", "Nagyon magas vércukor gyanúja"],
+		"homeTips": ["Rendszeres étkezés", "Mozgás beiktatása", "Cukros italok kerülése"],
+		"recommendedOTC": ["Életmódtámogató készítmények"],
+		"whenToSeeDoctor": "Ha a tünetek újonnan jelentkeznek, vagy rosszabbodnak, laborvizsgálat és orvosi kivizsgálás javasolt.",
+		"tags": ["krónikus", "anyagcsere", "fáradtság"]
+	},
+	{
+		"id": "hypertension",
+		"name": "Magas vérnyomás",
+		"category": "Keringési",
+		"symptoms": ["Fejfájás", "Szédülés", "Fáradékonyság"],
+		"redFlags": ["Mellkasi fájdalom", "Légszomj", "Neurológiai tünetek"],
+		"homeTips": ["Sóbevitel csökkentése", "Rendszeres mozgás", "Stresszcsökkentés"],
+		"recommendedOTC": ["Vérnyomásnapló"],
+		"whenToSeeDoctor": "Tartósan magas értékek vagy mellkasi fájdalom esetén azonnali orvosi vizsgálat szükséges.",
+		"tags": ["keringés", "krónikus", "fejfájás"]
+	},
+	{
+		"id": "insomnia",
+		"name": "Alvászavar, álmatlanság",
+		"category": "Mentális",
+		"symptoms": ["Nehéz elalvás", "Gyakori ébredés", "Nappali álmosság"],
+		"redFlags": ["Tartós hangulati romlás", "Öngyilkossági gondolat", "Súlyos nappali működésromlás"],
+		"homeTips": ["Esti rutin", "Koffein csökkentése", "Képernyőidő mérséklése"],
+		"recommendedOTC": ["Melatonin (orvosi/gyógyszerészi javaslat szerint)", "Magnézium"],
+		"whenToSeeDoctor": "Ha az alvászavar hetek óta fennáll és rontja a mindennapi működést, érdemes szakemberhez fordulni.",
+		"tags": ["alvás", "stressz", "életmód"]
+	},
+	{
+		"id": "anxiety",
+		"name": "Szorongás, pánik",
+		"category": "Mentális",
+		"symptoms": ["Fokozott aggodalom", "Szapora szívverés", "Izzadás"],
+		"redFlags": ["Önveszély", "Mellkasi fájdalom", "Elájulás"],
+		"homeTips": ["Légzőgyakorlat", "Rendszeres alvás", "Mozgás"],
+		"recommendedOTC": ["Nyugtató tea", "Magnézium"],
+		"whenToSeeDoctor": "Ha a rohamok gyakoriak vagy a mindennapi életet zavarják, szakember segítsége javasolt.",
+		"tags": ["stressz", "szív", "mentális"]
+	}
+]

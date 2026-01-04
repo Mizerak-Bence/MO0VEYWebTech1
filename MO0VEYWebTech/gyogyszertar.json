@@ -16,6 +16,7 @@
     {
       "nev": "Lázcsökkentő B",
       "betegseg": "Láz, megfázás",
+      "diseaseIds": ["common-cold", "influenza"],
       "meret": "500 mg pezsgőtabletta",
       "kiszerelesek": [
         { "darab": 12, "ar": 1990 },
@@ -29,6 +30,7 @@
     {
       "nev": "Gyomorvédő C",
       "betegseg": "Gyomorégés, savtúltengés",
+      "diseaseIds": ["reflux"],
       "meret": "20 mg kapszula",
       "kiszerelesek": [
         { "darab": 14, "ar": 2490 },
@@ -55,6 +57,7 @@
     {
     "nev": "Vérnyomáscsökkentő E",
     "betegseg": "Magas vérnyomás, szívproblémák",
+    "diseaseIds": ["hypertension"],
     "meret": "5 mg tabletta",
     "kiszerelesek": [
     { "darab": 28, "ar": 4590 },
@@ -68,6 +71,7 @@
     {
     "nev": "Allergiaellenes F",
     "betegseg": "Szénanátha, allergiás tünetek",
+    "diseaseIds": ["allergy-hayfever"],
     "meret": "10 mg tabletta",
     "kiszerelesek": [
     { "darab": 10, "ar": 1890 },
@@ -120,6 +124,7 @@
     {
     "nev": "Bőrgyógyító J",
     "betegseg": "Bőrkiütések, ekcéma",
+    "diseaseIds": ["eczema"],
     "meret": "50 mg krém",
     "kiszerelesek": [
     { "darab": 30, "ar": 1790 },
@@ -146,6 +151,7 @@
     {
     "nev": "Alvássegítő L",
     "betegseg": "Álmatlanság, alvászavarok",
+    "diseaseIds": ["insomnia"],
     "meret": "5 mg tabletta",
     "kiszerelesek": [
     { "darab": 10, "ar": 2490 },
@@ -171,6 +177,7 @@
     },{
     "nev": "Antibiotikum N",
     "betegseg": "Bakteriális fertőzések, torokgyulladás",
+    "diseaseIds": ["bacterial-throat"],
     "meret": "500 mg tabletta",
     "kiszerelesek": [
     { "darab": 10, "ar": 3590 },
@@ -184,6 +191,7 @@
     {
     "nev": "Szorongásoldó O",
     "betegseg": "Szorongás, pánikrohamok",
+    "diseaseIds": ["anxiety"],
     "meret": "10 mg tabletta",
     "kiszerelesek": [
     { "darab": 30, "ar": 4890 },
@@ -197,6 +205,7 @@
     {
     "nev": "Vércukorszint-szabályozó P",
     "betegseg": "Cukorbetegség, inzulinrezisztencia",
+    "diseaseIds": ["diabetes"],
     "meret": "850 mg tabletta",
     "kiszerelesek": [
     { "darab": 60, "ar": 3990 },
@@ -210,6 +219,7 @@
     {
     "nev": "Vízhajtó Q",
     "betegseg": "Magas vérnyomás, ödéma",
+    "diseaseIds": ["hypertension"],
     "meret": "25 mg tabletta",
     "kiszerelesek": [
     { "darab": 30, "ar": 2290 },
@@ -236,6 +246,7 @@
     {
     "nev": "Köhögéscsillapító S",
     "betegseg": "Száraz köhögés, megfázás",
+    "diseaseIds": ["common-cold"],
     "meret": "15 mg szirup",
     "kiszerelesek": [
     { "darab": 100, "ar": 1890 },
@@ -249,6 +260,7 @@
     {
     "nev": "Emésztőrendszeri T",
     "betegseg": "Gyomorégés, reflux",
+    "diseaseIds": ["reflux"],
     "meret": "20 mg kapszula",
     "kiszerelesek": [
     { "darab": 14, "ar": 2590 },
@@ -327,6 +339,7 @@
     {
     "nev": "Légzéskönnyítő Z",
     "betegseg": "Asztma, COPD",
+    "diseaseIds": ["asthma-copd"],
     "meret": "100 mcg inhalátor",
     "kiszerelesek": [
     { "darab": 200, "ar": 3990 },
@@ -340,6 +353,7 @@
     {
     "nev": "Fájdalomcsillapító AA",
     "betegseg": "Migrén, erős fejfájás",
+    "diseaseIds": ["migraine"],
     "meret": "50 mg tabletta",
     "kiszerelesek": [
     { "darab": 10, "ar": 2490 },
@@ -353,6 +367,7 @@
     {
     "nev": "Emésztésjavító BB",
     "betegseg": "Emésztési lassúság, székrekedés",
+    "diseaseIds": ["constipation"],
     "meret": "5 mg tabletta",
     "kiszerelesek": [
     { "darab": 20, "ar": 1790 },
@@ -379,6 +394,7 @@
     {
     "nev": "Vírusellenes DD",
     "betegseg": "Vírusos fertőzések, influenza",
+    "diseaseIds": ["influenza"],
     "meret": "75 mg kapszula",
     "kiszerelesek": [
     { "darab": 10, "ar": 5990 },
@@ -405,6 +421,7 @@
     {
     "nev": "Allergiaellenes FF",
     "betegseg": "Szezonális allergia, orrdugulás",
+    "diseaseIds": ["allergy-hayfever"],
     "meret": "120 mg tabletta",
     "kiszerelesek": [
     { "darab": 10, "ar": 1890 },

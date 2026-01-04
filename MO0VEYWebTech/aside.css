@@ -11,6 +11,10 @@
 	color: #e5e7eb;
 	font-size: 0.9rem;
 	min-width: 230px;
+	max-height: calc(100vh - 110px);
+	overflow: auto;
+	overflow-x: hidden;
+	overscroll-behavior: contain;
 }
 
 .oldal-aside h2 {
@@ -55,4 +59,10 @@
 	transform: translateY(-1px);
 	box-shadow: 0 14px 30px rgba(15, 23, 42, 0.95);
 	border-color: #38bdf8;
+}
+
+.oldal-aside-nav a.active {
+	background-color: rgba(15, 23, 42, 1);
+	border-color: #38bdf8;
+	box-shadow: 0 14px 30px rgba(15, 23, 42, 0.95);
 }

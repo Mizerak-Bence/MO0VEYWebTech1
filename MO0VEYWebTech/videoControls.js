@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const video = document.getElementById("tornaVideo");
+    const video = document.getElementById("exerciseVideo");
     const playBtn = document.getElementById("playVideo");
     const pauseBtn = document.getElementById("pauseVideo");
     const muteBtn = document.getElementById("muteVideo");
@@ -10,13 +10,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const speedUpBtn = document.getElementById("speedUp");
     const sizeDownBtn = document.getElementById("sizeDown");
     const sizeUpBtn = document.getElementById("sizeUp");
+    const videoWrapper = document.querySelector(".video-frame-wrapper");
 
-    let currentWidthPercent = 100;
-    const minWidthPercent = 70;
-    const maxWidthPercent = 120;
+    let currentWidth = 420;
+    const minWidth = 260;
+    const maxWidth = 640;
 
     if (!video) {
         return;
+    }
+
+    if (videoWrapper) {
+        videoWrapper.style.maxWidth = currentWidth + "px";
     }
 
     playBtn.addEventListener("click", function () {
@@ -57,12 +62,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     sizeDownBtn.addEventListener("click", function () {
-        currentWidthPercent = Math.max(minWidthPercent, currentWidthPercent - 10);
-        video.style.width = currentWidthPercent + "%";
+        if (!videoWrapper) return;
+        currentWidth = Math.max(minWidth, currentWidth - 40);
+        videoWrapper.style.maxWidth = currentWidth + "px";
     });
 
     sizeUpBtn.addEventListener("click", function () {
-        currentWidthPercent = Math.min(maxWidthPercent, currentWidthPercent + 10);
-        video.style.width = currentWidthPercent + "%";
+        if (!videoWrapper) return;
+        currentWidth = Math.min(maxWidth, currentWidth + 40);
+        videoWrapper.style.maxWidth = currentWidth + "px";
     });
 });

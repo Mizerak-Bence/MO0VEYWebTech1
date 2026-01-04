@@ -6,54 +6,127 @@
 	<title>Gyógyszerek - Egészséges Élet Gyógyszertár</title>
 	<meta name="author" content="MO0VEY - Mizerák Bence">
 
+	<meta name="description" content="Áttekinthető gyógyszerlista, szűrőkkel és részletes információkkal a leggyakrabban használt készítményekről. Egészséges Élet Gyógyszertár weboldal.">
+	<meta name="keywords" content="gyógyszerek, gyógyszertár, egészség, betegség, vényköteles, mellékhatás, ár, adagolás, szűrő, Egészséges Élet">
+
+	<meta property="og:title" content="Gyógyszerek - Egészséges Élet Gyógyszertár">
+	<meta property="og:description" content="Áttekinthető gyógyszerlista, szűrőkkel és részletes információkkal a leggyakrabban használt készítményekről.">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://egeszsegeselet.hu/gyogyszerek.html">
+	<meta property="og:image" content="https://egeszsegeselet.hu/assets/gyogyszertar_og.jpg">
+
 	<link rel="stylesheet" href="Hatterszin.css">
 	<link rel="stylesheet" href="menu.css">
 	<link rel="stylesheet" href="backToTop.css">
 	<link rel="stylesheet" href="aside.css">
+	<script src="pageTransitions.js" defer></script>
+	<script src="glossary.js" defer></script>
 	<script src="gyogyszerek.js" defer></script>
 	<script src="backToTop.js" defer></script>
-
 	<style>
-		body {
-			min-height: 100vh;
-			display: flex;
-			flex-direction: column;
-			margin: 0;
-			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-			color: #0f172a;
-			background-color: #020617;
-			background-image: url("hatter_gyogyszerek.jpg");
-			background-repeat: no-repeat;
-			background-position: center center;
-			background-size: cover;
+	@media (max-width: 900px) {
+		.table-wrapper {
+			overflow-x: visible;
 		}
-
-		header {
-			background: linear-gradient(90deg, #0f172a, #1f2937);
-			color: #ffffff;
-			padding: 14px 24px 10px 24px;
-			box-shadow: 0 2px 6px rgba(15, 23, 42, 0.5);
+		#medicineTable, #medicineTable thead, #medicineTable tbody, #medicineTable tr, #medicineTable th, #medicineTable td {
+			display: block;
+			width: 100%;
 		}
-
-		header h1 {
-			margin: 0;
-			letter-spacing: 0.04em;
+		#medicineTable thead {
+			display: none;
 		}
-
-		header p {
-			margin: 4px 0 0 0;
-			color: #9ca3af;
+		#medicineTable tr {
+			margin-bottom: 18px;
+			border-radius: 10px;
+			box-shadow: 0 2px 8px rgba(15,23,42,0.18);
+			background: rgba(15,23,42,0.85);
+			border: 1px solid rgba(148,163,184,0.3);
+			padding: 10px 0;
 		}
-
+		#medicineTable td {
+			border: none;
+			padding: 8px 12px;
+			position: relative;
+			text-align: left;
+		}
+		#medicineTable td:before {
+			content: attr(data-label);
+			font-weight: bold;
+			color: #a5b4fc;
+			display: block;
+			margin-bottom: 2px;
+			font-size: 0.98em;
+		}
+		#medicineTable .details-row td {
+			background: rgba(30,41,59,0.92);
+			border-radius: 0 0 10px 10px;
+		}
+	}
 		main {
-			max-width: 1100px;
+			max-width: 1480px;
 			margin: 0 auto;
-			padding: 28px 32px 32px 32px;
+			padding: 18px 24px 42px;
 			box-sizing: border-box;
-			background: linear-gradient(to bottom, rgba(15, 23, 42, 0) 0, rgba(15, 23, 42, 0.9) 220px);
-			border-radius: 0 0 16px 16px;
 		}
-
+		@media (min-width: 1100px) {
+			main {
+				display: grid;
+				grid-template-columns: minmax(0, 1fr) 320px;
+				grid-template-areas:
+					"filters filters"
+					"content aside";
+				gap: 18px;
+				align-items: start;
+			}
+			#filterPanel {
+				grid-area: filters;
+			}
+			main > section {
+				grid-area: content;
+				margin-top: 0;
+			}
+			main > aside {
+				grid-area: aside;
+			}
+		}
+		html {
+			background: #020617;
+		}
+		body {
+			box-sizing: border-box;
+			position: relative;
+			background:
+				radial-gradient(1100px 700px at 12% 0%, rgba(56, 189, 248, 0.22) 0%, rgba(56, 189, 248, 0) 55%),
+				radial-gradient(950px 650px at 88% 6%, rgba(99, 102, 241, 0.22) 0%, rgba(99, 102, 241, 0) 58%),
+				radial-gradient(1200px 760px at 50% 120%, rgba(16, 185, 129, 0.14) 0%, rgba(16, 185, 129, 0) 50%),
+				linear-gradient(to bottom, rgba(15, 23, 42, 0.35) 0, rgba(15, 23, 42, 0.92) 260px, rgba(2, 6, 23, 0.98) 100%);
+			background-attachment: fixed;
+			border-radius: 0 0 16px 16px;
+			isolation: isolate;
+		}
+		body::before {
+			content: "";
+			position: fixed;
+			inset: 0;
+			z-index: -1;
+			background:
+				linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+				linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+				radial-gradient(600px 420px at 20% 20%, rgba(56, 189, 248, 0.12), transparent 60%),
+				radial-gradient(520px 380px at 78% 26%, rgba(99, 102, 241, 0.12), transparent 62%);
+			background-size: 46px 46px, 46px 46px, 100% 100%, 100% 100%;
+			background-position: 0 0, 0 0, 0 0, 0 0;
+			opacity: 0.9;
+			transform: translateZ(0);
+			animation: bgGridFloat 16s ease-in-out infinite;
+			pointer-events: none;
+			mix-blend-mode: screen;
+		}
+		@media (prefers-reduced-motion: reduce) {
+			body::before {
+				animation: none;
+			}
+		}
 		section {
 			background-color: rgba(15, 23, 42, 0.78);
 			padding: 18px 18px 16px 18px;
@@ -66,7 +139,6 @@
 			transform: translateY(18px) scale(0.98);
 			animation: cardIn 0.85s ease-out forwards;
 		}
-
 		.table-wrapper {
 			max-height: 1220px;
 			overflow-y: auto;
@@ -74,7 +146,6 @@
 			border-radius: 10px;
 			border: 1px solid rgba(148, 163, 184, 0.5);
 		}
-
 		#filterPanel {
 			background-color: rgba(15, 23, 42, 0.68);
 			padding: 16px 18px;
@@ -85,7 +156,6 @@
 			margin-bottom: 10px;
 			backdrop-filter: blur(10px);
 		}
-
 		#filterContent {
 			display: flex;
 			flex-wrap: wrap;
@@ -93,18 +163,51 @@
 			margin-top: 8px;
 			align-items: flex-end;
 		}
-
+		#diseaseSummary {
+			display: none;
+			margin-top: 12px;
+			padding: 12px 14px;
+			border-radius: 14px;
+			border: 1px solid rgba(148, 163, 184, 0.55);
+			background: rgba(2, 6, 23, 0.55);
+			backdrop-filter: blur(10px);
+		}
+		#diseaseSummary h3 {
+			margin: 0 0 6px 0;
+			font-size: 1.02rem;
+		}
+		#diseaseSummary p {
+			margin: 6px 0 0 0;
+			color: rgba(226, 232, 240, 0.92);
+		}
+		#diseaseSummary .diseaseSummaryRed {
+			color: rgba(251, 113, 133, 0.95);
+		}
+		#medicineStats {
+			margin-top: 12px;
+			padding: 12px 14px;
+			border-radius: 14px;
+			border: 1px solid rgba(148, 163, 184, 0.55);
+			background: rgba(2, 6, 23, 0.55);
+			backdrop-filter: blur(10px);
+		}
+		#medicineStats h3 {
+			margin: 0 0 6px 0;
+			font-size: 1.02rem;
+		}
+		#medicineStats p {
+			margin: 6px 0 0 0;
+			color: rgba(226, 232, 240, 0.92);
+		}
 		.filter-field {
 			display: flex;
 			flex-direction: column;
 			gap: 4px;
 		}
-
 		.filter-field label {
 			font-size: 0.9rem;
 			font-weight: bold;
 		}
-
 		.filter-field input,
 		.filter-field select {
 			padding: 6px 8px;
@@ -114,7 +217,6 @@
 			background-color: rgba(15, 23, 42, 0.85);
 			color: #e5e7eb;
 		}
-
 		#filterToggle {
 			background: linear-gradient(135deg, #06b6d4, #0ea5e9);
 			color: #0f172a;
@@ -127,13 +229,11 @@
 			box-shadow: 0 10px 25px rgba(8, 47, 73, 0.7);
 			transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, filter 0.15s ease-out;
 		}
-
 		#filterToggle:hover {
 			transform: translateY(-1px);
 			box-shadow: 0 14px 32px rgba(8, 47, 73, 0.8);
 			filter: brightness(1.05);
 		}
-
 		footer {
 			background-color: #020617;
 			color: #9ca3af;
@@ -143,35 +243,32 @@
 			margin-top: auto;
 			box-shadow: 0 -2px 5px rgba(15, 23, 42, 0.5);
 		}
-
 		table {
 			width: 100%;
 			border-collapse: collapse;
 		}
-
 		th, td {
 			border: 1px solid rgba(148, 163, 184, 0.7);
 			padding: 8px;
 			text-align: left;
 			vertical-align: top;
 		}
-
 		th {
-			background-color: rgba(15, 23, 42, 0.95);
+			background-color: #1f2937;
 			color: #e5e7eb;
+			position: sticky;
+			top: 0;
+			z-index: 2;
+			box-shadow: 0 2px 6px rgba(15, 23, 42, 0.18);
 		}
-
 		tbody tr:nth-child(even) {
 			background-color: rgba(15, 23, 42, 0.9);
 			color: #e5e7eb;
 		}
-
-		.veny-jel sup {
+		.prescription-note sup {
 			cursor: help;
 			border-bottom: 1px dotted #555555;
 		}
-
-
 		@keyframes cardIn {
 			from {
 				opacity: 0;
@@ -182,7 +279,6 @@
 				transform: translateY(0) scale(1);
 			}
 		}
-
 		@keyframes bgShift {
 			from {
 				background-position: center top;
@@ -191,39 +287,58 @@
 				background-position: center 18px;
 			}
 		}
-	</style>
-</head>
-<body>
-	<header>
-		<h1>Egészséges Élet Gyógyszertár</h1>
-		<p>A leggyakrabban használt készítmények adatai egy helyen.</p>
-	</header>
+		@keyframes bgGridFloat {
+			0% {
+				background-position: 0 0, 0 0, 0 0, 0 0;
+				filter: blur(0px);
+			}
+			50% {
+				background-position: 10px 14px, 14px 10px, 0 0, 0 0;
+				filter: blur(0.4px);
+			}
+			100% {
+				background-position: 0 0, 0 0, 0 0, 0 0;
+				filter: blur(0px);
+			}
+		}
 
-	<nav>
-		<ul>
-			<li><a href="Gyogyszertar.html">Főoldal</a></li>
-			<li><a href="gyogyszerek.html" class="active">Gyógyszerek</a></li>
-			<li><a href="betegsegek.html">Betegségek</a></li>
-			<li><a href="tanacsok.html">Tanácsok gyógyszer nélkül</a></li>
-			<li><a href="Rendeles.html">Rendelés</a></li>
-		</ul>
-	</nav>
+	</style>
+
+	</head>
+
+	<body>
+		<header>
+			<div id="top"></div>
+			<h1>Egészséges Élet Gyógyszertár</h1>
+			<p>A leggyakrabban használt készítmények adatai egy helyen.</p>
+		</header>
+		<nav aria-label="Fő navigáció">
+			<ul>
+				<li><a href="Gyogyszertar.html" aria-label="Főoldal">Főoldal</a></li>
+				<li><a href="gyogyszerek.html" class="active" aria-current="page" aria-label="Gyógyszerek">Gyógyszerek</a></li>
+				<li><a href="betegsegek.html" aria-label="Betegségek">Betegségek</a></li>
+				<li><a href="tanacsok.html" aria-label="Tanácsok gyógyszer nélkül">Tanácsok gyógyszer nélkül</a></li>
+				<li><a href="Rendeles.html" aria-label="Rendelés">Rendelés</a></li>
+			</ul>
+		</nav>
 	
 	<main>
 		<div id="filterPanel">
-			<button id="filterToggle" type="button">Szűrők megjelenítése/elrejtése</button>
+			<button id="filterToggle" type="button" aria-controls="filterContent" aria-expanded="false">Szűrők megjelenítése/elrejtése</button>
 			<div id="filterContent">
 				<div class="filter-field">
 					<label for="filterName">Név tartalmazza:</label>
-					<input type="text" id="filterName" name="filterName">
+					<input type="text" id="filterName" name="filterName" aria-label="Gyógyszer neve szűrő">
 				</div>
 				<div class="filter-field">
 					<label for="filterDisease">Betegség:</label>
-					<select id="filterDisease" name="filterDisease">
+					<select id="filterDisease" name="filterDisease" aria-label="Betegség szűrő">
 						<option value="">Mindegy</option>
 					</select>
 				</div>
 			</div>
+			<div id="diseaseSummary" aria-live="polite"></div>
+			<div id="medicineStats" aria-live="polite"></div>
 		</div>
 
 		<section>
@@ -237,32 +352,66 @@
 			</p>
 
 			<div class="table-wrapper">
-				<table id="gyogyszerTabla">
+				<table id="medicineTable" aria-label="Gyógyszerek adatai">
 					<thead>
 						<tr>
-							<th>Név</th>
-							<th>Betegség</th>
-							<th>Méret / hatóanyag</th>
-							<th>Kiszerelések / ár (Ft)</th>
-							<th>Adagolás</th>
-							<th>Mellékhatások</th>
-							<th class="veny-jel">Vényköteles<sup title="Csak orvos által felírt receptre adható ki.">1</sup></th>
+							<th></th>
+							<th scope="col" data-sort="name" style="cursor:pointer">Név</th>
+							<th scope="col" data-sort="disease" style="cursor:pointer">Betegség</th>
+							<th scope="col" data-sort="size" style="cursor:pointer">Méret / hatóanyag</th>
+							<th scope="col" data-sort="packages" style="cursor:pointer">Kiszerelések / ár (Ft)</th>
+							<th scope="col" data-sort="dosage" style="cursor:pointer">Adagolás</th>
+							<th scope="col" data-sort="sideEffects" style="cursor:pointer">Mellékhatások</th>
+							<th scope="col" data-sort="prescriptionOnly" class="prescription-note" style="cursor:pointer">Vényköteles<sup title="Csak orvos által felírt receptre adható ki.">1</sup></th>
 						</tr>
 					</thead>
 					<tbody>
-						<!-- Ide kerülnek majd a JSON-ból betöltött sorok -->
 					</tbody>
 				</table>
 			</div>
 
-			<p class="veny-jel">
+			<div id="feedbackSection" style="margin-top:32px;">
+				<h3 style="margin-bottom:8px;">Visszajelzés</h3>
+				<form id="feedbackForm" style="display:flex;flex-direction:column;gap:8px;max-width:420px;">
+					<label for="feedbackText">Írja meg véleményét vagy javaslatát:</label>
+					<textarea id="feedbackText" rows="3" required style="resize:vertical;"></textarea>
+					<button type="submit" style="align-self:flex-start;">Küldés</button>
+				</form>
+				<div id="feedbackMsg" style="margin-top:8px;color:#38bdf8;display:none;">Köszönjük a visszajelzését!</div>
+			</div>
+
+			<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				var form = document.getElementById('feedbackForm');
+				var msg = document.getElementById('feedbackMsg');
+				if(form) {
+					form.addEventListener('submit', function(e) {
+						e.preventDefault();
+						msg.style.display = 'block';
+						setTimeout(function(){ msg.style.display = 'none'; form.reset(); }, 2500);
+					});
+				}
+			});
+			</script>
+
+			<p class="prescription-note">
 				<sup>1</sup> Vényköteles: olyan gyógyszer, amelyet csak orvos által felírt
 				recept alapján adhat ki a gyógyszertár.
 			</p>
 		</section>
+
+		<aside class="oldal-aside" aria-label="Gyors elérés">
+			<h2>Gyors elérés</h2>
+			<p>Ugorjon a legfontosabb részekre.</p>
+			<nav class="oldal-aside-nav" aria-label="Oldal részei">
+				<a href="#filterPanel">Szűrők</a>
+				<a href="#medicineTable">Táblázat</a>
+				<a href="#feedbackSection">Visszajelzés</a>
+			</nav>
+		</aside>
 	</main>
 
-	<footer>
+	<footer id="pageFooter">
 		&copy; 2025 Egészséges Élet Gyógyszertár - MO0VEY (Mizerák Bence)
 	</footer>
 

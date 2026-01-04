@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="menu.css">
     <link rel="stylesheet" href="backToTop.css">
     <script src="backToTop.js" defer></script>
+    <script src="pageTransitions.js" defer></script>
+    <script src="glossary.js" defer></script>
     <script src="rendeles.js" defer></script>
 
     <style>
@@ -54,7 +56,7 @@
             box-sizing: border-box;
         }
 
-        .rendeles-kartya {
+        .order-card {
             background-color: rgba(15, 23, 42, 0.94);
             border-radius: 16px;
             border: 1px solid rgba(148, 163, 184, 0.7);
@@ -63,36 +65,36 @@
             backdrop-filter: blur(14px);
         }
 
-        .rendeles-kartya h2 {
+        .order-card h2 {
             margin-top: 0;
             font-size: 1.35rem;
             color: #f9fafb;
         }
 
-        .rendeles-ruidor {
+        .order-layout {
             display: grid;
             grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
             gap: 20px;
             margin-top: 14px;
         }
 
-        .mezocsoport {
+        .form-group {
             margin-bottom: 12px;
         }
 
-        .mezocsoport label {
+        .form-group label {
             display: block;
             margin-bottom: 4px;
             font-size: 0.9rem;
             color: #e5e7eb;
         }
 
-        .mezocsoport input[type="text"],
-        .mezocsoport input[type="email"],
-        .mezocsoport input[type="date"],
-        .mezocsoport input[type="color"],
-        .mezocsoport textarea,
-        .mezocsoport select {
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="date"],
+        .form-group input[type="color"],
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             box-sizing: border-box;
             padding: 8px 10px;
@@ -103,20 +105,31 @@
             font-size: 0.9rem;
         }
 
-        .mezocsoport textarea {
+        .form-group textarea {
             min-height: 80px;
             resize: vertical;
         }
 
-        .hiba {
+        .error {
             border-color: #f97373 !important;
             box-shadow: 0 0 0 1px rgba(248, 113, 113, 0.8);
         }
 
-        .hiba-uzenet {
+        .error-message {
             font-size: 0.8rem;
             color: #fecaca;
             margin-top: 2px;
+        }
+
+        #formStatus {
+            margin-bottom: 12px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            background-color: rgba(15, 23, 42, 0.75);
+            color: #e5e7eb;
+            font-size: 0.9rem;
+            display: none;
         }
 
         fieldset {
@@ -132,21 +145,21 @@
             color: #e5e7eb;
         }
 
-        .inline-opciok {
+        .inline-options {
             display: flex;
             flex-wrap: wrap;
             gap: 10px 16px;
             font-size: 0.9rem;
         }
 
-        .gomb-sor {
+        .button-row {
             margin-top: 12px;
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
 
-        .gomb-sor button {
+        .button-row button {
             background-color: #0ea5e9;
             color: #e5e7eb;
             border: none;
@@ -159,18 +172,18 @@
                 box-shadow 0.15s ease-out;
         }
 
-        .gomb-sor button:hover {
+        .button-row button:hover {
             background-color: #0284c7;
             transform: translateY(-1px);
             box-shadow: 0 7px 18px rgba(15, 23, 42, 1);
         }
 
-        .rendeles-osszefoglalo {
+        .order-summary {
             font-size: 0.9rem;
             color: #e5e7eb;
         }
 
-        .rendeles-osszefoglalo ol {
+        .order-summary ol {
             padding-left: 18px;
         }
 
@@ -185,7 +198,7 @@
         }
 
         @media (max-width: 768px) {
-            .rendeles-ruidor {
+            .order-layout {
                 grid-template-columns: minmax(0, 1fr);
             }
         }
@@ -193,6 +206,7 @@
 </head>
 <body>
     <header>
+        <div id="top"></div>
         <h1>Egészséges Élet Gyógyszertár</h1>
         <p class="header-subtitle">Online rendelési űrlap (nem valódi vásárlás).</p>
     </header>
@@ -208,7 +222,7 @@
     </nav>
 
     <main>
-        <section class="rendeles-kartya">
+        <section class="order-card">
             <h2>Gyógyszerrendelés - próba űrlap</h2>
             <p style="font-size: 0.9rem; color: #cbd5f5; margin-bottom: 12px;">
                 Az alábbi űrlap csak <strong>gyakorló célokat szolgál</strong>, a rendelés
@@ -216,59 +230,60 @@
                 valós személyes adatokat.
             </p>
 
-            <div class="rendeles-ruidor">
+            <div class="order-layout">
                 <form>
-                    <div class="mezocsoport">
-                        <label for="nev">Név</label>
-                        <input type="text" id="nev" name="nev" placeholder="Vezetéknév Keresztnév">
+                    <div id="formStatus" role="status" aria-live="polite"></div>
+                    <div class="form-group">
+                        <label for="name">Név</label>
+                        <input type="text" id="name" name="name" placeholder="Vezetéknév Keresztnév">
                     </div>
 
-                    <div class="mezocsoport">
+                    <div class="form-group">
                         <label for="email">E-mail cím</label>
                         <input type="email" id="email" name="email" placeholder="pelda@example.com">
                     </div>
 
-                    <div class="mezocsoport">
-                        <label for="rendeles-datum">Kiszállítás dátuma</label>
-                        <input type="date" id="rendeles-datum" name="rendeles-datum">
+                    <div class="form-group">
+                        <label for="deliveryDate">Kiszállítás dátuma</label>
+                        <input type="date" id="deliveryDate" name="deliveryDate">
                     </div>
 
-                    <div class="mezocsoport">
-                        <label for="gyogyszer-lista">Választott termék</label>
-                        <input list="gyogyszer-opciok" id="gyogyszer-lista" name="gyogyszer-lista" placeholder="Kezdje el beírni a gyógyszer nevét...">
-                        <datalist id="gyogyszer-opciok">
+                    <div class="form-group">
+                        <label for="medicine">Választott termék</label>
+                        <input list="medicineOptions" id="medicine" name="medicine" placeholder="Kezdje el beírni a gyógyszer nevét...">
+                        <datalist id="medicineOptions">
                         </datalist>
                     </div>
 
                     <fieldset>
                         <legend>Kiszerelés</legend>
-                        <div class="inline-opciok">
-                            <label><input type="radio" name="kiszereles" value="kicsi"> Kisebb (pl. 10 db)</label>
-                            <label><input type="radio" name="kiszereles" value="kozepes"> Közepes (pl. 20-30 db)</label>
-                            <label><input type="radio" name="kiszereles" value="nagy"> Nagy (pl. 50+ db)</label>
+                        <div class="inline-options">
+                            <label><input type="radio" name="packageSize" value="small"> Kisebb (pl. 10 db)</label>
+                            <label><input type="radio" name="packageSize" value="medium"> Közepes (pl. 20-30 db)</label>
+                            <label><input type="radio" name="packageSize" value="large"> Nagy (pl. 50+ db)</label>
                         </div>
                     </fieldset>
 
                     <fieldset>
                         <legend>Opciók</legend>
-                        <div class="inline-opciok">
-                            <label><input type="checkbox" name="tajekoztato" value="igen"> Kérem a részletes betegtájékoztatót e-mailben</label>
-                            <label><input type="checkbox" name="helyettesites" value="igen"> Engedélyezem az egyenértékű készítménnyel való helyettesítést</label>
-                            <label><input type="checkbox" name="hirlevel" value="igen"> Feliratkozom az egészség-tippek hírlevélre</label>
+                        <div class="inline-options">
+                            <label><input type="checkbox" name="infoLeaflet" value="yes"> Kérem a részletes betegtájékoztatót e-mailben</label>
+                            <label><input type="checkbox" name="substitutionAllowed" value="yes"> Engedélyezem az egyenértékű készítménnyel való helyettesítést</label>
+                            <label><input type="checkbox" name="newsletter" value="yes"> Feliratkozom az egészség-tippek hírlevélre</label>
                         </div>
                     </fieldset>
 
-                    <div class="mezocsoport">
-                        <label for="csomag-szin">Csomagolás színe (választható)</label>
-                        <input type="color" id="csomag-szin" name="csomag-szin" value="#0ea5e9">
+                    <div class="form-group">
+                        <label for="packageColor">Csomagolás színe (választható)</label>
+                        <input type="color" id="packageColor" name="packageColor" value="#0ea5e9">
                     </div>
 
-                    <div class="mezocsoport">
-                        <label for="megjegyzes">Megjegyzés, külön kérés (több soros)</label>
-                        <textarea id="megjegyzes" name="megjegyzes" placeholder="Pl.: Kérem, hogy délelőtt szállítsák ki (ha ez valódi rendelés lenne)..."></textarea>
+                    <div class="form-group">
+                        <label for="note">Megjegyzés, külön kérés (több soros)</label>
+                        <textarea id="note" name="note" placeholder="Pl.: Kérem, hogy délelőtt szállítsák ki (ha ez valódi rendelés lenne)..."></textarea>
                     </div>
 
-                    <div class="gomb-sor">
+                    <div class="button-row">
                         <button type="submit">Rendelés elküldése (nem valódi)</button>
                         <button type="reset">Űrlap törlése</button>
                     </div>
@@ -283,7 +298,7 @@
         ↑
     </button>
 
-    <footer>
+    <footer id="pageFooter">
         &copy; 2025 Egészséges Élet Gyógyszertár - MO0VEY (Mizerák Bence)
     </footer>
 </body>

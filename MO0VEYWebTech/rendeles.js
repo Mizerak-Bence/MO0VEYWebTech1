@@ -1,80 +1,92 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var datalist = document.getElementById("gyogyszer-opciok");
-    var form = document.querySelector(".rendeles-ruidor form");
-    var nevInput = document.getElementById("nev");
+    var medicineDataList = document.getElementById("medicineOptions");
+    var form = document.querySelector(".order-layout form");
+    var formStatus = document.getElementById("formStatus");
+    var nameInput = document.getElementById("name");
     var emailInput = document.getElementById("email");
-    var datumInput = document.getElementById("rendeles-datum");
-    var gyogyszerInput = document.getElementById("gyogyszer-lista");
+    var dateInput = document.getElementById("deliveryDate");
+    var medicineInput = document.getElementById("medicine");
 
-    if (datalist) {
+    function setStatus(message) {
+        if (!formStatus) return;
+        if (!message) {
+            formStatus.textContent = "";
+            formStatus.style.display = "none";
+            return;
+        }
+        formStatus.textContent = message;
+        formStatus.style.display = "block";
+    }
+
+    if (medicineDataList) {
         fetch("gyogyszertar.json")
-        .then(function (valasz) {
-            if (!valasz.ok) {
-                throw new Error("Hiba a JSON betöltésekor");
-            }
-            return valasz.json();
-        })
-        .then(function (adat) {
-            if (!adat.gyogyszerek) {
-                return;
-            }
-
-            var nevek = adat.gyogyszerek
-                .map(function (gy) { return gy.nev; })
-                .filter(function (nev) { return typeof nev === "string" && nev.trim() !== ""; });
-
-            var egyediNevek = [];
-            nevek.forEach(function (nev) {
-                if (egyediNevek.indexOf(nev) === -1) {
-                    egyediNevek.push(nev);
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error("Hiba a JSON betöltésekor");
                 }
-            });
+                return response.json();
+            })
+            .then(function (data) {
+                if (!data.gyogyszerek) {
+                    return;
+                }
 
-            egyediNevek.sort(function (a, b) {
-                var aLower = a.toLowerCase();
-                var bLower = b.toLowerCase();
-                if (aLower < bLower) return -1;
-                if (aLower > bLower) return 1;
-                return 0;
-            });
+                var names = data.gyogyszerek
+                    .map(function (m) { return m.nev; })
+                    .filter(function (n) { return typeof n === "string" && n.trim() !== ""; });
 
-            egyediNevek.forEach(function (nev) {
-                var option = document.createElement("option");
-                option.value = nev;
-                datalist.appendChild(option);
-            });
-        })
-        .catch(function (hiba) {
-            console.error(hiba);
-        });
+                var uniqueNames = [];
+                names.forEach(function (n) {
+                    if (uniqueNames.indexOf(n) === -1) {
+                        uniqueNames.push(n);
+                    }
+                });
 
+                uniqueNames.sort(function (a, b) {
+                    var aLower = a.toLowerCase();
+                    var bLower = b.toLowerCase();
+                    if (aLower < bLower) return -1;
+                    if (aLower > bLower) return 1;
+                    return 0;
+                });
+
+                uniqueNames.forEach(function (n) {
+                    var option = document.createElement("option");
+                    option.value = n;
+                    medicineDataList.appendChild(option);
+                });
+            })
+            .catch(function (error) {
+                console.error(error);
+                setStatus("A gyógyszerlista nem tölthető be jelenleg. Kérjük, próbálja meg később.");
+            });
     }
 
-    function hibakTorles() {
-        var hibasElemek = document.querySelectorAll(".hiba");
-        hibasElemek.forEach(function (elem) {
-            elem.classList.remove("hiba");
+    function clearErrors() {
+        var invalidElements = document.querySelectorAll(".error");
+        invalidElements.forEach(function (el) {
+            el.classList.remove("error");
         });
 
-        var hibauzenetek = document.querySelectorAll(".hiba-uzenet");
-        hibauzenetek.forEach(function (u) {
-            if (u.parentNode) {
-                u.parentNode.removeChild(u);
+        var errorMessages = document.querySelectorAll(".error-message");
+        errorMessages.forEach(function (el) {
+            if (el.parentNode) {
+                el.parentNode.removeChild(el);
             }
         });
     }
 
-    function hibauzenetHozzaadas(inputElem, uzenet) {
-        if (!inputElem) return;
+    function addErrorMessage(inputEl, message) {
+        if (!inputEl) return;
 
-        inputElem.classList.add("hiba");
+        inputEl.classList.add("error");
 
-        var p = document.createElement("div");
-        p.className = "hiba-uzenet";
-        p.textContent = uzenet;
+        var el = document.createElement("div");
+        el.className = "error-message";
+        el.textContent = message;
 
-        if (inputElem.parentNode) {
-            inputElem.parentNode.appendChild(p);
+        if (inputEl.parentNode) {
+            inputEl.parentNode.appendChild(el);
         }
     }
 
@@ -82,48 +94,50 @@ document.addEventListener("DOMContentLoaded", function () {
         form.addEventListener("submit", function (e) {
             e.preventDefault();
 
-            hibakTorles();
+            setStatus("");
 
-            var vanHiba = false;
+            clearErrors();
 
-            if (nevInput && nevInput.value.trim() === "") {
-                hibauzenetHozzaadas(nevInput, "A név megadása kötelező.");
-                vanHiba = true;
+            var hasError = false;
+
+            if (nameInput && nameInput.value.trim() === "") {
+                addErrorMessage(nameInput, "A név megadása kötelező.");
+                hasError = true;
             }
 
             if (emailInput) {
-                var emailErtek = emailInput.value.trim();
-                var emailMinta = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (emailErtek === "" || !emailMinta.test(emailErtek)) {
-                    hibauzenetHozzaadas(emailInput, "Adj meg egy érvényes e-mail címet.");
-                    vanHiba = true;
+                var emailValue = emailInput.value.trim();
+                var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (emailValue === "" || !emailPattern.test(emailValue)) {
+                    addErrorMessage(emailInput, "Adj meg egy érvényes e-mail címet.");
+                    hasError = true;
                 }
             }
 
-            if (datumInput && datumInput.value === "") {
-                hibauzenetHozzaadas(datumInput, "Kérjük, válaszd ki a kiszállítás dátumát.");
-                vanHiba = true;
+            if (dateInput && dateInput.value === "") {
+                addErrorMessage(dateInput, "Kérjük, válaszd ki a kiszállítás dátumát.");
+                hasError = true;
             }
 
-            if (gyogyszerInput && gyogyszerInput.value.trim() === "") {
-                hibauzenetHozzaadas(gyogyszerInput, "Válassz egy készítményt a listából.");
-                vanHiba = true;
+            if (medicineInput && medicineInput.value.trim() === "") {
+                addErrorMessage(medicineInput, "Válassz egy készítményt a listából.");
+                hasError = true;
             }
 
-            var kiszerelesValasztott = false;
-            var kiszerelesRadio = document.querySelectorAll("input[name='kiszereles']");
-            kiszerelesRadio.forEach(function (r) {
+            var hasSelectedPackage = false;
+            var packageRadios = document.querySelectorAll("input[name='packageSize']");
+            packageRadios.forEach(function (r) {
                 if (r.checked) {
-                    kiszerelesValasztott = true;
+                    hasSelectedPackage = true;
                 }
             });
-            if (!kiszerelesValasztott && kiszerelesRadio.length > 0) {
-                hibauzenetHozzaadas(kiszerelesRadio[0].closest("fieldset"), "Válaszd ki a kiszerelést.");
-                vanHiba = true;
+            if (!hasSelectedPackage && packageRadios.length > 0) {
+                addErrorMessage(packageRadios[0].closest("fieldset"), "Válaszd ki a kiszerelést.");
+                hasError = true;
             }
 
-            if (!vanHiba) {
-                alert("Köszönjük! Az űrlap sikeresen ellenőrizve lett. (A rendelés NEM kerül elküldésre.)");
+            if (!hasError) {
+                setStatus("Köszönjük! Az űrlap sikeresen ellenőrizve lett. (A rendelés NEM kerül elküldésre.)");
                 form.reset();
             }
         });

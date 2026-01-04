@@ -10,10 +10,15 @@
     <link rel="stylesheet" href="menu.css">
     <link rel="stylesheet" href="backToTop.css">
     <link rel="stylesheet" href="badges.css">
+    <script src="pageTransitions.js" defer></script>
+    <script src="glossary.js" defer></script>
     <script src="backToTop.js" defer></script>
     <script src="videoControls.js" defer></script>
 
     <style>
+        html {
+            background: #020617;
+        }
         body {
             margin: 0;
             min-height: 100vh;
@@ -21,12 +26,38 @@
             flex-direction: column;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             color: #e5e7eb;
-            background-color: #020617;
-            background-image: url("hatter_gyogyszertar.jpg");
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: cover;
-            animation: bgShift 20s ease-in-out infinite alternate;
+            box-sizing: border-box;
+            position: relative;
+            background:
+                radial-gradient(1100px 700px at 12% 0%, rgba(56, 189, 248, 0.22) 0%, rgba(56, 189, 248, 0) 55%),
+                radial-gradient(950px 650px at 88% 6%, rgba(99, 102, 241, 0.22) 0%, rgba(99, 102, 241, 0) 58%),
+                radial-gradient(1200px 760px at 50% 120%, rgba(16, 185, 129, 0.14) 0%, rgba(16, 185, 129, 0) 50%),
+                linear-gradient(to bottom, rgba(15, 23, 42, 0.35) 0, rgba(15, 23, 42, 0.92) 260px, rgba(2, 6, 23, 0.98) 100%);
+            background-attachment: fixed;
+            isolation: isolate;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+                radial-gradient(600px 420px at 20% 20%, rgba(56, 189, 248, 0.12), transparent 60%),
+                radial-gradient(520px 380px at 78% 26%, rgba(99, 102, 241, 0.12), transparent 62%);
+            background-size: 46px 46px, 46px 46px, 100% 100%, 100% 100%;
+            background-position: 0 0, 0 0, 0 0, 0 0;
+            opacity: 0.9;
+            transform: translateZ(0);
+            animation: bgGridFloat 16s ease-in-out infinite;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            body::before {
+                animation: none;
+            }
         }
 
         header {
@@ -50,13 +81,29 @@
 
         main {
             flex: 1;
-            max-width: 1080px;
+            max-width: 1360px;
             margin: 0 auto;
             padding: 24px 20px 32px 20px;
             box-sizing: border-box;
         }
 
-        .bevezeto-blokk {
+        .page-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 980px) 320px;
+            gap: 18px;
+            align-items: start;
+        }
+
+        .content-col {
+            min-width: 0;
+            grid-column: 2;
+        }
+
+        .quick-access {
+            grid-column: 3;
+        }
+
+        .intro-block {
             background-color: rgba(15, 23, 42, 0.9);
             padding: 18px 20px 18px 20px;
             border-radius: 16px;
@@ -68,72 +115,146 @@
             animation: cardIn 0.7s ease-out forwards;
         }
 
-        .bevezeto-blokk h2 {
+        .intro-block h2 {
             margin-top: 0;
             font-size: 1.35rem;
             letter-spacing: 0.03em;
             color: #f9fafb;
         }
 
-        .tippek-kartyak {
+        .tips-cards {
             margin-top: 22px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 18px;
         }
 
-        .tipp-kartya {
-            background-color: rgba(15, 23, 42, 0.94);
-            border-radius: 14px;
-            border: 1px solid rgba(148, 163, 184, 0.7);
-            padding: 14px 16px 13px 16px;
-            box-shadow: 0 14px 30px rgba(15, 23, 42, 0.82);
-            transition: transform 0.16s ease-out, box-shadow 0.16s ease-out, border-color 0.16s ease-out, background-color 0.16s ease-out;
-            opacity: 0;
-            transform: translateY(18px) scale(0.985);
-            animation: cardIn 0.8s ease-out forwards;
-        }
-
-        .tipp-kartya:hover {
-            transform: translateY(-3px) scale(1.01);
-            box-shadow: 0 22px 45px rgba(15, 23, 42, 0.9);
-            border-color: #38bdf8;
-            background-color: rgba(15, 23, 42, 1);
-        }
-
-        .tipp-kartya h3 {
-            margin: 0 0 4px 0;
-            font-size: 1rem;
-            color: #e5e7eb;
-        }
-
-        .tipp-kartya p {
-            margin: 3px 0;
-            font-size: 0.9rem;
-            color: #cbd5f5;
-        }
-
-        .video-kontener {
-            margin-top: 24px;
+        .quick-access {
+            margin-top: 0;
             background-color: rgba(15, 23, 42, 0.9);
+            padding: 14px 16px;
             border-radius: 16px;
-            border: 1px solid rgba(148, 163, 184, 0.7);
             box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
-            padding: 18px 20px 18px 20px;
+            border: 1px solid rgba(148, 163, 184, 0.7);
             backdrop-filter: blur(14px);
             opacity: 0;
             transform: translateY(16px) scale(0.98);
             animation: cardIn 0.7s ease-out forwards;
         }
 
-        .video-kontener h2 {
+        .quick-access h2 {
+            margin: 0;
+            font-size: 1.1rem;
+            letter-spacing: 0.03em;
+            color: #f9fafb;
+        }
+
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .quick-link {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            background: rgba(15, 23, 42, 0.55);
+            color: #e5e7eb;
+            text-decoration: none;
+            transition: transform 0.12s ease-out, border-color 0.15s ease-out, background-color 0.15s ease-out;
+        }
+
+        .quick-link:hover {
+            background: rgba(31, 41, 55, 0.6);
+            border-color: rgba(148, 163, 184, 0.6);
+        }
+
+        .quick-link:active {
+            transform: translateY(1px);
+        }
+
+        .extra-block {
+            margin-top: 24px;
+            background-color: rgba(15, 23, 42, 0.9);
+            padding: 18px 20px;
+            border-radius: 16px;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            backdrop-filter: blur(14px);
+            opacity: 0;
+            transform: translateY(16px) scale(0.98);
+            animation: cardIn 0.7s ease-out forwards;
+        }
+
+        .extra-block h2 {
             margin-top: 0;
             font-size: 1.3rem;
+            letter-spacing: 0.03em;
+            color: #f9fafb;
+        }
+
+        .extra-list {
+            margin: 10px 0 0;
+            padding-left: 18px;
+            color: #cbd5f5;
+        }
+
+        .extra-list li {
+            margin: 8px 0;
+        }
+
+        .tip-card {
+            background-color: rgba(15, 23, 42, 0.94);
+            border-radius: 14px;
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            padding: 14px 16px 13px 16px;
+            box-shadow: 0 14px 30px rgba(15, 23, 42, 0.82);
+            transition: transform 0.16s ease-out, box-shadow 0.16s ease-out, border-color 0.16s ease-out, background-color 0.16s ease-out;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 22px 45px rgba(15, 23, 42, 0.9);
+            border-color: #38bdf8;
+            background-color: rgba(15, 23, 42, 1);
+        }
+
+        .tip-card h3 {
+            margin: 0 0 4px 0;
+            font-size: 1rem;
+            color: #e5e7eb;
+        }
+
+        .tip-card p {
+            margin: 3px 0;
+            font-size: 0.9rem;
+            color: #cbd5f5;
+        }
+
+        .video-section {
+            margin-top: 24px;
+            background-color: rgba(15, 23, 42, 0.9);
+            padding: 18px 20px 18px 20px;
+            border-radius: 16px;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            backdrop-filter: blur(14px);
+            opacity: 0;
+            transform: translateY(16px) scale(0.98);
+            animation: cardIn 0.7s ease-out forwards;
+        }
+
+        .video-section h2 {
+            margin-top: 0;
+            font-size: 1.3rem;
+            letter-spacing: 0.03em;
             color: #f9fafb;
         }
 
         .video-frame-wrapper {
-            margin-top: 12px;
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid rgba(148, 163, 184, 0.7);
@@ -142,18 +263,19 @@
             margin-inline: auto;
         }
 
-        #tornaVideo {
+        #exerciseVideo {
             width: 100%;
+            display: block;
         }
 
-        .video-vezerlok {
+        .video-controls {
             margin-top: 12px;
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
         }
 
-        .video-vezerlok button {
+        .video-controls button {
             background-color: #0ea5e9;
             color: #e5e7eb;
             border: none;
@@ -166,7 +288,7 @@
             box-shadow: 0 4px 10px rgba(15, 23, 42, 0.7);
         }
 
-        .video-vezerlok button:hover {
+        .video-controls button:hover {
             background-color: #0284c7;
             transform: translateY(-1px);
             box-shadow: 0 7px 18px rgba(15, 23, 42, 0.9);
@@ -185,6 +307,15 @@
         @media (max-width: 640px) {
             main {
                 padding-inline: 12px;
+            }
+
+            .page-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-col,
+            .quick-access {
+                grid-column: auto;
             }
         }
 
@@ -207,10 +338,26 @@
                 background-position: center 20px;
             }
         }
+
+        @keyframes bgGridFloat {
+            0% {
+                background-position: 0 0, 0 0, 0 0, 0 0;
+                filter: blur(0px);
+            }
+            50% {
+                background-position: 10px 14px, 14px 10px, 0 0, 0 0;
+                filter: blur(0.4px);
+            }
+            100% {
+                background-position: 0 0, 0 0, 0 0, 0 0;
+                filter: blur(0px);
+            }
+        }
     </style>
 </head>
 <body>
     <header>
+        <div id="top"></div>
         <h1>Egészséges Élet Gyógyszertár</h1>
         <p class="header-subtitle">Tanácsok gyógyszer nélküli enyhítéshez.</p>
     </header>
@@ -226,29 +373,31 @@
     </nav>
 
     <main>
-        <section class="bevezeto-blokk">
-            <h2>Mikor segíthetnek az életmódbeli tanácsok?</h2>
-            <p>
-                Enyhébb panaszok esetén gyakran elegendő néhány tudatos lépés, például több
-                pihenés, megfelelő folyadékbevitel vagy a képernyőhasználat csökkentése.
-                Az alábbi tippek nem helyettesítik az orvosi vizsgálatot, de segíthetnek
-                abban, hogy <strong>kevesebbszer legyen szükség gyógyszerre</strong>, vagy
-                kiegészítsék annak hatását.
-            </p>
-        </section>
+        <div class="page-grid">
+            <div class="content-col">
+                <section class="intro-block" id="topIntro">
+                    <h2>Mikor segíthetnek az életmódbeli tanácsok?</h2>
+                    <p>
+                        Enyhébb panaszok esetén gyakran elegendő néhány tudatos lépés, például több
+                        pihenés, megfelelő folyadékbevitel vagy a képernyőhasználat csökkentése.
+                        Az alábbi tippek nem helyettesítik az orvosi vizsgálatot, de segíthetnek
+                        abban, hogy <strong>kevesebbszer legyen szükség gyógyszerre</strong>, vagy
+                        kiegészítsék annak hatását.
+                    </p>
+                </section>
 
-        <div class="tippek-kartyak">
-            <div class="tipp-kartya">
+                <div class="tips-cards" id="tips">
+            <div class="tip-card">
                 <h3>💧 Fejfájás, fáradtság - folyadék és szünet</h3>
                 <p>
                     Igyon lassan, kortyonként 1-2 pohár vizet, és tartson 10-15 perc
                     pihenőt sötétebb, csendes környezetben. Sokszor már az is segít,
                     ha fél órára leteszi a telefont vagy a monitort.
                 </p>
-                <span class="betegseg-badge">Első lépés gyógyszer előtt</span>
+                <span class="condition-badge">Első lépés gyógyszer előtt</span>
             </div>
 
-            <div class="tipp-kartya">
+            <div class="tip-card">
                 <h3>😴 Alvászavar - esti rutin kialakítása</h3>
                 <p>
                     Próbáljon minden este hasonló időben lefeküdni, és kerülje a
@@ -256,10 +405,10 @@
                     Elalvás előtt 1 órával kapcsolja le a képernyőket, és válasszon
                     nyugtató tevékenységet (olvasás, zenehallgatás).
                 </p>
-                <span class="betegseg-badge">Életmód-tipp</span>
+                <span class="condition-badge">Életmód-tipp</span>
             </div>
 
-            <div class="tipp-kartya">
+            <div class="tip-card">
                 <h3>🌡️ Enyhe láz, megfázás - pihenés és folyadék</h3>
                 <p>
                     Enyhébb láz esetén biztosítson bőséges folyadékbevitelt (víz, tea),
@@ -267,10 +416,10 @@
                     fürdőt és a túlöltözést, hogy a szervezet könnyebben szabályozza
                     a testhőmérsékletet.
                 </p>
-                <span class="betegseg-badge">Kiegészítő támogatás</span>
+                <span class="condition-badge">Kiegészítő támogatás</span>
             </div>
 
-            <div class="tipp-kartya">
+            <div class="tip-card">
                 <h3>🍽️ Gyomorégés - könnyebb ételek, kisebb adagok</h3>
                 <p>
                     Kerülje a nagyon fűszeres, zsíros, rántott ételeket, a késő esti
@@ -278,10 +427,10 @@
                     gyakrabban, és lefekvés előtt legalább 2-3 órával fejezze be az
                     utolsó étkezést.
                 </p>
-                <span class="betegseg-badge">Kímélő étrend</span>
+                <span class="condition-badge">Kímélő étrend</span>
             </div>
 
-            <div class="tipp-kartya">
+            <div class="tip-card">
                 <h3>🧘‍♀️ Szorongás, feszültség - légzőgyakorlatok</h3>
                 <p>
                     Próbálja ki a lassú, mély légzést: 4 másodperc belégzés, 4
@@ -289,65 +438,75 @@
                     alkalommal. A lassú légzés üzenetet küld a szervezetnek, hogy
                     csökkentse a feszültséget.
                 </p>
-                <span class="betegseg-badge">Kiegészítő módszer</span>
+                <span class="condition-badge">Kiegészítő módszer</span>
             </div>
 
-            <div class="tipp-kartya">
+            <div class="tip-card">
                 <h3>🚶 Mozgáshiány - rövid séták beiktatása</h3>
                 <p>
                     Ha sokat ül, óránként álljon fel pár percre, nyújtózzon, tegyen
                     pár lépést. Napi 20-30 perc könnyű séta is javíthatja a közérzetet,
                     alvást és az energiaszintet.
                 </p>
-                <span class="betegseg-badge">Mindennapi szokás</span>
+                <span class="condition-badge">Mindennapi szokás</span>
             </div>
         </div>
 
-        <section class="bevezeto-blokk" style="margin-top: 24px;">
-            <h2>Mikor kell inkább orvoshoz fordulni?</h2>
-            <p>
-                Ha a panaszok <strong>több napja nem javulnak</strong>, hirtelen romlanak,
-                magas láz, nehézlégzés, mellkasi fájdalom, erős hasi fájdalom,
-                vagy szokatlan tünetek jelentkeznek, <strong>ne várjon házi módszerekkel</strong>,
-                hanem keresse fel háziorvosát vagy a sürgősségi ellátást.
-            </p>
-            <p>
-                Gyógyszer nélküli tanácsaink <em>csak enyhe panaszokra</em> és
-                <em>átmeneti állapotokra</em> vonatkoznak. Krónikus betegségek esetén
-                mindig egyeztesse kezelőorvosával a változtatásokat.
-            </p>
-        </section>
+                <section class="intro-block" id="medicalHelp" style="margin-top: 24px;">
+                    <h2>Mikor kell inkább orvoshoz fordulni?</h2>
+                    <p>
+                        Ha a panaszok <strong>több napja nem javulnak</strong>, hirtelen romlanak,
+                        magas láz, nehézlégzés, mellkasi fájdalom, erős hasi fájdalom,
+                        vagy szokatlan tünetek jelentkeznek, <strong>ne várjon házi módszerekkel</strong>,
+                        hanem keresse fel háziorvosát vagy a sürgősségi ellátást.
+                    </p>
+                    <p>
+                        Gyógyszer nélküli tanácsaink <em>csak enyhe panaszokra</em> és
+                        <em>átmeneti állapotokra</em> vonatkoznak. Krónikus betegségek esetén
+                        mindig egyeztesse kezelőorvosával a változtatásokat.
+                    </p>
+                </section>
 
-        <section class="bevezeto-blokk" style="margin-top: 24px;">
-            <h2>Napi mini-checklist az egészségesebb napokért</h2>
-            <ol>
-                <li>Megittam legalább 6-8 pohár vizet ma.</li>
-                <li>Tartottam rövid szünetet minden 1 óra képernyő után.</li>
-                <li>Legalább 20 percet mozogtam (séta, lépcsőzés, torna).</li>
-                <li>Figyeltem az étkezésekre (kisebb adagok, kevésbé zsíros ételek).</li>
-                <li>Este lefekvés előtt 1 órával letettem a telefont / monitort.</li>
-            </ol>
-        </section>
+                <section class="extra-block" aria-label="Gyakorlati irányelvek">
+                    <h2>Gyors irányelvek (könnyen betartható)</h2>
+                    <ul class="extra-list">
+                        <li><strong>Egyszerre csak 1-2 változtatás:</strong> így könnyebb követni, mi segít.</li>
+                        <li><strong>Folyadék + pihenés alap:</strong> sok enyhe panasz ezekre jól reagál.</li>
+                        <li><strong>Képernyő és nyak-váll terhelés:</strong> fejfájásnál gyakori kiváltó tényező.</li>
+                        <li><strong>Étkezési ritmus:</strong> gyomorégésnél a kisebb adagok és a késő esti evés kerülése sokat számít.</li>
+                    </ul>
+                </section>
 
-        <section class="video-kontener">
-            <h2>Rövid videó: megelőző medicina és prehabilitáció</h2>
-            <p>
-                A videó bemutatja, hogyan segíthet a <strong>megelőző szemlélet</strong>
-                abban, hogy hosszabb távon egészségesek maradjunk. A hangsúly a
-                <strong>rendszeres mozgáson, tudatos táplálkozáson, életmódbeli
-                változtatásokon</strong>, valamint a test működésének megértésén van,
-                hogy ne csak a sérülések utólagos kezelésére (rehabilitációra),
-                hanem azok <strong>megelőzésére, prehabilitációjára</strong> törekedjünk.
-            </p>
+                <section class="intro-block" id="checklist" style="margin-top: 24px;">
+                    <h2>Napi mini-checklist az egészségesebb napokért</h2>
+                    <ol>
+                        <li>Megittam legalább 6-8 pohár vizet ma.</li>
+                        <li>Tartottam rövid szünetet minden 1 óra képernyő után.</li>
+                        <li>Legalább 20 percet mozogtam (séta, lépcsőzés, torna).</li>
+                        <li>Figyeltem az étkezésekre (kisebb adagok, kevésbé zsíros ételek).</li>
+                        <li>Este lefekvés előtt 1 órával letettem a telefont / monitort.</li>
+                    </ol>
+                </section>
+
+                <section class="video-section" id="video">
+                    <h2>Rövid videó: megelőző medicina és prehabilitáció</h2>
+                    <p>
+                        A videó bemutatja, hogyan segíthet a <strong>megelőző szemlélet</strong>
+                        abban, hogy hosszabb távon egészségesek maradjunk. A hangsúly a
+                        <strong>rendszeres mozgáson, tudatos táplálkozáson, életmódbeli
+                        változtatásokon</strong>, valamint a test működésének megértésén van,
+                        hogy ne csak a sérülések utólagos kezelésére (rehabilitációra),
+                        hanem azok <strong>megelőzésére, prehabilitációjára</strong> törekedjünk.
+                    </p>
 
             <div class="video-frame-wrapper">
-                <video id="tornaVideo" width="100%">
+                <video id="exerciseVideo" width="100%">
                     <source src="Preventative Medicine.mp4" type="video/mp4">
                     A böngészője nem támogatja a videó lejátszását.
                 </video>
             </div>
 
-            <div class="video-vezerlok">
+            <div class="video-controls">
                 <button type="button" id="playVideo">Lejátszás</button>
                 <button type="button" id="pauseVideo">Szünet</button>
                 <button type="button" id="muteVideo">Némítás be/ki</button>
@@ -359,92 +518,28 @@
                 <button type="button" id="sizeDown">Kisebb videó</button>
                 <button type="button" id="sizeUp">Nagyobb videó</button>
             </div>
-        </section>
+                </section>
+            </div>
+
+            <aside class="quick-access" aria-label="Gyors elérés">
+                <h2>Gyors elérés</h2>
+                <div class="quick-links" aria-label="Ugrópontok">
+                    <a class="quick-link" href="#tips">Tippek kártyák</a>
+                    <a class="quick-link" href="#medicalHelp">Figyelmeztető jelek</a>
+                    <a class="quick-link" href="#checklist">Napi checklist</a>
+                    <a class="quick-link" href="#video">Videó</a>
+                </div>
+            </aside>
+        </div>
     </main>
 
     <button id="backToTop" aria-label="Vissza az oldal tetejére">
         ↑
     </button>
 
-    <footer>
+    <footer id="pageFooter">
         &copy; 2025 Egészséges Élet Gyógyszertár - MO0VEY (Mizerák Bence)
     </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const video = document.getElementById("tornaVideo");
-            const playBtn = document.getElementById("playVideo");
-            const pauseBtn = document.getElementById("pauseVideo");
-            const muteBtn = document.getElementById("muteVideo");
-            const restartBtn = document.getElementById("restartVideo");
-            const volDownBtn = document.getElementById("volDown");
-            const volUpBtn = document.getElementById("volUp");
-            const speedDownBtn = document.getElementById("speedDown");
-            const speedUpBtn = document.getElementById("speedUp");
-            const sizeDownBtn = document.getElementById("sizeDown");
-            const sizeUpBtn = document.getElementById("sizeUp");
-            const videoWrapper = document.querySelector(".video-frame-wrapper");
-
-            let currentWidth = 420;
-            const minWidth = 260;
-            const maxWidth = 640;
-            if (videoWrapper) {
-                videoWrapper.style.maxWidth = currentWidth + "px";
-            }
-
-            if (!video) {
-                return;
-            }
-
-            playBtn.addEventListener("click", function () {
-                video.play();
-            });
-
-            pauseBtn.addEventListener("click", function () {
-                video.pause();
-            });
-
-            muteBtn.addEventListener("click", function () {
-                video.muted = !video.muted;
-            });
-
-            restartBtn.addEventListener("click", function () {
-                video.currentTime = 0;
-                video.play();
-            });
-
-            volDownBtn.addEventListener("click", function () {
-                const newVol = Math.max(0, video.volume - 0.1);
-                video.volume = newVol;
-            });
-
-            volUpBtn.addEventListener("click", function () {
-                const newVol = Math.min(1, video.volume + 0.1);
-                video.volume = newVol;
-            });
-
-            speedDownBtn.addEventListener("click", function () {
-                const newRate = Math.max(0.25, video.playbackRate - 0.25);
-                video.playbackRate = newRate;
-            });
-
-            speedUpBtn.addEventListener("click", function () {
-                const newRate = Math.min(3, video.playbackRate + 0.25);
-                video.playbackRate = newRate;
-            });
-
-            sizeDownBtn.addEventListener("click", function () {
-                if (!videoWrapper) return;
-                currentWidth = Math.max(minWidth, currentWidth - 40);
-                videoWrapper.style.maxWidth = currentWidth + "px";
-            });
-
-            sizeUpBtn.addEventListener("click", function () {
-                if (!videoWrapper) return;
-                currentWidth = Math.min(maxWidth, currentWidth + 40);
-                videoWrapper.style.maxWidth = currentWidth + "px";
-            });
-        });
-    </script>
 </body>
 </html>
