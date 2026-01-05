@@ -2,19 +2,27 @@
 	position: fixed;
 	right: 24px;
 	bottom: 72px;
-	width: 40px;
-	height: 40px;
+	width: 44px;
+	height: 44px;
 	border-radius: 50%;
 	border: 1px solid rgba(148, 163, 184, 0.55);
 	background-color: rgba(15, 23, 42, 0.72);
 	color: var(--accent-400);
-	font-size: 20px;
+	font-size: 26px;
+	line-height: 1;
+	padding: 0;
 	cursor: pointer;
 	box-shadow: 0 12px 28px rgba(2, 6, 23, 0.55);
 	backdrop-filter: blur(10px);
 	transition: transform 0.12s ease-out, background-color 0.15s ease-out, border-color 0.15s ease-out, color 0.15s ease-out;
 	display: none;
+	align-items: center;
+	justify-content: center;
 	z-index: 1000;
+}
+
+#backToTop:empty::before {
+	content: "↑";
 }
 
 #backToTop:hover {

@@ -6,8 +6,12 @@ document.addEventListener('DOMContentLoaded', function () {
 		backToTopBtn.id = 'backToTop';
 		backToTopBtn.type = 'button';
 		backToTopBtn.setAttribute('aria-label', 'Vissza az oldal tetejére');
-		backToTopBtn.textContent = '↑';
 		document.body.appendChild(backToTopBtn);
+	}
+
+	backToTopBtn.type = 'button';
+	if (!backToTopBtn.textContent || !backToTopBtn.textContent.trim()) {
+		backToTopBtn.textContent = '↑';
 	}
 
 	backToTopBtn.style.display = 'none';
